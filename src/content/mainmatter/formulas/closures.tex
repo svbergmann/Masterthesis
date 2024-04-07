@@ -1,4 +1,4 @@
-\section{Proposed closures for third- and fourth-order moments based on the mixture of trivariate Gaussians}\label{sec:prop_closure}
+\section{Proposed closures for third- and fourth-order moments based on the mixture of trivariate normals}\label{sec:prop_closure}
 
 This section lists formulas for the higher-order moments that are needed for closure in the parameterization of: $\wpfour$, $\wptwothlp$, $\wpthlptwo$, and $\wprtpthlp$.
 These are obtained by substituting the expressions for the PDF parameters (\cref{eq:alpha_solved} - \cref{eq:r_r_t_theta_l}) into the equations for the higher-order moments (\cref{eq:wp4_div_wp2_2} - \cref{eq:wprtpthlp_div_wp2_thp2_rt2}).
@@ -14,7 +14,7 @@ First, we list the equation for $\theta_l'^3$, which is obtained by dimensionali
 
 While the scalar third moments are not essential for solving the prognostic equations directly, they still play a role in shaping cloud properties.
 This is because cumulus clouds tend to form at the edges, or \enquote{tails}, of the \gls{pdf} for a specific variable.
-Typically, as the relative width of the normal distribution in $w$ (represented by $\tsw^2=\sigma_w^2/\wptwo$) increases, the value of $\thlpthree$ also goes up (see equation (\ref{eq:thlp3_beta}) for details).
+Typically, as the relative width of the normal distribution in $w$ (represented by $\tsw^2=\sigma_w^2/\wptwo$) increases, the value of $\thlpthree$ also goes up (see \cref{eq:thlp3_beta}) for details).
 In simpler terms, a larger $\thlpthree$ corresponds to a broader $w$-marginal \gls{pdf}, which deviates further from a double delta function (a function with two spikes at zero).
 
 $\wpfour$ does not depend on the thermodynamic scalar moments;

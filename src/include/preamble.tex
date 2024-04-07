@@ -18,19 +18,18 @@
 \input{content/frontmatter/acronyms}
 \makeglossaries
 \usepackage{graphicx}
-\graphicspath{ {./include/figures} }
 
 \usepackage[newfloat, outputdir=../auxil]{minted}
 \newminted{python}{
+    autogobble,
     frame=single,
-    fontsize=\footnotesize,
-    autogobble
+    fontsize=\footnotesize
 }
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usepgfplotslibrary{external}
-\tikzexternalize
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=newest}
+%\usepgfplotslibrary{external}
+%\tikzexternalize
 
 \usepackage{csquotes}
 \usepackage[nameinlink,noabbrev]{cleveref}
