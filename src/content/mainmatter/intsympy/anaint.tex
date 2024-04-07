@@ -1,0 +1,136 @@
+\section{Analytic integration}\label{sec:anaintsympy}
+
+For simplicity and readability, we choose the check for the formula of $\overline{w'^2}$.
+One starts by importing and -- obviously -- installing the packages if they are not there yet.
+Importing the package \mintinline{python}{display} is useful for later on printing the equations.
+Thus, there is the following code:
+\begin{listing}[!ht]
+    \caption{Import statements}
+    \label{lst:import}
+    \begin{pythoncode}
+        import sympy as sp
+        from IPython.display import display
+        from sympy import abc, oo, Symbol, Integral
+        from sympy.stats import Normal, density
+    \end{pythoncode}
+\end{listing}
+In this listing, \mintinline{python}{sympy} was defined to be called \mintinline{python}{sp} and from \mintinline{python}{sympy} we directly imported some packages, too, which are needed later on.
+
+\noindent
+Next, we define all symbols which are needed to calculate the given integral and therefore also to print the equations nicely.
+Since we are checking $\overline{w'^2}$, we need the following (self-defined) symbols:
+\begin{listing}[!ht]
+    \caption{Defining symbols}
+    \label{lst:defsymb}
+    \begin{pythoncode}
+        sigma_w = Symbol('\sigma_w')
+        w_1 = Symbol('w_1')
+        w_2 = Symbol('w_2')
+        w_bar = Symbol('\overline{w}')
+        sigma_lambda_w = Symbol('\sigma_{\lambda w}')
+        w_prime_2_bar = Symbol('\overline{w\'^2}')
+    \end{pythoncode}
+\end{listing}
+Having defined the symbols, we can proceed with defining the marginal distribution.
+Now, we are also using \mintinline{python}{sympy.abc} for displaying some standard symbols.
+\begin{listing}[!ht]
+    \caption{Defining the marginals}
+    \label{lst:defmarginals}
+    \begin{pythoncode}
+        G_1_w = Normal(name='G_1_w', mean=w_1, std=sigma_w)
+        G_1_w_density = density(G_1_w)(sp.abc.w)
+        G_2_w = Normal(name='G_2_w', mean=w_2, std=sigma_w)
+        G_2_w_density = density(G_2_w)(sp.abc.w)
+        G_3_w = Normal(name='G_3_w', mean=w_bar, std=sigma_lambda_w)
+        G_3_w_density = density(G_3_w)(sp.abc.w)
+        G_w = ((1 - sp.abc.delta) * sp.abc.alpha * G_1_w_density +
+               (1 - sp.abc.delta) * (1 - sp.abc.alpha) * G_2_w_density +
+               sp.abc.delta * G_3_w_density)
+    \end{pythoncode}
+\end{listing}
+Having done that, we can actually display the integral, which we want to compute.
+\begin{listing}[!ht]
+    \caption{Defining and displaying the needed integral}
+    \label{lst:intwp2bar}
+    \begin{pythoncode}
+        w_prime_2_bar_int = sp.Integral((sp.abc.w - w_bar) ** 2 * G_w, [sp.abc.w, -oo, oo])
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2bar}}
+    \label{fig:intwp2barout}
+    \begin{align}
+        \overline{w'^2}
+        = \int\limits_{-\infty}^{\infty}
+        \left(- \overline{w} + w\right)^{2}
+        \left(\frac{\sqrt{2} \delta e^{- \frac{\left(- \overline{w} + w\right)^{2}}{2 \sigma_{\lambda w}^{2}}}}{2 \sqrt{\pi} \sigma_{\lambda w}}
+        + \frac{\sqrt{2} \alpha \left(1 - \delta\right) e^{- \frac{\left(w - w_{1}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right. \nonumber\\
+        + \left.\frac{\sqrt{2} \cdot \left(1 - \alpha\right) \left(1 - \delta\right) e^{- \frac{\left(w - w_{2}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right)
+        \, dw \nonumber
+    \end{align}
+\end{figure}
+Looking at \cref{fig:intwp2barout}, this is exactly the integral, which we want to compute.
+Using the command \mintinline{python}{.doit(conds='none')}, we can actually calculate the given integral, where we assume, that all given constants are real.
+We are also using \mintinline{python}{.simplify()} here to make the output more readable as well as more comparable to the actual function we want to check.
+\begin{listing}[!ht]
+    \caption{Calculating and printing the integral}
+    \label{lst:intwp2barcalc}
+    \begin{pythoncode}
+        w_prime_2_bar_int_val = w_prime_2_bar_int.doit(conds='none').simplify()
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int_val))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2barcalc}}
+    \label{fig:intwp2barcalcout}
+    \begin{align}
+        \overline{w'^2}
+        = - \overline{w}^{2} \delta + \overline{w}^{2} + 2 \overline{w} \alpha \delta w_{1} - 2 \overline{w} \alpha \delta w_{2} - 2 \overline{w} \alpha w_{1} + 2 \overline{w} \alpha w_{2} + 2 \overline{w} \delta w_{2} - 2 \overline{w} w_{2} \nonumber\\
+        - \sigma_{w}^{2} \delta + \sigma_{w}^{2} + \sigma_{\lambda w}^{2} \delta - \alpha \delta w_{1}^{2} + \alpha \delta w_{2}^{2} + \alpha w_{1}^{2} - \alpha w_{2}^{2} - \delta w_{2}^{2} + w_{2}^{2} \nonumber,
+    \end{align}
+\end{figure}
+We can now compare \cref{fig:intwp2barcalcout} to the given equation.
+To do this, we first need to define the equation for \cref{eq:wp2_bar}.
+\begin{listing}[!ht]
+    \caption{Python function for the second order moment}
+    \label{lst:intwp2barsym}
+    \begin{pythoncode}
+        def w_prime_2_bar_check(delta=sp.abc.delta, alpha=sp.abc.alpha, w_1=w_1, w_2=w_2,
+        w_bar=w_bar, sigma_w=sigma_w, sigma_lambda_w=sigma_lambda_w):
+            return (((1 - delta) * alpha * ((w_1 - w_bar) ** 2 + sigma_w ** 2)) 
+                + ((1 - delta) * (1 - alpha) * ((w_2 - w_bar) ** 2 + sigma_w ** 2)) 
+                + (delta * sigma_lambda_w ** 2))
+    \end{pythoncode}
+\end{listing}
+We can print this equation, using \mintinline{python}{display} again.
+\begin{listing}[!ht]
+    \caption{Printing the symbolic equation}
+    \label{lst:intwp2barsymprint}
+    \begin{pythoncode}
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_check()))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2barsymprint}}
+    \label{fig:intwp2barsymprintout}
+    \begin{align}
+        \nonumber
+        \overline{w'^2} = \sigma_{\lambda w}^{2} \delta + \alpha \left(1 - \delta\right) \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{1}\right)^{2}\right) + \left(1 - \alpha\right) \left(1 - \delta\right) \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{2}\right)^{2}\right)
+    \end{align}
+\end{figure}
+The last step is to check if those two formulas are equivalent to each other.
+We can do this by just using \mintinline{python}{Eq(..)} from the package \mintinline{python}{SymPy}.
+\mintinline{python}{factor(..)} just tries to factor the given variables to make the comparison easier.
+\begin{listing}[!ht]
+    \caption{Check if the integral and the given formula are the same}
+    \label{lst:intwp2barfinalcheck}
+    \begin{pythoncode}
+        display(sp.factor(sp.Eq(w_prime_2_bar_int_val, w_prime_2_bar_check()),
+            sp.abc.alpha, sp.abc.delta))
+    \end{pythoncode}
+\end{listing}
+This code just displays \mintinline{python}{True}, which is exactly what we wanted to have.

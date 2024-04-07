@@ -1,0 +1,20 @@
+\begin{center}
+    ABSTRACT
+    \\
+    \singlespacing
+    ADDING A THIRD GAUSSIAN TO CLUBB\\
+    \doublespacing
+    by\\
+    Sven Bergmann\\
+    \singlespacing
+    The University of Wisconsin--Milwaukee, 2024\\
+    Under the Supervision of Professor Vince Larson
+\end{center}
+
+The \gls{CLUBB} model uses the sum of two Normal \glspl{pdf} to describe a grid layer of the atmosphere.
+To do that, \gls{CLUBB} uses a large set of \glspl{pde}.
+For advancing in time, there are some values for higher order moments needed, e.g. for the upward wind, and the liquid water potential temperature, which are being described by backing out the \gls{pdf} parameters from some equations for lower order moments and then compute the higher order moments in terms of the lower order ones.
+Going through this process, \gls{CLUBB} can then close the equations.
+Since \gls{CLUBB} is only using two added up Normal \glspl{pdf}, it cannot really model every possible shape of the grid layers.
+Therefore the idea came in mind to add a third Normal \glspl{pdf} right in the middle of the already existing Normal \glspl{pdf} without making the equations too complicated and also numerically still realizable.
+This document then describes all formulas, inputs and outputs and also tries to take a closer look at some asymptotic behaviors.

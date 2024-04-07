@@ -1,0 +1,80 @@
+%! Compiler = pdflatex --shell-escape
+
+\documentclass[12pt, listof=totoc, bibliography=totoc, parskip=full, numbers=noenddot]{scrreprt}
+\setcounter{secnumdepth}{\subsubsectionnumdepth}
+
+\input{include/preamble}
+
+\begin{document}
+
+    \doublespacing
+
+    \setcounter{page}{1}
+    \thispagestyle{empty}
+
+    \include{content/frontmatter/titlepage}
+
+    \newpage
+    \clearpage
+    \pagestyle{plain}
+    \pagenumbering{roman}
+    \setcounter{page}{2}
+
+    \include{content/frontmatter/abstract}
+
+    \newpage
+    \hspace{0pt}
+    \vfill
+    \begin{center}
+        Type dedication here.
+    \end{center}
+    \vfill
+
+
+    \singlespacing
+    \renewcommand*\contentsname{\centering\normalfont{TABLE OF CONTENTS}}
+    \tableofcontents
+    \newpage
+
+    \doublespacing
+
+    \listoffigures
+    \newpage
+
+    \listoftables
+    \newpage
+
+    \listoflistings
+    \newpage
+
+    \printglossary[type=\acronymtype, title={List of Acronyms}]
+    \newpage
+
+    \printglossary[type=symbolslist, title={List of Symbols}]
+    \newpage
+
+    \thispagestyle{plain}
+
+    \include{content/frontmatter/acknowledgments}
+    \newpage
+
+    \pagenumbering{arabic}
+
+    \include{content/mainmatter/introduction}
+    \include{content/mainmatter/definitions/definitions}
+    \include{content/mainmatter/problem/problem}
+    \include{content/mainmatter/formulas/formulas}
+    \include{content/mainmatter/intsympy/intsympy}
+    \include{content/mainmatter/asymptotics/asymptotics}
+    \include{content/mainmatter/outlook}
+
+    \newpage
+
+    \singlespacing
+
+    \bibliographystyle{alpha}
+    \bibliography{include/bibliography}
+
+    \include{content/backmatter/appendix}
+
+\end{document}

@@ -1,0 +1,56 @@
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in, letterpaper]{geometry}
+
+\usepackage{setspace}
+\setdisplayskipstretch{}
+
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage[standard, hyperref]{ntheorem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\numberwithin{equation}{chapter}
+\numberwithin{equation}{section}
+\usepackage[acronym, toc]{glossaries}
+\setglossarystyle{list}
+\input{content/frontmatter/symbols}
+\input{content/frontmatter/acronyms}
+\makeglossaries
+\usepackage{graphicx}
+\graphicspath{ {./include/figures} }
+
+\usepackage[newfloat, outputdir=../auxil]{minted}
+\newminted{python}{
+    frame=single,
+    fontsize=\footnotesize,
+    autogobble
+}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\usepackage{csquotes}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+
+\newcommand{\wptwo}{ \overline{w'^2} }
+\newcommand{\thlptwo}{ \overline{\theta_l'^2} }
+\newcommand{\rtptwo}{ \overline{r_t'^2} }
+\newcommand{\wpthlp}{ \overline{w' \theta_l'} }
+\newcommand{\wprtp}{ \overline{w' r_t'} }
+\newcommand{\rtpthlp}{ \overline{r_t' \theta_l'} }
+\newcommand{\wptwothlp}{ \overline{w'^2 \theta_l'} }
+\newcommand{\wptwortp}{ \overline{w'^2 r_t'} }
+\newcommand{\wpthlptwo}{ \overline{w' \theta_l'^2} }
+\newcommand{\wprtptwo}{ \overline{w' r_t'^2} }
+\newcommand{\wprtpthlp}{ \overline{w' r_t' \theta_l'} }
+\newcommand{\wpthree}{ \overline{w'^3} }
+\newcommand{\thlpthree}{ \overline{\theta_l'^3} }
+\newcommand{\rtpthree}{ \overline{r_t'^3} }
+\newcommand{\wpfour}{ \overline{w'^4} }
+
+\newcommand{\tsw}{{\tilde{\sigma}_w}}
+\newcommand{\tswfact}{\left( 1 - \tilde{\sigma}_w^2 \right)}

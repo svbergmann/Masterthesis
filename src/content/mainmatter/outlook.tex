@@ -1,0 +1,27 @@
+\chapter{Outlook}\label{ch:outlook}
+
+We have seen that adding a third Normal distribution right in the middle of the two defined (simplified) Normal distributions does not change the \enquote{closed} formulas too much, neither it makes it too complicated.
+So for \gls{CLUBB} there are new parameters, e.g. $\delta$ or $\lambda_w$, which can be chosen to \enquote{tweak} the representation of the underlying \gls{pdf} for the prognosed moments.
+Ultimately one would like to fit this resulting \gls{pdf} to real data, to get better relationships, as well as thresholds for some variables.
+To do this there are some approaches which unfortunately have not been discussed.
+A following thesis could e.g. incorporate some machine learning approach to learn optimal values for certain parameters.
+
+The methodology established in \autoref{ch:intsympy} extends far beyond the immediate application within the \gls{CLUBB} model.
+This chapter serves as a blueprint for a generalizable approach to verifying and analyzing integral expressions.
+Its core strength lies in the utilization of SymPy, a powerful and well-supported \gls{cas}.
+SymPy's community-driven nature provides continuous development and a vast library of mathematical capabilities.
+By leveraging this versatile tool, we can tackle a wide range of integral expressions, both analytically and numerically.
+This approach offers several advantages:
+\begin{itemize}
+    \item \emph{Symbolic Verification:}
+    SymPy allows us to perform symbolic manipulations, enabling the derivation of exact solutions for integrals whenever possible.
+    \item \emph{Numerical Approximation:}
+    For integrals that are analytically intractable, SymPy seamlessly integrates with numerical computing libraries.
+    This allows us to efficiently approximate the integral's value for specific parameter choices.
+    This combined approach ensures we can handle a broader range of integral expressions.
+    \item \emph{Generalizability and Reusability:} The framework outlined in \cref{ch:intsympy} is not specific to the context of \gls{CLUBB}.
+    By focusing on the core functionalities of SymPy, this approach can be adapted to various scientific disciplines.
+\end{itemize}
+Overall, the methods we developed in this thesis using SymPy are not just useful for the \gls{CLUBB} model.
+These methods can be applied to many other scientific problems because they can both solve integrals exactly (symbolically) and get close answers (numerically) for a wide range of equations.
+SymPy, being a powerful and widely-used tool, makes this possible.

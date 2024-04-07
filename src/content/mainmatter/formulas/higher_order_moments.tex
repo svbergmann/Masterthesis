@@ -1,0 +1,30 @@
+\section{Higher-order moments in terms of pdf parameters}\label{sec:higher_order_moments}
+
+Once the \gls{pdf} parameters have been specified, all higher-order moments can be calculated by integration over the \gls{pdf}.
+The needed formulas are:
+\begin{align}
+    \label{eq:wp4_div_wp2_2}
+    \frac{1}{\tswfact^2} \frac{(1-\delta)}{(1-\delta \lambda_w)^2} \frac{\wpfour}{\left(\wptwo \right)^2}
+    &= \alpha \left[\widehat{w}_1^4 + 6 \widehat{w}_1^2 \frac{\tsw^2}{\tswfact} + 3 \frac{\tsw^4}{\tswfact^2} \right] \nonumber \\
+    &+ (1 - \alpha) \left[\widehat{w}_2^4 + 6 \widehat{w}_2^2 \frac{\tsw^2}{\tswfact} + 3 \frac{\tsw^4}{\tswfact^2} \right] \nonumber \\
+    &+ \frac{1}{\tswfact^2} \frac{(1-\delta)}{(1-\delta \lambda_w)^2} \delta 3 \lambda_w^2,
+\end{align}
+\begin{align}
+    \label{eq:wp2thlp_div_wp2thl2}
+    \frac{1}{\tswfact} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w) (1-\delta \lambda_\theta)^{1/2}} \frac{\wptwothlp}{\wptwo \left(\thlptwo \right)^{1/2}}
+    &= \alpha \left[\widehat{w}_1^2 + \frac{\tsw^2}{\tswfact} \right] \tilde{\theta}_{l1} \nonumber\\
+    &+ (1-\alpha) \left[\widehat{w}_2^2 + \frac{\tsw^2}{\tswfact}\right] \tilde{\theta}_{l2},
+\end{align}
+\begin{align}
+    \label{eq:wpthlp2_div_wp2_thlp2}
+    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\wpthlptwo}{\left(\wptwo\right)^{1/2}\thlptwo}
+    = \alpha  \widehat{w}_1  \left( \tilde{\theta}_{l1}^2 + \tilde{\sigma}_{\theta_{l1}}^2 \right)
+    + (1-\alpha) \widehat{w}_2 \left( \tilde{\theta}_{l2}^2 + \tilde{\sigma}_{\theta_{l2}}^2 \right),
+\end{align}
+\begin{align}
+    \label{eq:wprtpthlp_div_wp2_thp2_rt2}
+    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)^{1/2}(1-\delta \lambda_{q_t})^{1/2}} \frac{\wprtpthlp}{\left( \wptwo \right)^{1/2}\left(\rtptwo \right)^{1/2} \left( \thlptwo \right)^{1/2}} \nonumber \\
+    = \alpha \widehat{w}_1 \left(\tilde{r}_{t1} \tilde{\theta}_{l1} + r_{r_t \theta_l} \tilde{\sigma}_{r_{t1}} \tilde{\sigma}_{\theta_{l1}} \right) + (1-\alpha) \widehat{w}_2 \left(\tilde{r}_{t2} \tilde{\theta}_{l2} + r_{r_t \theta_l} \tilde{\sigma}_{r_{t2}} \tilde{\sigma}_{\theta_{l2}} \right)
+\end{align}
+
+The equations for $\wptwortp$ and $\wprtptwo$ are analogous to \cref{eq:wpthlp2_div_wp2_thlp2} and \cref{eq:wprtpthlp_div_wp2_thp2_rt2}.

@@ -1,0 +1,19 @@
+\section{Closing PDEs}\label{sec:closing_pdes}
+
+To get a better sense of why these integral checks are important for the model, it follows a brief description about what the code is actually doing in comparison to what we are trying to prove.
+Firstly, we are dealing with a set of \glspl{pde} predicted by the \gls{CLUBB} model.
+These equations require closure, which essentially means finding a way to express them solely in terms of known quantities.
+For an example of such a \gls{pde}, you can refer to the following\cite[p. 21]{larson2022clubbsilhs}:
+\begin{align*}
+    \frac{\partial \overline{w'r_t'}}{\partial t}
+    &= -\frac{\partial \overline{w'r_t'}}{\partial z}
+    - \frac{1}{\rho_s} \frac{\partial \rho_s \overline{w'^2r_t'}}{\partial z}
+    - \overline{w'^2} \frac{\partial \overline{r_t'}}{\partial z}
+    - \overline{w'r_t'} \frac{\partial \overline{w}}{\partial z}
+    + \ldots
+\end{align*}
+To close equations like this, \gls{CLUBB} needs some initial conditions, as well as boundary conditions.
+This is supposed to be just a site note because it is not important for the purpose of this thesis.
+Once we have those conditions, the moments on the \gls{rhs} need to be calculated as fast and efficient as possible.
+That is because the model steps forward in time and needs to calculate those moments for each unclosed, prognosted equation.
+Therefore, \gls{CLUBB} prefers mathematically simpler models over greater variability to achieve exactly this.

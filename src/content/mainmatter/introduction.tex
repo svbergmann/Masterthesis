@@ -1,0 +1,25 @@
+\chapter{Introduction}\label{ch:introduction}
+
+The \gls{CLUBB} model is a powerful tool used to simulate atmospheric behavior within climate models. This document explores an extension to the current \gls{CLUBB} framework.
+
+Currently, \gls{CLUBB} utilizes the sum of two Normal \glspl{pdf} to represent a single atmospheric grid layer.
+While effective, this approach limits the model's ability to capture the full spectrum of potential cloud layer shapes.
+
+This work proposes an innovative solution: incorporating a third normal \gls{pdf} into the \gls{CLUBB} framework.
+This addition aims to enhance the model's representational capabilities while maintaining computational efficiency and numerical stability.
+
+To achieve this, the document delves into the details of the proposed method.
+We begin by establishing a foundation with clear definitions of the relevant concepts, including normal distributions and the thermodynamic scalars crucial for atmospheric modeling (\autoref{ch:definitions}).
+
+Following this foundation, \autoref{ch:problem} outlines the core problem we aim to address.
+Details regarding the model's inputs, outputs, and a step-by-step approach for verifying the formulas are provided.
+
+\autoref{ch:formulas} forms the heart of this work, presenting the actual formulas associated with the extended CLUBB model.
+This section details the introduction of the third normal \gls{pdf} (\autoref{sec:normaldist}), the transformation of existing equations (\autoref{sec:transformationequations}), and the derivation of key moments within the model (\autoref{sec:dedmoments} - \autoref{sec:pdfparams}).
+Additionally, \autoref{sec:diag_ansatz} proposes a diagnostic approach to account for the skewness of heat and moisture, while \autoref{sec:prop_closure} introduces closure relations for higher-order moments based on the newly formed mixture of three normal distributions.
+
+To handle the mathematical integrations required by the model, \autoref{ch:intsympy} explores both analytic and numerical integration techniques, potentially utilizing the SymPy library (\autoref{sec:anaintsympy} \& \autoref{sec:numintsympy}).
+
+Finally, \autoref{ch:asymptotics} investigates the asymptotic behavior of the extended model, providing valuable insights into its performance under various conditions.
+
+The document concludes with an outlook in \autoref{ch:outlook}, outlining potential future directions for research and exploration based on the findings presented here.
