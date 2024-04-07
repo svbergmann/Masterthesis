@@ -17,7 +17,9 @@
 .*.lb
 
 ## Patch
-./auxil
+*.ist
+*.syg
+*.syi
 
 ## Intermediate documents:
 *.dvi
