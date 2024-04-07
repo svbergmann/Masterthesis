@@ -16,6 +16,9 @@
 *.cb2
 .*.lb
 
+## Patch
+./auxil
+
 ## Intermediate documents:
 *.dvi
 *.xdv
