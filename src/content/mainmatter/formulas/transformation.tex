@@ -1,8 +1,15 @@
 \section{Transformation of the equations}\label{sec:transformationequations}
 
-Having established the definition of the sum of normal distributions in \cref{sec:third_normal} to enhance mathematical tractability, we now delve into the transformation of equations from the existing binormal representation used in CLUBB-SILHS\cite{larson2022clubbsilhs} to a trinormal one.
-While the formulas for the binormal case are well-defined, the simplicity of the means and standard deviations employed in the trinormal representation suggests the existence of a specific transformation that holds true.
-This chapter will demonstrate that the following transformations, denoted by the subscript \enquote{dGn} for the binormal case, successfully achieve this conversion.
+Having established the definition of the sum of normal distributions in \cref{sec:third_normal}
+to enhance mathematical tractability,
+we now delve into the transformation of equations from the existing binormal representation
+used in CLUBB-SILHS\cite{larson2022clubbsilhs} to a trinormal one.
+While the formulas for the binormal case are well-defined,
+the simplicity of the means and standard deviations employed in the trinormal representation suggests
+the existence of a specific transformation that holds true.
+This chapter will demonstrate that the following transformations,
+denoted by the subscript \enquote{dGn} for the binormal case,
+successfully achieve this conversion.
 
 \begin{align}
     \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
@@ -47,26 +54,82 @@ If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda
     \overline{w'^2}
     &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}\right)
 \end{align*}
-which suggests that if we set $\delta=0$ that we revert back to the binormal case, exactly as wanted.
-We see that the overall variance (\enquote{width}) of the sum depends on the standard deviation of the third normal more and more as $\delta$ approaches 1 (it can not exactly reach 1).
+
+Our analysis reveals a key relationship between the parameter $\delta$
+and the overall variance (often referred to as \enquote{width}) of the trinormal distribution.
+As the value of $\delta$ approaches 1 (but strictly remains less than 1),
+the standard deviation of the third normal distribution
+has a progressively stronger influence on the overall variance of the combined distribution.
+This intuitively makes sense because a larger weight assigned to the third normal distribution through $\delta$
+will contribute more significantly to the spread of the combined \gls{pdf}.
 
 Also, if we look at \cref{eq:w_prime_3_transform}, we see that there is no more $\lambda_w$ present.
 \begin{align*}
     \overline{w'^3} = (1 - \delta)\overline{w'^3}_{dGn}
 \end{align*}
-Looking at this formula, it makes sense graphically, that as delta grows, which means that the normal \gls{pdf} in the middle is growing, the overall skewness of all three normals has to change also, depending on the value of $\sigma_{w 3}$.
-We can see this in \autoref{fig:1dplotbitri}, where we fix the following variables: $w_1 = 5$, $w_2 = -5$, $\alpha = 0.5$, $\sigma_w = 2$, and $\delta = 0.5$.
+It makes sense graphically, that as delta grows,
+which means that the normal \gls{pdf} in the middle is growing,
+the overall skewness of all three normals has to change also, depending on the value of $\sigma_{w 3}$.
+We can see this, as well as the relationship between the variance in \autoref{tab:1dplotbitri}.
 
-\begin{figure}
+\begin{table}[!htb]
     \centering
-    \begin{tabular}{cc}
-        \multicolumn{1}{c}{\includegraphics[width=0.48\textwidth]{include/figures/1dplotslw4}} &
-        \multicolumn{1}{c}{\includegraphics[width=0.48\textwidth]{include/figures/1dplotslw6}} \\
-        $\sigma_{w3} = 4$ & $\sigma_{w3} = 6$  \\ \\
-        \multicolumn{1}{c}{\includegraphics[width=0.48\textwidth]{include/figures/1dplotslw8}} &
-        \multicolumn{1}{c}{\includegraphics[width=0.48\textwidth]{include/figures/1dplotslw10}} \\
-        $\sigma_{w3} = 8$ & $\sigma_{w3} = 10$
-    \end{tabular}
-    \caption{1D plot for binormal and trinormal case}
-    \label{fig:1dplotbitri}
-\end{figure}
+    \begin{tabularx}{\textwidth}{l|@{}Y@{}@{}Y@{}@{}Y@{}}
+        \diagbox{$\sigma_{3w}$}{$\delta$} & 0.1 & 0.5 & 0.9 \\
+        \toprule
+        0.5 & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw5_delta1}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw5_delta5}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw5_delta9} \\
+        \midrule
+        4 & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta1}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta5}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta9} \\
+        \midrule
+        8 & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta1}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta5}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta9} \\
+        \midrule
+        10 & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta1}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta5}
+        & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta9}
+    \end{tabularx}
+    \caption{1D Plots for different $\delta$ and $\sigma_{w3}$,
+        where $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$}
+    The blue plot represents the third normal,
+    the orange/red one represents the binormal,
+    and the blue one represents the mixture.
+    The x and y labels and ticks are omitted for clarity.
+    \label{tab:1dplotbitri}
+\end{table}
+
+\Cref{tab:1dplotbitri} offers a visual exploration of how the parameter $\delta$ influences
+the shape of the trinormal distribution.
+Each plot depicts \glspl{pdf} for different combinations of $\sigma_{w3}$
+(standard deviation of the third normal distribution) and $\delta$.
+The row values in the table correspond to $\sigma_{w3}$,
+while the column values represent $\delta$.
+
+We can observe several key trends within these plots:
+
+\begin{enumerate}
+    \item \emph{Influence of $\sigma_{w3}$:}
+    As expected, varying $\sigma_{w3}$ primarily affects the \enquote{width}
+    or overall variance of the combined distribution.
+    When $\sigma_{w3}$ is larger than the width of the original binormal sum (orange/red line),
+    choosing a larger $\delta$ allows the overall variance to increase significantly,
+    as predicted by \cref{eq:w_prime_2_transform}.
+
+    \item \emph{Decreasing Skewness with Increasing $\delta$:}
+    The plots also reveal a distinct relationship between $\delta$
+    and the skewness of the resulting distribution.
+    As $\delta$ increases,
+    the skewness of the combined trinormal distribution (green line) progressively reduces.
+    This phenomenon can be attributed to the placement of the third normal distribution.
+    Placed directly between the two original normal distributions,
+    the third normal distribution acts as a centralizing force.
+    As the weight of the third normal distribution (controlled by $\delta$) grows,
+    its symmetric nature counteracts the potential skewness of the initial binormal sum.
+    This effect is particularly evident in the bottom three plots,
+    where a larger value of $\sigma_{w3} = 10$ is used.
+    We observe a clear reduction in the skewness of the green plot (mixture) as $\delta$ approaches 1.
+\end{enumerate}
