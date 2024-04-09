@@ -3,14 +3,13 @@
 Having established the definition of the sum of normal distributions in \cref{sec:third_normal}
 to enhance mathematical tractability,
 we now delve into the transformation of equations from the existing binormal representation
-used in CLUBB-SILHS\cite{larson2022clubbsilhs} to a trinormal one.
-While the formulas for the binormal case are well-defined,
+used in CLUBB-SILHS\autocite{larson2022clubbsilhs} to a trinormal one.
+While the formulas for the binormal case are well-defined (see~CLUBB-SILHS\autocite{larson2022clubbsilhs}),
 the simplicity of the means and standard deviations employed in the trinormal representation suggests
 the existence of a specific transformation that holds true.
 This chapter will demonstrate that the following transformations,
 denoted by the subscript \enquote{dGn} for the binormal case,
 successfully achieve this conversion.
-
 \begin{align}
     \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
     &= \overline{w'^2}_{dGn}, \label{eq:w_prime_2_transform}
@@ -39,8 +38,8 @@ successfully achieve this conversion.
     \left(\frac{\overline{w'^4}}{(\overline{w'^2})^2} - 3\delta\lambda_w^2 \right) \frac{1 - \delta}{(1 - \lambda_w\delta)^2}
     &= \frac{\overline{w'^4}_{dGn}}{(\overline{w'^2}_{dGn})^2} \label{eq:w_prime_4_div_w_prime_2_transform}
 \end{align}
-
-To get a sense of what those transformations mean and why they should work, we pick e.g. \cref{eq:w_prime_2_transform}.
+To get a sense of what those transformations mean and why they should work,
+we pick e.g. \cref{eq:w_prime_2_transform}.
 If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda}), we get
 \begin{align*}
     \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
@@ -54,7 +53,6 @@ If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda
     \overline{w'^2}
     &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}\right)
 \end{align*}
-
 Our analysis reveals a key relationship between the parameter $\delta$
 and the overall variance (often referred to as \enquote{width}) of the trinormal distribution.
 As the value of $\delta$ approaches 1 (but strictly remains less than 1),
@@ -70,8 +68,7 @@ Also, if we look at \cref{eq:w_prime_3_transform}, we see that there is no more 
 It makes sense graphically, that as delta grows,
 which means that the normal \gls{pdf} in the middle is growing,
 the overall skewness of all three normals has to change also, depending on the value of $\sigma_{w 3}$.
-We can see this, as well as the relationship between the variance in \autoref{tab:1dplotbitri}.
-
+We can see this, as well as the relationship between the variance in \cref{tab:1dplotbitri}.
 \begin{table}[!htb]
     \centering
     \begin{tabularx}{\textwidth}{l|@{}Y@{}@{}Y@{}@{}Y@{}}
@@ -93,24 +90,22 @@ We can see this, as well as the relationship between the variance in \autoref{ta
         & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta5}
         & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta9}
     \end{tabularx}
-    \caption{1D Plots for different $\delta$ and $\sigma_{w3}$,
-        where $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$}
+    \caption{1D Plots for different $\delta$ and $\sigma_{w3}$}
+    With fixed variables: $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$. \\
     The blue plot represents the third normal,
     the orange/red one represents the binormal,
     and the blue one represents the mixture.
     The x and y labels and ticks are omitted for clarity.
     \label{tab:1dplotbitri}
 \end{table}
-
-\Cref{tab:1dplotbitri} offers a visual exploration of how the parameter $\delta$ influences
+\Cref{tab:1dplotbitri} offers a visual representation of how the parameter $\delta$ influences
 the shape of the trinormal distribution.
-Each plot depicts \glspl{pdf} for different combinations of $\sigma_{w3}$
+Each plot illustrates \glspl{pdf} for different combinations of $\sigma_{w3}$
 (standard deviation of the third normal distribution) and $\delta$.
 The row values in the table correspond to $\sigma_{w3}$,
 while the column values represent $\delta$.
 
-We can observe several key trends within these plots:
-
+We can observe two key trends within these plots:
 \begin{enumerate}
     \item \emph{Influence of $\sigma_{w3}$:}
     As expected, varying $\sigma_{w3}$ primarily affects the \enquote{width}

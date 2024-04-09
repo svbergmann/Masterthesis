@@ -11,10 +11,16 @@
     Under the Supervision of Professor Vince Larson
 \end{center}
 
-The \gls{CLUBB} model uses the sum of two normal \glspl{pdf} to describe a grid layer of the atmosphere.
-To do that, \gls{CLUBB} uses a large set of \glspl{pde}.
-For advancing in time, there are some values for higher order moments needed, e.g.\ for the upward wind, and the liquid water potential temperature, which are being described by backing out the \gls{pdf} parameters from some equations for lower order moments and then compute the higher order moments in terms of the lower order ones.
-Going through this process, \gls{CLUBB} can then close the equations.
-Since \gls{CLUBB} is only using two added up normal \glspl{pdf}, it cannot really model every possible shape of the grid layers.
-Therefore the idea came in mind to add a third normal \glspl{pdf} right in the middle of the already existing normal \glspl{pdf} without making the equations too complicated and also numerically still realizable.
-This document then describes all formulas, inputs and outputs and also tries to take a closer look at some asymptotic behaviors.
+The \gls{CLUBB} model plays a crucial role in simulating atmospheric phenomena.
+It uses the sum of two \glspl{pdf} to represent a single grid layer.
+This approach, while computationally efficient,
+restricts the model's ability to capture the full spectrum of potential shapes encountered in real-world atmospheric data.
+
+This thesis proposes an innovative extension to the \gls{CLUBB} model.
+We introduce a third normal \gls{CLUBB} strategically positioned between the existing two,
+significantly enhancing the model's representational flexibility.
+This trinormal representation allows for a wider range of grid-layer shapes while maintaining computational tractability.
+
+The core of this work lies in deriving the necessary mathematical transformations for incorporating the third normal \gls{pdf} seamlessly into the \gls{CLUBB} framework.
+This thesis lists all formulas, inputs, and outputs associated with the extended model.
+Additionally, it tries to describe certain asymptotic behavior of the trinormal pdf under various parameter settings.

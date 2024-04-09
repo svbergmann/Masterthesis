@@ -1,8 +1,11 @@
 \section{Deduced Moments}\label{sec:dedmoments}
 
-We start by listing the equations for the lower order moments written in terms of \gls{pdf} parameters.
-This can be done either in \emph{dimensional} form, or in terms of \emph{non-dimensional} parameters.
-The relationships in \emph{non-dimensional} form display the connection to the bivariate case in a somewhat more clearly.
+We start by outlining the equations capturing lower-order moments,
+expressed in terms of \gls{pdf} parameters.
+These equations can be presented in either \emph{dimensional} or \emph{non-dimensional} form.
+While both representations are mathematically valid,
+the \emph{non-dimensional} form offers a distinct advantage:
+it highlights the underlying connection to the bivariate case.
 
 \subsection{Lower Order Moments}\label{subsec:lowerordermoments}
 
@@ -21,9 +24,10 @@ The relationship for the \emph{non-dimensional} form is:
     0 &= \alpha \widehat{w}_1 + (1 - \alpha) \widehat{w}_2
 \end{align}
 
-For all other moments except from the mean, we are using the standardized versions of the variables, written as \gls{w_prime}.
+For all other moments -- except for the mean --
+we are using the standardized versions of the variables, written as \gls{w_prime}.
 
-The second order moment -- $\wptwo$ -- is given as:
+The second order moment is given as:
 \begin{align}
     \label{eq:wp2_bar}
     \wptwo
@@ -52,7 +56,7 @@ The \emph{non-dimensional} relationship would then be:
     + (1-\alpha) \left( \widehat{w}_2^2 + \frac{\tsw^2}{\tswfact} \right).
 \end{align}
 
-The third order moment -- $\wpthree$ -- is given as:
+The third order moment is given as:
 \begin{align}
     \label{eq:wp3_bar}
     \wpthree
@@ -60,7 +64,9 @@ The third order moment -- $\wpthree$ -- is given as:
     &+ (1 - \delta) (1 - \alpha) [(w_2 - \overline{w})^3 + 3 \sigma_w^2 (w_2 - \overline{w})]
 \end{align}
 
-Since we want to make use of the specific shape of the \gls{pdf}, we also have a relationship for $w'^3$, which is called $\widehat{Sk}_w$, meaning the skewness of the variable $w$:
+Since we want to make use of the specific shape of the \gls{pdf},
+we also have a relationship for $w'^3$,
+which is called $\widehat{Sk}_w$, meaning the skewness of the variable $w$:
 \begin{align}
     \widehat{Sk}_w
     &\equiv \frac{1}{\tswfact^{3/2}} \frac{\wpthree}{\left( \wptwo \right)^{3/2}}\frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}\frac{1}{1-\delta} \nonumber \\
@@ -86,25 +92,30 @@ Similarly but with a different standard deviation, $\thlptwo$ is given as:
 where $\sigma_{\theta_l 3}$ is defined as $\lambda_{\theta_l} \thlptwo$.
 This can also be expressed as the variance following the same approach as the one for $\wptwo$.
 
-The third order moment, $\thlpthree$, is given as:
+The third order moment is given as:
 \begin{align}
     \label{eq:theta_l_3_bar}
     \thlpthree
-    &= (1 - \delta) \alpha [(\theta_{l1} - \overline{\theta_l})^3 + 3 \sigma_{\theta_{l1}}^2 (\theta_{l1} - \overline{\theta_l})] \nonumber\\
-    &+ (1 - \delta) (1 - \alpha) [(\theta_{l2} - \overline{\theta_l})^3 + 3 \sigma_{\theta_{l2}}^2 (\theta_{l2} - \overline{\theta_l})]
+    &= (1 - \delta) \alpha [(\theta_{l1} - \overline{\theta_l})^3
+    + 3 \sigma_{\theta_{l1}}^2 (\theta_{l1} - \overline{\theta_l})] \nonumber\\
+    &+ (1 - \delta) (1 - \alpha) [(\theta_{l2} - \overline{\theta_l})^3
+    + 3 \sigma_{\theta_{l2}}^2 (\theta_{l2} - \overline{\theta_l})]
 \end{align}
-Similarly to \cref{eq:sk_hat_w_nondim}, we also list a moment which is more of diagnosed than prognosed:
+Similarly to \cref{eq:sk_hat_w_nondim}, we also list a moment which is more diagnosed than prognosed:
 \begin{align}
     \widehat{Sk_{\theta_l}}
-    &\equiv \frac{\thlpthree}{\left( \thlptwo \right)^{3/2}}\left( \frac{1}{\frac{1-\delta \lambda_\theta}{1-\delta}} \right)^{3/2}
+    &\equiv \frac{\thlpthree}{\left( \thlptwo \right)^{3/2}}\left(
+    \frac{1}{\frac{1-\delta \lambda_\theta}{1-\delta}}
+    \right)^{3/2}
     \frac{1}{1-\delta} \nonumber\\
-    &= \alpha \left( \tilde{\theta}_{l1}^3 + 3 \tilde{\theta}_{l1} \tilde{\sigma}_{\theta_l 1}^2 \right) + (1 - \alpha) \left( \tilde{\theta}_{l2}^3 + 3 \tilde{\theta}_{l2} \tilde{\sigma}_{\theta_l 2}^2 \right).
+    &= \alpha \left( \tilde{\theta}_{l1}^3 + 3 \tilde{\theta}_{l1} \tilde{\sigma}_{\theta_l 1}^2 \right)
+    + (1 - \alpha) \left( \tilde{\theta}_{l2}^3 + 3 \tilde{\theta}_{l2} \tilde{\sigma}_{\theta_l 2}^2 \right).
     \label{eq:sk_hat_theta_l_nondim}
 \end{align}
 
 \subsubsection{Moments for $r_t$}\label{subsubsec:lowerordermoments_rt}
 
-The relationships for $r_t$ and $r_t'^2$ are given as follows:
+The relationships for $r_t$ and $r_t'^2$ are given as follows
 \begin{align}
     \label{eq:rt_bar_nondim}
     0 &= \alpha \tilde{r}_{t1} + (1 - \alpha) \tilde{r}_{t2},
@@ -114,7 +125,8 @@ and
     \label{rtptwo_nondim}
     1 &= \alpha \left( \tilde{r}_{t1}^2 + \tilde{\sigma}_{r_{t1}}^2 \right) + (1 - \alpha) \left( \tilde{r}_{t2}^2 + \tilde{\sigma}_{r_{t2}}^2 \right).
 \end{align}
-Since this relationship is similar to the relationships of $\theta_l$ and $\theta_l'^2$, we are using kind of the same formulas:
+Since this relationship is similar to the relationships of $\theta_l$ and $\theta_l'^2$,
+we are using kind of the same formulas:
 \begin{align}
     \label{eq:r_t_prime_2_bar}
     \rtptwo
@@ -155,7 +167,7 @@ and
     &+ (1 - \delta) (1 - \alpha) [(r_{t2} - \overline{r_t}) (\theta_{l2} - \overline{\theta_l}) + r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}] \nonumber\\
     &+ \delta \lambda_{r\theta} \overline{r_t' \theta_l'}.
 \end{align}
-We have the \emph{non-dimensional} relationship for those moments given as:
+We have the \emph{non-dimensional} relationship for those moments given as
 \begin{align}
     \widehat{c}_{w \theta_l}
     &\equiv \frac{1}{\tswfact^{1/2}} \frac{\overline{w' \theta_l'}}{\sqrt{\wptwo}\sqrt{\thlptwo}} \frac{1}{\sqrt{\frac{1 - \delta \lambda_w}{1 - \delta}}}\frac{1}{\sqrt{\frac{1 - \delta \lambda_\theta}{1 - \delta}}} \frac{1 - \delta \lambda_{w\theta}}{1 - \delta} \nonumber\\
@@ -177,7 +189,7 @@ and
 \end{align}
 where we can think about $\widehat{c}$ as the correlation.
 
-We also list a trivariate moment - $\wprtpthlp$ - given by:
+We also list a trivariate moment ($\wprtpthlp$), given by:
 \begin{align}
     \wprtpthlp
     &= (1 - \delta) \alpha (w_1 - \overline{w}) [(r_{t1} - \overline{r_t}) (\theta_{l1} - \overline{\theta_l}) + r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}] \nonumber\\
