@@ -44,14 +44,14 @@ If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda
 \begin{align*}
     \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
     &= \overline{w'^2}_{dGn} \\
-    \overline{w'^2} (1 - \delta\frac{\sigma_{w 3}}{\wptwo})
+    \overline{w'^2} (1 - \delta\frac{\sigma_{w 3}^2}{\wptwo})
     &= (1 - \delta)\overline{w'^2}_{dGn} \\
-    \overline{w'^2} - \delta\sigma_{w 3}
+    \overline{w'^2} - \delta\sigma_{w 3}^2
     &= (1 - \delta)\overline{w'^2}_{dGn} \\
     \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\overline{w'^2}_{dGn} + \delta\sigma_{w 3} \\
+    &= \overline{w'^2}_{dGn} - \delta\overline{w'^2}_{dGn} + \delta\sigma_{w 3}^2 \\
     \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}\right)
+    &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}^2\right)
 \end{align*}
 Our analysis reveals a key relationship between the parameter $\delta$
 and the overall variance (often referred to as \enquote{width}) of the trinormal distribution.
@@ -72,7 +72,7 @@ We can see this, as well as the relationship between the variance in \cref{tab:1
 \begin{table}[!htb]
     \centering
     \begin{tabularx}{\textwidth}{l|@{}Y@{}@{}Y@{}@{}Y@{}}
-        \diagbox{$\sigma_{3w}$}{$\delta$} & 0.1 & 0.5 & 0.9 \\
+        \diagbox{$\sigma_{w 3}$}{$\delta$} & 0.1 & 0.5 & 0.9 \\
         \toprule
         0.5 & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw5_delta1}
         & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw5_delta5}
@@ -94,15 +94,15 @@ We can see this, as well as the relationship between the variance in \cref{tab:1
     With fixed variables: $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$. \\
     The blue plot represents the third normal,
     the orange/red one represents the binormal,
-    and the blue one represents the mixture.
+    and the green one represents the mixture.
     The x and y labels and ticks are omitted for clarity.
     \label{tab:1dplotbitri}
 \end{table}
 \Cref{tab:1dplotbitri} offers a visual representation of how the parameter $\delta$ influences
 the shape of the trinormal distribution.
-Each plot illustrates \glspl{pdf} for different combinations of $\sigma_{w3}$
+Each plot illustrates \glspl{pdf} for different combinations of $\sigma_{w 3}$
 (standard deviation of the third normal distribution) and $\delta$.
-The row values in the table correspond to $\sigma_{w3}$,
+The row values in the table correspond to $\sigma_{w 3}$,
 while the column values represent $\delta$.
 
 We can observe two key trends within these plots:
@@ -125,6 +125,6 @@ We can observe two key trends within these plots:
     As the weight of the third normal distribution (controlled by $\delta$) grows,
     its symmetric nature counteracts the potential skewness of the initial binormal sum.
     This effect is particularly evident in the bottom three plots,
-    where a larger value of $\sigma_{w3} = 10$ is used.
+    where a larger value of $\sigma_{w 3} = 10$ is used.
     We observe a clear reduction in the skewness of the green plot (mixture) as $\delta$ approaches 1.
 \end{enumerate}

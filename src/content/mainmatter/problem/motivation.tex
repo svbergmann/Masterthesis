@@ -6,7 +6,7 @@ To illustrate that, we plotted some of the shapes which are now possible but wer
 To be able to draw those plots, we are just using two variables, $w$, the upward wind,
 and $\theta_l$, the liquid water potential temperature.
 To illustrate how the binormal model handles strong winds,
-let us consider a scenario with strong upward winds at two locations $w_1$, as well as at $w_2$.
+let us consider a scenario with a strong updraft at $w_1$, as well as a strong downdraft at $w_2$.
 The way the current binormal model would model this could look like \cref{fig:plot1}.
 
 \begin{figure}[!htb]
@@ -58,7 +58,7 @@ and especially in the bivariate case, between $w$ and $\theta_l$.
     \label{fig:plot3}
     With fixed variables: $w_1 = 5$, $w_2 = -5$, $\theta_{l1} = 5$, $\theta_{l2} = -5$,
     $\alpha = 0.5$, $\sigma_w = 2$, $\sigma_{\theta_{l1}} = 2$,  $\sigma_{\theta_{l2}} = 2$,
-    $\sigma_{3w} = 2$, $\sigma_{3\theta_l} = 2$, $\rho_{w\theta_l} = 0.5$.
+    $\sigma_{w3} = 2$, $\sigma_{3\theta_l} = 2$, $\rho_{w\theta_l} = 0.5$.
 \end{figure}
 
 Now, one can easily model something like the described shape,
@@ -73,6 +73,6 @@ just like the one in \cref{fig:plot4}.
     \label{fig:plot4}
     With fixed variables: $w_1 = 5$, $w_2 = -5$, $\theta_{l1} = 5$, $\theta_{l2} = -5$,
     $\alpha = 0.5$, $\delta=0.5$, $\sigma_w = 2$, $\sigma_{\theta_{l1}} = 2$,
-    $\sigma_{\theta_{l2}} = 2$, $\sigma_{3w} = 2$, $\sigma_{3\theta_l} = 2$,
+    $\sigma_{\theta_{l2}} = 2$, $\sigma_{w3} = 2$, $\sigma_{\theta_l 3} = 2$,
     $\rho_{w\theta_l} = 0.5$.
 \end{figure}
