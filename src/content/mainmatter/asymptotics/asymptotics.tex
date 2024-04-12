@@ -1,6 +1,8 @@
 \chapter{Asymptotics}\label{ch:asymptotics}
 
-Once we defined all functions, we see that we want certain behaviors for certain values as well as there is a need to restrict some parameter values.
+Once we defined all functions,
+we see that we want certain behaviors for certain values as well as
+there is a need to restrict some parameter values.
 
 We start with the \enquote{obvious} restrictions for the \gls{pdf} parameters.
 \begin{itemize}
@@ -21,19 +23,20 @@ We start with the \enquote{obvious} restrictions for the \gls{pdf} parameters.
             $0 < \delta\lambda_\theta < 1$, &
             $0 < \delta\lambda_r < 1$, \\
             $\iff$ &
-            $0 < \delta\frac{\sigma_{w3}}{\wptwo} < 1$, &
-            $0 < \delta\frac{\sigma_{\theta_l 3}}{\thlptwo} < 1$, &
-            $0 < \delta\frac{\sigma_{r_t 3}}{\rtptwo} < 1$, \\
+            $0 < \delta\frac{\sigma_{w3}^2}{\wptwo} < 1$, &
+            $0 < \delta\frac{\sigma_{\theta_l 3}^2}{\thlptwo} < 1$, &
+            $0 < \delta\frac{\sigma_{r_t 3}^2}{\rtptwo} < 1$, \\
             $\iff$ &
-            $0 < \delta\sigma_{w3} < \wptwo$, &
-            $0 < \delta\sigma_{\theta_l 3} < \thlptwo$, &
-            $0 < \delta\sigma_{r_t 3} < \rtptwo$.
+            $0 < \delta\sigma_{w3}^2 < \wptwo$, &
+            $0 < \delta\sigma_{\theta_l 3}^2 < \thlptwo$, &
+            $0 < \delta\sigma_{r_t 3}^2 < \rtptwo$.
         \end{tabular}
         \label{tab:table_asymp_2}
     \end{table}
 
     That is, for instance,
-    that the variance of $w$ over the whole \gls{pdf} has to be strictly greater than $\delta$ times the standard deviation in $w$ of the third normal distribution.
+    that the variance of $w$ over the whole \gls{pdf} has to be strictly greater than $\delta$ times
+    the squared standard deviation in $w$ of the third normal distribution.
 \end{itemize}
 
 For realizability, it turns out that we want $-1 < \widehat{c}_{w \theta_l}, \widehat{c}_{w r_t}, \widehat{c}_{r_t \theta_l} < 1$.

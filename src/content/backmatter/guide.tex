@@ -1,36 +1,41 @@
 \section{User Guide}\label{sec:userguide}
 
-\subsection{Accessing the Code}\label{subsec:accessing_code}
+\subsection{Accessing the code}\label{subsec:accessing_code}
 
-The code used for checking functions mentioned in the thesis is attached and can be accessed alongside this document.
+The code used for checking functions mentioned in the thesis is attached
+and can be accessed alongside this document.
 
-\subsection{Key Files and Their Purposes}\label{subsec:key_files}
+\subsection{Key files and their purposes}\label{subsec:key_files}
 
 \begin{itemize}
     \item \nameref{sec:checkedfunctions.py}:
     This file houses the definitions of all functions used for checking integrals.
     \item \nameref{sec:symbols.py}:
-    This file contains definitions of all symbols employed for computations with SymPy, a powerful library for symbolic mathematics.
+    This file contains definitions of all symbols employed for computations with SymPy,
+    a powerful library for symbolic mathematics.
 \end{itemize}
 
 \subsection{Working with functions}\label{subsec:working_with_funcs}
 
-To obtain a function with symbols already incorporated, call it with an empty list of arguments (e.g., \mintinline{python}{function_name()}).
+To obtain a function with symbols already incorporated,
+call it with an empty list of arguments (e.g., \mintinline{python}{function_name()}).
 
-\subsection{Displaying Equations Effectively}\label{subsec:displaying_eqs}
+\subsection{Displaying equations effectively}\label{subsec:displaying_eqs}
 
 \begin{enumerate}
     \item Import the \mintinline{python}{display} function from \mintinline{python}{IPython.display}.
     \item Use \mintinline{python}{display(..)} to present statements or even equations visually.
 \end{enumerate}
 
-\subsection{Handling Integrals}\label{subsec:handling_integrals}
+\subsection{Handling integrals}\label{subsec:handling_integrals}
 
 \begin{enumerate}
-    \item \emph{Displaying an Integral:}
-    Use \mintinline{python}{sympy.Integral(..)} and put it into \mintinline{python}{display(..)} to visualize the integral.
-    \item \emph{Computing an Integral Symbolically:}
+    \item \emph{Displaying an integral:}
+    Use \mintinline{python}{sympy.Integral(..)}
+    and put it into \mintinline{python}{display(..)} to visualize the integral.
+    \item \emph{Computing an integral symbolically:}
     Apply \mintinline{python}{.doit(..)} to the integral object for symbolic computation.
-    \item \emph{Approximating an Integral Numerically:}
-    Add the option \mintinline{python}{"method=quad"} within the \mintinline{python}{.doit(..)} call to calculate the integral using the quadrature approximation method.
+    \item \emph{Approximating an integral numerically:}
+    Add the option \mintinline{python}{"method=quad"} within the \mintinline{python}{.doit(..)} call
+    to calculate the integral using the quadrature approximation method.
 \end{enumerate}

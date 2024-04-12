@@ -2,25 +2,49 @@
 
 The \gls{CLUBB} model is a powerful tool used to simulate atmospheric behavior within climate models.
 This document explores an extension to the current \gls{CLUBB} framework.
+Currently, \gls{CLUBB} utilizes the sum of two normal \glspl{pdf}
+to represent a single atmospheric grid layer.
+While effective,
+this approach limits the model's ability to capture the full spectrum of potential cloud layer shapes.
+This work proposes an innovative solution:
+incorporating a third normal \gls{pdf} into the \gls{CLUBB} framework.
+This addition aims to enhance the model's representational capabilities
+while maintaining computational efficiency and numerical stability.
+To achieve this, the document dives into the details of the proposed method.
 
-Currently, \gls{CLUBB} utilizes the sum of two normal \glspl{pdf} to represent a single atmospheric grid layer.
-While effective, this approach limits the model's ability to capture the full spectrum of potential cloud layer shapes.
+We begin by outlining the core problem we aim to address (\cref{ch:problem}).
+The motivation, details regarding the model's inputs and outputs,
+and a step-by-step approach for verifying the formulas are provided.
 
-This work proposes an innovative solution: incorporating a third normal \gls{pdf} into the \gls{CLUBB} framework.
-This addition aims to enhance the model's representational capabilities while maintaining computational efficiency and numerical stability.
+Following this motivational chapter,
+we establish a foundation with clear definitions of the relevant concepts,
+including normal distributions and the thermodynamic scalars
+crucial for atmospheric modeling (\cref{ch:definitions}).
 
-To achieve this, the document delves into the details of the proposed method.
-We begin by establishing a foundation with clear definitions of the relevant concepts, including normal distributions and the thermodynamic scalars crucial for atmospheric modeling (\cref{ch:definitions}).
+\Cref{ch:formulas} forms the heart of this work,
+presenting the actual formulas associated with the extended \gls{CLUBB} model.
+This section details the introduction of the third normal \gls{pdf} (\cref{sec:normaldist}),
+the transformation of existing equations (\cref{sec:transformationequations}),
+and the derivation of key moments within the model (\cref{sec:dedmoments} - \cref{sec:pdfparams}).
+Additionally,
+\cref{sec:diag_ansatz} proposes a diagnostic approach
+to account for the skewness of heat and moisture,
+while \cref{sec:prop_closure} introduces closure relations
+for higher-order moments based on the newly formed mixture of three normal distributions.
 
-Following this foundation, \cref{ch:problem} outlines the core problem we aim to address.
-Details regarding the model's inputs, outputs, and a step-by-step approach for verifying the formulas are provided.
+To handle the mathematical integrations required by the model,
+\cref{ch:intsympy} explores both analytic and numerical integration techniques,
+potentially utilizing the SymPy library (\cref{sec:anaintsympy} \& \cref{sec:numintsympy}).
 
-\Cref{ch:formulas} forms the heart of this work, presenting the actual formulas associated with the extended CLUBB model.
-This section details the introduction of the third normal \gls{pdf} (\cref{sec:normaldist}), the transformation of existing equations (\cref{sec:transformationequations}), and the derivation of key moments within the model (\cref{sec:dedmoments} - \cref{sec:pdfparams}).
-Additionally, \cref{sec:diag_ansatz} proposes a diagnostic approach to account for the skewness of heat and moisture, while \cref{sec:prop_closure} introduces closure relations for higher-order moments based on the newly formed mixture of three normal distributions.
+Finally,
+\cref{ch:asymptotics} investigates the asymptotic behavior of the extended model,
+providing valuable insights into its performance under various conditions.
 
-To handle the mathematical integrations required by the model, \cref{ch:intsympy} explores both analytic and numerical integration techniques, potentially utilizing the SymPy library (\cref{sec:anaintsympy} \& \cref{sec:numintsympy}).
+Having talked about the trinormal representation within the \gls{CLUBB} model,
+\cref{ch:summary} provides a concise recap of the key findings.
+This summary serves as a comprehensive overview of the essential concepts
+explored throughout this thesis.
 
-Finally, \cref{ch:asymptotics} investigates the asymptotic behavior of the extended model, providing valuable insights into its performance under various conditions.
-
-The document concludes with an outlook in \cref{ch:outlook}, outlining potential future directions for research and exploration based on the findings presented here.
+The document concludes with an outlook in \cref{ch:outlook},
+outlining potential future directions for research
+and exploration based on the findings presented here.
