@@ -1,9 +1,10 @@
 \section{Analytic integration}\label{sec:anaintsympy}
 
-For simplicity and readability, we choose the check for the formula of $\overline{w'^2}$.
+For simplicity and readability, we choose the check for the formula of $\overline{w'^2}$
+(this is \cref{itm:checkingstep_3} from \cref{sec:steps_for_checking}).
 One starts by importing and -- obviously -- installing the packages if they are not there yet.
 Importing the package \mintinline{python}{display} is useful for later on printing the equations.
-Thus, there is the following code:
+Thus, this results in the code in \cref{lst:import}.
 \begin{listing}[!ht]
     \caption{Import statements}
     \label{lst:import}
@@ -14,11 +15,15 @@ Thus, there is the following code:
         from sympy.stats import Normal, density
     \end{pythoncode}
 \end{listing}
-In this listing, \mintinline{python}{sympy} was defined to be called \mintinline{python}{sp} and from \mintinline{python}{sympy} we directly imported some packages, too, which are needed later on.
+In this listing,
+\mintinline{python}{sympy} was defined to be called \mintinline{python}{sp}
+and from \mintinline{python}{sympy} we directly imported some packages,
+too, which are needed later on.
 
-\noindent
-Next, we define all symbols which are needed to calculate the given integral and therefore also to print the equations nicely.
-Since we are checking $\overline{w'^2}$, we need the following (self-defined) symbols:
+Next, we define all symbols which are needed to calculate the given integral
+and therefore also to print the equations nicely.
+Since we are checking $\overline{w'^2}$,
+we need the (self-defined) symbols listed in \cref{lst:defsymb}.
 \begin{listing}[!ht]
     \caption{Defining symbols}
     \label{lst:defsymb}
@@ -32,7 +37,8 @@ Since we are checking $\overline{w'^2}$, we need the following (self-defined) sy
     \end{pythoncode}
 \end{listing}
 Having defined the symbols, we can proceed with defining the marginal distribution.
-Now, we are also using \mintinline{python}{sympy.abc} for displaying some standard symbols.
+Now, we are also using \mintinline{python}{sympy.abc}
+for displaying some standard symbols (\cref{lst:defmarginals}).
 \begin{listing}[!ht]
     \caption{Defining the marginals}
     \label{lst:defmarginals}
@@ -48,7 +54,9 @@ Now, we are also using \mintinline{python}{sympy.abc} for displaying some standa
                sp.abc.delta * G_3_w_density)
     \end{pythoncode}
 \end{listing}
-Having done that, we can actually display the integral, which we want to compute.
+Having done that
+we can actually display the integral
+which we want to compute (\cref{lst:intwp2bar}).
 \begin{listing}[!ht]
     \caption{Defining and displaying the needed integral}
     \label{lst:intwp2bar}
@@ -71,9 +79,13 @@ Having done that, we can actually display the integral, which we want to compute
         \, dw \nonumber
     \end{align}
 \end{figure}
-Looking at \cref{fig:intwp2barout}, this is exactly the integral, which we want to compute.
-Using the command \mintinline{python}{.doit(conds='none')}, we can actually calculate the given integral, where we assume, that all given constants are real.
-We are also using \mintinline{python}{.simplify()} here to make the output more readable as well as more comparable to the actual function we want to check.
+Looking at \cref{fig:intwp2barout},
+this is exactly the integral which we want to compute.
+Using the command \mintinline{python}{.doit(conds='none')} in \cref{lst:intwp2barcalc},
+we can actually calculate the given integral,
+where we assume that all given constants are real.
+We are also using \mintinline{python}{.simplify()} here
+to make the output more readable as well as more comparable to the actual function we want to check.
 \begin{listing}[!ht]
     \caption{Calculating and printing the integral}
     \label{lst:intwp2barcalc}
@@ -93,7 +105,7 @@ We are also using \mintinline{python}{.simplify()} here to make the output more 
     \end{align}
 \end{figure}
 We can now compare \cref{fig:intwp2barcalcout} to the given equation.
-To do this, we first need to define the equation for \cref{eq:wp2_bar}.
+To do this, we first need to define the equation for \cref{eq:wp2_bar} in \cref{lst:intwp2barsym}.
 \begin{listing}[!ht]
     \caption{Python function for the second order moment}
     \label{lst:intwp2barsym}
@@ -105,7 +117,7 @@ To do this, we first need to define the equation for \cref{eq:wp2_bar}.
                 + (delta * sigma_lambda_w ** 2))
     \end{pythoncode}
 \end{listing}
-We can print this equation, using \mintinline{python}{display} again.
+We can print this equation using \mintinline{python}{display} again (\cref{lst:intwp2barsymprint}).
 \begin{listing}[!ht]
     \caption{Printing the symbolic equation}
     \label{lst:intwp2barsymprint}
@@ -123,8 +135,9 @@ We can print this equation, using \mintinline{python}{display} again.
     \end{align}
 \end{figure}
 The last step is to check if those two formulas are equivalent to each other.
-We can do this by just using \mintinline{python}{Eq(..)} from the package \mintinline{python}{SymPy}.
-\mintinline{python}{factor(..)} just tries to factor the given variables to make the comparison easier.
+We can do this by using \mintinline{python}{Eq(..)} from the package \mintinline{python}{SymPy}.
+\mintinline{python}{factor(..)} tries to factor the given variables to make the comparison easier.
+All of this can be seen in \cref{lst:intwp2barfinalcheck}.
 \begin{listing}[!ht]
     \caption{Check if the integral and the given formula are the same}
     \label{lst:intwp2barfinalcheck}
@@ -133,4 +146,5 @@ We can do this by just using \mintinline{python}{Eq(..)} from the package \minti
             sp.abc.alpha, sp.abc.delta))
     \end{pythoncode}
 \end{listing}
-This code just displays \mintinline{python}{True}, which is exactly what we wanted to have.
+This code (\cref{lst:intwp2barfinalcheck}) just displays \mintinline{python}{True},
+which is exactly what we wanted to have.
