@@ -5,9 +5,7 @@ These equations require closure,
 implying the expression of all terms solely in terms of known quantities.
 This closure process often involves integrals,
 and verifying their analytical solutions ensures the model's mathematical integrity.
-
-For instance, consider the following prognostic \gls{pde}\autocite[p. 21]{larson2022clubbsilhs}:
-
+For instance, consider the following prognostic {\gls{pde}\autocite[p. 21]{larson2022clubbsilhs}}:
 \begin{align*}
     \frac{\partial \overline{w'r_t'}}{\partial t}
     &= -\frac{\partial \overline{w'r_t'}}{\partial z}
@@ -16,19 +14,18 @@ For instance, consider the following prognostic \gls{pde}\autocite[p. 21]{larson
     - \overline{w'r_t'} \frac{\partial \overline{w}}{\partial z}
     + \ldots
 \end{align*}
-
 While the details of initial and boundary conditions are essential
 for formally closing the prognostic equations in \gls{CLUBB} (omitted for brevity),
 this section emphasizes the importance of efficiently calculating moments
 on the \gls{rhs} of these equations.
-
-That is because the model steps forward in time and therefore needs the repeated calculation of moments
+That is because the model steps forward in time
+and therefore needs the repeated calculation of moments
 for each unclosed prognostic equation at every time step.
 Those already expensive computational steps need to use mathematically simpler moment representations,
-even if they introduce slight limitations in capturing the full variability of the underlying atmospheric state.
-
+even if they introduce slight limitations
+in capturing the full variability of the underlying atmospheric state.
 Our focus here is on achieving closure for higher-order moments,
-such as the fourth moment of the vertical wind ($\overline{w'^4}$).
+such as the fourth order moment of the vertical wind ($\overline{w'^4}$).
 This closure is achieved by expressing these higher-order moments in terms of readily calculable lower-order moments.
-This approach uses the relationships between moments within a probability distribution,
+This approach uses the relationships between moments within a normal distribution,
 enabling efficient model updates during the time-stepping process.

@@ -41,18 +41,16 @@ successfully achieve this conversion.
 To get a sense of what those transformations mean and why they should work,
 we pick e.g. \cref{eq:w_prime_2_transform}.
 If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda}), we get
-\begin{align*}
-    \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
-    &= \overline{w'^2}_{dGn} \\
+\begin{align}
     \overline{w'^2} (1 - \delta\frac{\sigma_{w 3}^2}{\wptwo})
-    &= (1 - \delta)\overline{w'^2}_{dGn} \\
+    &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
     \overline{w'^2} - \delta\sigma_{w 3}^2
-    &= (1 - \delta)\overline{w'^2}_{dGn} \\
+    &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
     \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\overline{w'^2}_{dGn} + \delta\sigma_{w 3}^2 \\
+    &= \overline{w'^2}_{dGn} - \delta\overline{w'^2}_{dGn} + \delta\sigma_{w 3}^2 \nonumber\\
     \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}^2\right)
-\end{align*}
+    &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}^2\right).
+\end{align}
 Our analysis reveals a key relationship between the parameter $\delta$
 and the overall variance (often referred to as \enquote{width}) of the trinormal distribution.
 As the value of $\delta$ approaches 1 (but strictly remains less than 1),
@@ -62,12 +60,10 @@ This intuitively makes sense because a larger weight assigned to the third norma
 will contribute more significantly to the spread of the combined \gls{pdf}.
 
 Also, if we look at \cref{eq:w_prime_3_transform}, we see that there is no more $\lambda_w$ present.
-\begin{align*}
-    \overline{w'^3} = (1 - \delta)\overline{w'^3}_{dGn}
-\end{align*}
-It makes sense graphically, that as delta grows,
+It makes sense graphically, that as $\delta$ grows,
 which means that the normal \gls{pdf} in the middle is growing,
-the overall skewness of all three normals has to change also, depending on the value of $\sigma_{w 3}$.
+the overall skewness of all three normals has to change also,
+depending on the value of $\sigma_{w 3}$.
 We can see this, as well as the relationship between the variance in \cref{tab:1dplotbitri}.
 \begin{table}[!htb]
     \centering
@@ -91,11 +87,11 @@ We can see this, as well as the relationship between the variance in \cref{tab:1
         & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw100_delta9}
     \end{tabularx}
     \caption{1D Plots for different $\delta$ and $\sigma_{w3}$}
-    With fixed variables: $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$. \\
+    $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$.
     The blue plot represents the third normal,
     the orange/red one represents the binormal,
     and the green one represents the mixture.
-    The x and y labels and ticks are omitted for clarity.
+    The $x$ and $y$ labels and ticks are omitted for clarity.
     \label{tab:1dplotbitri}
 \end{table}
 \Cref{tab:1dplotbitri} offers a visual representation of how the parameter $\delta$ influences
@@ -104,7 +100,6 @@ Each plot illustrates \glspl{pdf} for different combinations of $\sigma_{w 3}$
 (standard deviation of the third normal distribution) and $\delta$.
 The row values in the table correspond to $\sigma_{w 3}$,
 while the column values represent $\delta$.
-
 We can observe two key trends within these plots:
 \begin{enumerate}
     \item \emph{Influence of $\sigma_{w3}$:}
@@ -114,7 +109,7 @@ We can observe two key trends within these plots:
     choosing a larger $\delta$ allows the overall variance to increase significantly,
     as predicted by \cref{eq:w_prime_2_transform}.
 
-    \item \emph{Decreasing Skewness with Increasing $\delta$:}
+    \item \emph{Decreasing skewness with increasing $\delta$:}
     The plots also reveal a distinct relationship between $\delta$
     and the skewness of the resulting distribution.
     As $\delta$ increases,
@@ -124,7 +119,7 @@ We can observe two key trends within these plots:
     the third normal distribution acts as a centralizing force.
     As the weight of the third normal distribution (controlled by $\delta$) grows,
     its symmetric nature counteracts the potential skewness of the initial binormal sum.
-    This effect is particularly evident in the bottom three plots,
+    This effect is particularly strong in the bottom three plots,
     where a larger value of $\sigma_{w 3} = 10$ is used.
     We observe a clear reduction in the skewness of the green plot (mixture) as $\delta$ approaches 1.
 \end{enumerate}

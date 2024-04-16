@@ -1,8 +1,8 @@
 \section{Proposed closures for third- and fourth-order moments based on the mixture of trivariate normals}
 \label{sec:prop_closure}
 
-This section lists formulas for the higher-order moments that are needed for closure in the parameterization of:
-$\wpfour$, $\wptwothlp$, $\wpthlptwo$, and $\wprtpthlp$.
+This section lists formulas for the higher-order moments that are needed for closure
+in the parameterization of $\wpfour$, $\wptwothlp$, $\wpthlptwo$, and $\wprtpthlp$.
 These are obtained by substituting the expressions for the \gls{pdf} parameters
 (\cref{eq:alpha_solved} - \cref{eq:r_r_t_theta_l}) into the equations for the higher-order moments
 (\cref{eq:wp4_div_wp2_2} - \cref{eq:wprtpthlp_div_wp2_thp2_rt2}).
@@ -14,9 +14,14 @@ First, we list the equation for $\theta_l'^3$, which is obtained by dimensionali
 \begin{align}
     \label{eq:thlp3_beta}
     \overline{\theta_l'^3}
-    &= \frac{(1-\delta \lambda_{w \theta})(1-\delta \lambda_\theta)}{\tswfact^2 (1-\delta \lambda_w)^2} \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2} \overline{\theta_l'^2} \; \overline{w'\theta_l'} \left(\beta + (1-\beta) \frac{(1-\delta \lambda_{w \theta})^2}{1-\tilde{\sigma}_w^2 (1-\delta \lambda_w)(1-\delta \lambda_\theta)} \frac{\left(\overline{w'\theta_l'}\right)^2}{\overline{w'^2} \; \overline{\theta_l'^2}}\right).
+    &= \frac{(1-\delta \lambda_{w \theta})(1-\delta \lambda_\theta)}{\tswfact^2 (1-\delta \lambda_w)^2}
+    \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}
+    \overline{\theta_l'^2} \;
+    \overline{w'\theta_l'}
+    \left(\beta + (1-\beta)
+    \frac{(1-\delta \lambda_{w \theta})^2}{1-\tilde{\sigma}_w^2 (1-\delta \lambda_w)(1-\delta \lambda_\theta)}
+    \frac{\left(\overline{w'\theta_l'}\right)^2}{\overline{w'^2} \; \overline{\theta_l'^2}}\right).
 \end{align}
-
 While the scalar third moments are not essential for solving the prognostic equations directly,
 they still play a role in shaping cloud properties.
 This is because cumulus clouds tend to form at the edges,
@@ -42,11 +47,13 @@ and also
 \begin{align}
     \label{eq:wp4}
     \overline{w'^4}
-    &= \left(\overline{w'^2}\right)^2 \frac{(1-\delta \lambda_w)^2}{(1-\delta)}\left(3 \tilde{\sigma}_w^4 + 6 \tswfact \tilde{\sigma}_w^2 + \tswfact^2\right) \nonumber\\
-    &+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)} \frac{\left(\overline{w'^3}\right)^2}{\overline{w'^2}} \nonumber\\
+    &= \left(\overline{w'^2}\right)^2
+    \frac{(1-\delta \lambda_w)^2}{(1-\delta)}
+    \left(3 \tilde{\sigma}_w^4 + 6 \tswfact \tilde{\sigma}_w^2 + \tswfact^2\right) \nonumber\\
+    &+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)}
+    \frac{\left(\overline{w'^3}\right)^2}{\overline{w'^2}} \nonumber\\
     &+ \delta 3 \lambda_w^2 \left(\overline{w'^2}\right)^2.
 \end{align}
-
 Similar to $\wpfour$, $\wptwothlp$ does not depend on $\beta$ for our particular \gls{pdf} family.
 Substituting \cref{eq:w1_solved} - \cref{eq:thl2_tilde_solved} into \cref{eq:wp2thlp_div_wp2thl2},
 we find
@@ -61,7 +68,6 @@ and
     \overline{w'^2\theta_l'}
     &= \frac{1}{\tswfact} \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w} \frac{\overline{w'^3}}{\overline{w'^2}} \overline{w'\theta_l'}.
 \end{align}
-
 $\wpthlptwo$ depends explicitly on $Sk_{\theta_l}$.
 Substituting \cref{eq:w1_solved} - \cref{eq:sigma_tilde_theta2_solved}
 into \cref{eq:wprtpthlp_div_wp2_thp2_rt2} yields
@@ -108,7 +114,6 @@ and
     \frac{\left( \overline{w'\theta_l'} \right)^2}{\overline{w'^2}}
     \right].
 \end{align}
-
 Finally, substituting \cref{eq:w1_solved} - \cref{eq:r_r_t_theta_l} into \cref{eq:wprtpthlp_div_wp2_thp2_rt2}
 yields the following formula for the turbulent flux of $\rtpthlp$, $\wprtpthlp$:
 \begin{align}
@@ -134,7 +139,6 @@ and
     \frac{(1-\delta \lambda_{w q})(1-\delta \lambda_{w \theta})}{(1 - \delta \lambda_w)^2}
     \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
 \end{align}
-
 The function $E(w,r_t,\theta_l)$ is
 \begin{align}
     \label{eq:E}
