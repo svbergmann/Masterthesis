@@ -1,9 +1,18 @@
-\section{Third normal distribution}\label{sec:third_normal}
+\section{Definition of the trinormal distribution, $P_{tmg}$}\label{sec:def_trinormal}
 
 We would like to define a third normal to the already existing two trivariate normals,
 which is right in the middle between those two.
-Using the following formula for a multivariate normal,
-we can just define the sum of our three normals by using a vector for the mean,
+For our proposed mix of normals we then have
+\begin{align}
+    \label{eq:normal_mix_pdf}
+    P_{tmg}(w, \theta_l, r_t)
+    = \alpha (1-\delta) \mathcal{N}(\mu_1, \Sigma_1)
+    + (1-\alpha) (1-\delta) \mathcal{N}(\mu_2, \Sigma_2)
+    + \delta \mathcal{N}(\mu_3, \Sigma_3),
+\end{align}
+where $\mathcal{N}$ denotes the multivariate normal distribution.
+
+We can just define the sum of our three normals by using a vector for the mean,
 as well as the covariance matrix.
 For the purpose of readability,
 we define the mean vectors of the first
@@ -52,15 +61,6 @@ therefore $\mu_3$ and $\Sigma_3$ are defined as
         \sigma_{r_t 3}^2
     \end{pmatrix}.
 \end{align*}
-For our proposed mix of normals we then have
-\begin{align}
-    \label{eq:normal_mix_pdf}
-    P_{tmg}(w, \theta_l, r_t)
-    = \alpha (1-\delta) \mathcal{N}(\mu_1, \Sigma_1)
-    + (1-\alpha) (1-\delta) \mathcal{N}(\mu_2, \Sigma_2)
-    + \delta \mathcal{N}(\mu_3, \Sigma_3),
-\end{align}
-where $\mathcal{N}$ denotes the multivariate normal distribution.
 The advantage over just two normal \glspl{pdf} is that we can now express more shapes of functions.
 We also define some additional relationships for this third normal distribution.
 \begin{align}

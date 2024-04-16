@@ -32,20 +32,22 @@ where we always want to check if \gls{lhs} equals \gls{rhs}:
 
     \item\label{itm:checkingstep_6}
     Finally, we can calculate the higher order moments,
-    e.g. $\overline{w'^4}$ or $\overline{w'^2 \theta_l'}$, by integration over the \gls{pdf}.
+    i.e. $\overline{w'^4}$ (\cref{eq:wp4}) or $\overline{w'^2 \theta_l'}$ (\cref{eq:wp2thlp_solved})
+    or $\overline{w' \theta_l'^2}$ (\cref{eq:wpthlp2_solved}),
+    by integration over the \gls{pdf}.
     Again, we can check if \gls{lhs} equals \gls{rhs}.
 
-    \item\label{itm:checkingstep_7}
-    The integral $\overline{w'\theta_l'^2}$ is complicated.
-    If it is written in terms of $\overline{\theta_l'^3}$ (\cref{eq:wpthlp2_solved}),
-    then $\overline{\theta_l'^3}$ can be integrated (\cref{eq:theta_l_3_bar})
-    and substituted into the \gls{rhs} of \cref{eq:wpthlp2_solved}.
-    If $\wpthlptwo$ is written in terms of $\beta$ (\cref{eq:wpthlp2_beta}),
-    then we need to integrate to find $\thlpthree$,
-    back out $\beta$ from \cref{eq:thlp3_beta},
-    and finally substitute $\beta$ into \cref{eq:wpthlp2_solved}.
-
-    \item\label{itm:checkingstep_8}
-    To verify \cref{eq:wpqtpthlp_beta} for $\wprtpthlp$,
-    we use \cref{eq:w_prime_r_t_prime_t_l_prime_bar}.
+%    \item\label{itm:checkingstep_7}
+%    The integral $\overline{w'\theta_l'^2}$ is complicated.
+%    If it is written in terms of $\overline{\theta_l'^3}$ (\cref{eq:wpthlp2_solved}),
+%    then $\overline{\theta_l'^3}$ can be integrated (\cref{eq:theta_l_3_bar})
+%    and substituted into the \gls{rhs} of \cref{eq:wpthlp2_solved}.
+%    If $\wpthlptwo$ is written in terms of $\beta$ (\cref{eq:wpthlp2_beta}),
+%    then we need to integrate to find $\thlpthree$,
+%    back out $\beta$ from \cref{eq:thlp3_beta},
+%    and finally substitute $\beta$ into \cref{eq:wpthlp2_solved}.
+%
+%    \item\label{itm:checkingstep_8}
+%    To verify \cref{eq:wpqtpthlp_beta} for $\wprtpthlp$,
+%    we use \cref{eq:w_prime_r_t_prime_t_l_prime_bar}.
 \end{enumerate}
