@@ -5,56 +5,91 @@ we see that we want certain behaviors for certain values as well as
 there is a need to restrict some parameter values.
 
 We start with the \enquote{obvious} restrictions for the \gls{pdf} parameters.
-\begin{itemize}
-    \item The mixture fractions $\alpha$ and $\delta$ are meant to be $\alpha \in [0,1]$ and $\delta \in [0,1)$.
-    The restriction to $\delta$ vs the one to $\alpha$ makes sense in a way
-    that we do not really want just the third normal to predict the whole shape.
-    Also, most of the formulas, e.g. \cref{eq:sk_hat_w_nondim} have a $1-\delta$ in the denominator.
+The mixture fractions $\alpha$ and $\delta$ are meant to be $\alpha \in [0,1]$ and $\delta \in [0,1)$.
+But since the code tries to simplify a lot of things,
+the binormal representation also does not revert back to a single normal distribution.
+Therefore we have $\alpha \in (0,1)$ due to the code.
+The restriction to $\delta$ makes sense in a way
+that we do not really want just the third normal to predict the whole shape.
+Also, most of the formulas, e.g. \cref{eq:sk_hat_w_nondim} have a $1-\delta$ in the denominator.
 
-    \item In \cref{sec:transformationequations}, we saw,
-    how the transformation between the sum of two normal distributions
-    and the sum of three normal distributions are working.
-    From those transformations, we see that we want
-    \begin{table}[!htb]
-        \centering
-        \begin{tabular}{llll}
-            &
-            $0 < \delta\lambda_w < 1$, &
-            $0 < \delta\lambda_\theta < 1$, &
-            $0 < \delta\lambda_r < 1$, \\
-            $\iff$ &
-            $0 < \delta\frac{\sigma_{w3}^2}{\wptwo} < 1$, &
-            $0 < \delta\frac{\sigma_{\theta_l 3}^2}{\thlptwo} < 1$, &
-            $0 < \delta\frac{\sigma_{r_t 3}^2}{\rtptwo} < 1$, \\
-            $\iff$ &
-            $0 < \delta\sigma_{w3}^2 < \wptwo$, &
-            $0 < \delta\sigma_{\theta_l 3}^2 < \thlptwo$, &
-            $0 < \delta\sigma_{r_t 3}^2 < \rtptwo$.
-        \end{tabular}
-        \label{tab:table_asymp_2}
-    \end{table}
+In \cref{sec:transformationequations}, we saw,
+how the transformation between the sum of two normal distributions
+and the sum of three normal distributions are working.
+From those transformations, we see that we want
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{llll}
+        &
+        $0 < \delta\lambda_w < 1$, &
+        $0 < \delta\lambda_\theta < 1$, &
+        $0 < \delta\lambda_r < 1$, \\
+        $\iff$ &
+        $0 < \delta\frac{\sigma_{w3}^2}{\wptwo} < 1$, &
+        $0 < \delta\frac{\sigma_{\theta_l 3}^2}{\thlptwo} < 1$, &
+        $0 < \delta\frac{\sigma_{r_t 3}^2}{\rtptwo} < 1$, \\
+        $\iff$ &
+        $0 < \delta\sigma_{w3}^2 < \wptwo$, &
+        $0 < \delta\sigma_{\theta_l 3}^2 < \thlptwo$, &
+        $0 < \delta\sigma_{r_t 3}^2 < \rtptwo$.
+    \end{tabular}
+    \label{tab:table_asymp_2}
+\end{table}
+That is, for instance,
+that the variance of $w$ over the whole \gls{pdf} has to be strictly greater than $\delta$ times
+the squared standard deviation in $w$ of the third normal distribution.
 
-    That is, for instance,
-    that the variance of $w$ over the whole \gls{pdf} has to be strictly greater than $\delta$ times
-    the squared standard deviation in $w$ of the third normal distribution.
-\end{itemize}
-
-For realizability, it turns out that we want $-1 < \widehat{c}_{w \theta_l}, \widehat{c}_{w r_t}, \widehat{c}_{r_t \theta_l} < 1$.
+For realizability, it turns out that we want
+$-1 < \widehat{c}_{w \theta_l}, \widehat{c}_{w r_t}, \widehat{c}_{r_t \theta_l} < 1$.
 This is for instance:
-\begin{align*}
-    -1 < \widehat{c}_{w \theta_l} < 1
+\begin{align}
+    c_{w r_t}^2 &< \tswfact \left(
+    \frac{(1-\delta \lambda_w)(1-\delta \lambda_r)}{(1-\delta \lambda_{w r})^2}
+    \right)
+\end{align}
+So it might be safer to set
+\begin{align}
+    \label{eq:lambda_corr_ineq}
+    \lambda_w , \lambda_r < \lambda_{w r}
     \iff
-    (\widehat{c}_{w \theta_l})^2 &< 1 \\
-    \iff
-    \left(\frac{1}{\tswfact^{1/2}} \frac{\overline{w' r_t'}}{\sqrt{\wptwo}\sqrt{\rtptwo}} \frac{1}{\sqrt{\frac{1 - \delta \lambda_w}{1 - \delta}}} \frac{1}{\sqrt{\frac{1 - \delta \lambda_r}{1-\delta}}} \frac{1 - \delta \lambda_{w r}}{1-\delta}\right)^2 &< 1 \\
-    \iff
-    \frac{1}{\tswfact} \frac{(\overline{w' r_t'})^2}{\wptwo\rtptwo} \frac{1 - \delta}{1 - \delta \lambda_w} \frac{1 - \delta}{1 - \delta \lambda_r} \frac{(1 - \delta \lambda_{w r})^2}{(1 - \delta)^2} &< 1 \\
-    \iff
-    \frac{(1 - \delta \lambda_{w r})^2 (\overline{w' r_t'})^2}{(1 - \delta \lambda_w)(1 - \delta \lambda_r) \wptwo\rtptwo} &< \tswfact \\
-    \iff
-    \frac{(1 - \delta \lambda_{w r})^2 (\overline{w' r_t'})^2}{(1 - \delta \lambda_w)(1 - \delta \lambda_r) \wptwo\rtptwo} &< 1 - \left(\frac{\sigma_w^2(1-\delta)}{\overline{w'^2}(1-\delta\lambda_w)}\right) \\
-    \iff
-    \frac{(1 - \delta \lambda_{w r})^2 (\overline{w' r_t'})^2}{(1 - \delta \lambda_w)(1 - \delta \lambda_r) \wptwo\rtptwo} + \frac{\sigma_w^2(1-\delta)}{\overline{w'^2}(1-\delta\lambda_w)} &< 1 \\
-    \iff
-    \frac{(1 - \delta \lambda_{w r})^2 (\overline{w' r_t'})^2 + \sigma_w^2(1-\delta)(1 - \delta \lambda_r)\rtptwo}{(1 - \delta \lambda_w)(1 - \delta \lambda_r) \wptwo\rtptwo} &< 1 \\
-\end{align*}
+    \frac{\sigma_{w 3}^2}{\wptwo}, \frac{\sigma_{r_t 3}^2}{\rtptwo} <
+    \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}
+\end{align}
+so that the \gls{rhs} is greater and the bound is less restrictive.
+If we assume $\lambda_\theta = \lambda_r$ and $\lambda_{w\theta} = \lambda_{wr}$,
+then we have 5 new \gls{pdf} parameters:
+$\delta$, $\lambda_w$, $\lambda_\theta$, $\lambda_{w \theta}$, $\lambda_{\theta r}$.
+If we want the \gls{pdf} to revert to a single normal distribution in the limit of zero skewness,
+then we need
+\begin{align}
+    \delta, \lambda_w, \lambda_r, \lambda_\theta,
+    \lambda_{w r}, \lambda_{w \theta}, \lambda_{\theta r}
+    \to 1,
+\end{align}
+as $Sk_w \to 0$.
+That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
+\begin{align}
+    &\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{\tswfact^{3/2}}
+    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
+    \frac{1}{1-\delta} \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{\tswfact^3}
+    \frac{\wpthree^2}{\left(\wptwo \right)^3}
+    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^3}
+    \frac{1}{(1-\delta)^2} \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{\tswfact^3}
+    \frac{\wpthree^2}{\left(\wptwo \right)^3}
+    \frac{(1-\delta)^3}{(1-\delta \lambda_w)^3}
+    \frac{1}{(1-\delta)^2} \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{\tswfact^3}
+    \frac{\wpthree^2}{\left(\wptwo \right)^3}
+    \underbrace{\frac{1-\delta}{(1-\delta \lambda_w)^3}}_{\to 0}
+\end{align}
+Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
+Of course, one needs to pay attention when computing those equations in the code,
+since we could run into a division by zero error,
+depending on which values are computed first.
