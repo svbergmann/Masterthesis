@@ -23,18 +23,19 @@ crucial for atmospheric modeling (\cref{ch:definitions}).
 
 \Cref{ch:formulas} forms the heart of this work,
 presenting the actual formulas associated with the extended \gls{CLUBB} model.
-This section details the introduction of the third normal \gls{pdf} (\cref{sec:third_normal}),
+This chapter details the introduction of the third normal \gls{pdf} (\cref{sec:third_normal}),
 the transformation of existing equations (\cref{sec:transformationequations}),
 and the derivation of key moments within the model (\cref{sec:dedmoments} - \cref{sec:pdfparams}).
 Additionally,
 \cref{sec:diag_ansatz} proposes a diagnostic approach
 to account for the skewness of heat and moisture,
-while \cref{sec:prop_closure} introduces closure relations
+while \cref{sec:prop_closure} introduces analytic closure relations
 for higher-order moments based on the newly formed mixture of three normal distributions.
 
 To handle the mathematical integrations required by the model,
-\cref{ch:intsympy} explores both analytic and numerical integration techniques,
-potentially utilizing the SymPy library (\cref{sec:anaintsympy} \& \cref{sec:numintsympy}).
+\cref{ch:intsympy} explores both exact parametric
+and numerical integration techniques of verifying the integrals,
+utilizing the SymPy library (\cref{sec:anaintsympy} \& \cref{sec:numintsympy}).
 
 Finally,
 \cref{ch:asymptotics} investigates the asymptotic behavior of the extended model,

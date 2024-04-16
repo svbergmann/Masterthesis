@@ -1,8 +1,9 @@
 \section{Motivation}\label{sec:motivation}
 
-As being said in the \cref{ch:introduction},
-we try to describe more possible shapes with adding a third \gls{pdf}.
-To illustrate that, we plot some of the shapes which are now possible but were not possible before.
+As is said in \cref{ch:introduction},
+we try to describe more possible shapes by adding a third \gls{pdf}.
+To illustrate that, we plot some of the shapes which are now possible with three normals
+but were not possible with only two.
 To be able to draw those plots, we are just using two variables, $w$, the upward wind,
 and $\theta_l$, the liquid water potential temperature.
 To show how the binormal model handles strong winds,
@@ -17,7 +18,8 @@ The way the current binormal model would handle this could look like \cref{fig:p
     $\alpha = 0.5$, $\sigma_w = 2$, $\sigma_{\theta_{l1}} = 2$, $\sigma_{\theta_{l1}} = 2$.
 \end{figure}
 However, this binormal distribution (\cref{fig:plot1}) does not accurately reflect reality.
-In nature, we would not expect such a sharp jump between the strong up- and downdrafts at $w_1$ and $w_2$.
+In nature, we would not expect such strong bimodality between the strong up-
+and downdrafts at $w_1$ and $w_2$.
 There would most likely be some weaker drafts present in-between.
 The current binormal model can attempt to capture this smoother transition
 by simply increasing the standard deviations of both wind,
@@ -33,7 +35,7 @@ as shown in \cref{fig:plot2}.
     $\alpha = 0.5$, $\sigma_w = 5$, $\sigma_{\theta_{l1}} = 5$, $\sigma_{\theta_{l1}} = 5$.
 \end{figure}
 Seeing \cref{fig:plot2},
-the issue with having some values in the middle is slightly fixed
+the issue with having some values in the middle is mitigated
 but the general width of the normals was increased, too.
 Since \gls{CLUBB} also has the simplification
 that there is no correlation between $w$ and $\theta_l$,

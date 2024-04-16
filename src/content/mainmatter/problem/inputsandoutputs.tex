@@ -2,27 +2,29 @@
 
 While defining inputs and outputs can seem challenging at first glance,
 it is a crucial step towards understanding a system.
-In this context,
+When forecasting the weather (\enquote{forward run}),
 the code provides us with a set of moment terms:
 $\overline{w}$, $\overline{w'^2}$, $\overline{w'^3}$, $\overline{\theta_l}$, $\overline{w'\theta_l'}$,
 $\overline{r_t}$, $\overline{w' r_t'}$, $\overline{\theta_l'^2}$, $\overline{r_t'^2}$, $\overline{r_t'\theta_l'}$.
-From these, we want to determine certain parameters which are describing the shape of the underlying \gls{pdf}.
-Those parameters are standardized and some also normalized.
-So we try to solve for 13 unknowns,
+These are the inputs.
+From these inputs,
+we want to determine certain parameters which describe the shape of the underlying \gls{pdf}.
+Those \gls{pdf} parameters are standardized and some also normalized.
+So we try to solve these \gls{pdf} parameters (13),
 namely $\alpha$, $\widehat{w}_1$, $\widehat{w}_2$, $\tilde{\theta}_{l1}$, $\tilde{\theta}_{l2}$, $\tilde{r}_{t1}$,
 $\tilde{r}_{t2}$, $\tilde{\sigma}_w$, $\tilde{\sigma}_{\theta_{l1}}$, $\tilde{\sigma}_{\theta_{l2}}$,
 $\tilde{\sigma}_{r_{t1}}$, $\tilde{\sigma}_{r_{t2}}$, and $r_{r_t \theta_l}$.
 All the formulas are listed in \cref{ch:formulas}.
-Ultimately, the code needs all of those given moments as well as solved unknowns
-to express even higher order moments such as $\overline{w'\theta_l'r_t'}$
+Ultimately, the code needs to express even higher order moments such as $\overline{w'^2 r_t'}$
 in terms of the lower order moments.
+These higher order moments are the outputs in the \enquote{forward run}.
 
-While the code is deriving the desired parameters from a set of moments,
-we want to establish a formal mathematical foundation for these relationships.
+Although a \enquote{forward run} derives the higher order moments in terms of the lower order moments,
+we want to verify these formulas.
 To achieve this, we will take a more traditional approach, working in the \enquote{backward} direction.
 This means we will:
 \begin{enumerate}
-    \item \emph{Define the \gls{pdf} parameters:}
+    \item \emph{Specify the \gls{pdf} parameters:}
     Start by explicitly defining the parameters that characterize the underlying \gls{pdf}.
     \item \emph{Calculate the moments:}
     Once the \gls{pdf} is defined, we can then calculate the desired moments,
@@ -33,8 +35,9 @@ This can be done, e.g.\ by calculating the integral:
     \overline{w}
     &= \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} w \cdot P_{tmg} \; dw dr_t d\theta_l,
 \end{align}
-where $P_{tmg}$\footnote{\textbf{T}rivariate \textbf{M}ixture of \textbf{G}aussians} is the \gls{pdf} of the sum of all three normal distributions.
-Since some integrals are challenging to solve analytically,
+where $P_{tmg}$ (\textbf{T}rivariate \textbf{M}ixture of \textbf{G}aussians)
+is the \gls{pdf} of the sum of all three normal distributions.
+Since some integrals are challenging to verify symbolically,
 even with the help of SymPy,
 we are using the quadrature method to calculate the integrals
 and choose arbitrary values for the inputs.

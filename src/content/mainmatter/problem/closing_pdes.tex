@@ -8,7 +8,7 @@ and verifying their analytical solutions ensures the model's mathematical integr
 For instance, consider the following prognostic {\gls{pde}\autocite[p. 21]{larson2022clubbsilhs}}:
 \begin{align*}
     \frac{\partial \overline{w'r_t'}}{\partial t}
-    &= -\frac{\partial \overline{w'r_t'}}{\partial z}
+    &= -\overline{w}\frac{\partial \overline{w'r_t'}}{\partial z}
     - \frac{1}{\rho_s} \frac{\partial \rho_s \overline{w'^2 r_t'}}{\partial z}
     - \overline{w'^2} \frac{\partial \overline{r_t'}}{\partial z}
     - \overline{w'r_t'} \frac{\partial \overline{w}}{\partial z}
@@ -21,11 +21,12 @@ on the \gls{rhs} of these equations.
 That is because the model steps forward in time
 and therefore needs the repeated calculation of moments
 for each unclosed prognostic equation at every time step.
-Those already expensive computational steps need to use mathematically simpler moment representations,
+Those already expensive computational steps need to use mathematically simpler moment representations
+of e.g. $\overline{w'^2 r_t'}$,
 even if they introduce slight limitations
 in capturing the full variability of the underlying atmospheric state.
 Our focus here is on achieving closure for higher-order moments,
-such as the fourth order moment of the vertical wind ($\overline{w'^4}$).
+such as the third order moment $\overline{w'^2 r_t'}$ and others like it.
 This closure is achieved by expressing these higher-order moments
 in terms of readily calculable lower-order moments.
 This approach uses the relationships between moments within a normal distribution,
