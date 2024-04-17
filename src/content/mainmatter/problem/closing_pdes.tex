@@ -1,4 +1,4 @@
-\section{Closing pdes}\label{sec:closing_pdes}
+\section{Closing turbulence pdes by integration over a pdf}\label{sec:closing_pdes}
 
 The \gls{CLUBB} model relies on a set of \glspl{pde} to represent atmospheric processes.
 These equations require closure,
@@ -25,9 +25,3 @@ Those already expensive computational steps need to use mathematically simpler m
 of e.g. $\overline{w'^2 \theta_l'}$,
 even if they introduce slight limitations
 in capturing the full variability of the underlying atmospheric state.
-Our focus here is on achieving closure for higher-order moments,
-such as the third order moment $\overline{w'^2 \theta_l'}$ and others like it.
-This closure is achieved by expressing these higher-order moments
-in terms of readily calculable lower-order moments.
-This approach uses the relationships between moments within a normal distribution,
-enabling efficient model updates during the time-stepping process.

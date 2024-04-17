@@ -3,9 +3,9 @@
 This section outlines a general approach for verifying all of those integral expressions
 employed within the \gls{CLUBB} model.
 This approach ensures the accuracy of the computed moment relationships.
-We try to reference to the following steps in \cref{ch:intsympy} where there are actual examples stated.
-One way, or at least the way, which is used in this document is the following,
-where we always want to check if \gls{lhs} equals \gls{rhs}:
+\Cref{ch:intsympy} discusses some actual examples.
+We verify the expressions using the following method where the order is crucial.
+We always want to check if \gls{lhs} equals \gls{rhs}:
 
 \begin{enumerate}
     \item\label{itm:checkingstep_1}
@@ -24,7 +24,8 @@ where we always want to check if \gls{lhs} equals \gls{rhs}:
 
     \item\label{itm:checkingstep_4}
     Once the variances, e.g. $\overline{w'^2}$, are known,
-    then \emph{non-dimensional} \gls{pdf} parameters such as $\lambda_w$ can be calculated by their definitions.
+    then the \emph{non-dimensional} \gls{pdf} parameters such as $\lambda_w$ (\cref{eq:lambda})
+    can be calculated by their definitions.
 
     \item\label{itm:checkingstep_5}
     We can also calculate the covariances by 2D integration over a 2D \gls{pdf}.
@@ -35,7 +36,6 @@ where we always want to check if \gls{lhs} equals \gls{rhs}:
     i.e. $\overline{w'^4}$ (\cref{eq:wp4}) or $\overline{w'^2 \theta_l'}$ (\cref{eq:wp2thlp_solved})
     or $\overline{w' \theta_l'^2}$ (\cref{eq:wpthlp2_solved}),
     by integration over the \gls{pdf}.
-    Again, we can check if \gls{lhs} equals \gls{rhs}.
 
 %    \item\label{itm:checkingstep_7}
 %    The integral $\overline{w'\theta_l'^2}$ is complicated.

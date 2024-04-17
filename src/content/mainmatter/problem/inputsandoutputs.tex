@@ -1,7 +1,11 @@
-\section{Inputs and outputs}\label{sec:inputsandoutputs}
+\section{Inputs and outputs of the verification procedure}\label{sec:inputsandoutputs}
 
 While defining inputs and outputs can seem challenging at first glance,
 it is a crucial step towards understanding a system.
+
+\subsection{Inputs and outputs of a forward run}
+\label{subsec:inputs-and-outputs-of-a-forward-run}
+
 When forecasting the weather (\enquote{forward run}),
 the code provides us with a set of moment terms:
 $\overline{w}$, $\overline{w'^2}$, $\overline{w'^3}$, $\overline{\theta_l}$, $\overline{w'\theta_l'}$,
@@ -19,7 +23,10 @@ Ultimately, the code needs to express even higher order moments such as $\overli
 in terms of the lower order moments.
 These higher order moments are the outputs in the \enquote{forward run}.
 
-Although a \enquote{forward run} derives the higher order moments in terms of the lower order moments,
+\subsection{Inputs and outputs of a backward run (verification direction)}
+\label{subsec:inputs-and-outputs-of-a-backward-run-(verification-direction)}
+
+Although a \enquote{forward run} models the higher order moments in terms of the lower order moments,
 we want to verify these formulas,
 namely \cref{eq:wp4}, \cref{eq:wp2thlp_solved}, and \cref{eq:wpthlp2_solved}.
 To achieve this, we will take a more traditional approach, working in the \enquote{backward} direction.
@@ -38,8 +45,7 @@ This can be done, e.g.\ by calculating the integral:
 \end{align}
 where $P_{tmg}$ (\textbf{T}rivariate \textbf{M}ixture of \textbf{G}aussians)
 is the \gls{pdf} of the sum of all three normal distributions.
-Since some integrals are challenging to verify symbolically,
-even with the help of SymPy,
-we are using the quadrature method to calculate the integrals
+Since some integrals are challenging to verify symbolically with SymPy,
+we are using the quadrature method of SymPy to calculate the integrals
 and choose arbitrary values for the inputs.
 All of this can be seen in \cref{sec:numintsympy}.
