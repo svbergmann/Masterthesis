@@ -1,8 +1,8 @@
 \section{Definition of the trinormal distribution, $P_{tmg}$}\label{sec:def_trinormal}
 
-We would like to define a third normal to the already existing two trivariate normals,
-which is right in the middle between those two.
-For our proposed mix of normals we then have
+We would like to add a third normal to the already existing two trivariate normals,
+which is placed right in the middle between those two.
+For our proposed mixture of normals we then have
 \begin{align}
     \label{eq:normal_mix_pdf}
     P_{tmg}(w, \theta_l, r_t)
@@ -10,7 +10,9 @@ For our proposed mix of normals we then have
     + (1-\alpha) (1-\delta) \mathcal{N}(\mu_2, \Sigma_2)
     + \delta \mathcal{N}(\mu_3, \Sigma_3),
 \end{align}
-where $\mathcal{N}$ denotes the multivariate normal distribution.
+where $\mathcal{N}$ denotes the multivariate normal distribution,
+$\alpha \in (0,1)$ is the mixture fraction of the binormal,
+and $\delta \in [0,1)$ is the weight of the third normal.
 
 We can just define the sum of our three normals by using a vector for the mean,
 as well as the covariance matrix.
@@ -18,7 +20,7 @@ For the purpose of readability,
 we define the mean vectors of the first
 and second normal distributions as $\mu_1 = (w_1, \theta_{l1}, r_{t1})^\top$,
 and $\mu_1 = (w_2, \theta_{l2}, r_{t2})^\top$,
-where $w_1 > w_2$ (due to a restriction in the code) and the covariance matrices as
+where $w_1 > w_2$ (due to a convention in the code) and the covariance matrices as
 \begin{align*}
     \Sigma_1 =
     \begin{pmatrix}
@@ -31,12 +33,13 @@ where $w_1 > w_2$ (due to a restriction in the code) and the covariance matrices
     \begin{pmatrix}
         \sigma_w^2 & 0                                                      & 0                                                      \\
         0          & \sigma_{\theta_{l2}}^2                                 & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} \\
-        0          & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} & \sigma_{r_{t2}}^2.
-    \end{pmatrix}
+        0          & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} & \sigma_{r_{t2}}^2
+    \end{pmatrix}.
 \end{align*}
 It might be of interest that there is no correlation between $w$ and $\theta_l$ or $w$ and $r_t$.
 That is to make the \glspl{pdf} mathematically more tractable by therefore also taking away some variability.
 This is not the case for the third normal, though.
+
 It has already been said,
 that we would like to place the third normal right at the mean,
 therefore $\mu_3$ and $\Sigma_3$ are defined as
@@ -61,28 +64,32 @@ therefore $\mu_3$ and $\Sigma_3$ are defined as
         \sigma_{r_t 3}^2
     \end{pmatrix}.
 \end{align*}
-The advantage over just two normal \glspl{pdf} is that we can now express more shapes of functions.
+The advantage over just two normal \glspl{pdf} is that
+we can now express a greater variety of shapes.
 We also define some additional relationships for this third normal distribution.
 \begin{align}
     \label{eq:lambda}
-    \lambda_w = \frac{\sigma_{w 3}^2}{\wptwo}, \quad
-    \lambda_\theta = \frac{\sigma_{\theta_l 3}^2}{\thlptwo}, \quad
-    \lambda_r = \frac{\sigma_{r_t 3}^2}{\rtptwo},
+    \lambda_w \equiv \frac{\sigma_{w 3}^2}{\wptwo}, \quad
+    \lambda_\theta \equiv \frac{\sigma_{\theta_l 3}^2}{\thlptwo}, \quad
+    \lambda_r \equiv \frac{\sigma_{r_t 3}^2}{\rtptwo},
 \end{align}
 \begin{align}
     \label{eq:lambda_two}
-    \lambda_{\theta r} = \frac{\rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3}}{\rtpthlp}, \quad
-    \lambda_{w \theta} = \frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp}, \quad
-    \lambda_{w r} = \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}.
+    \lambda_{\theta r} \equiv
+    \frac{\rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3}}{\rtpthlp}, \quad
+    \lambda_{w \theta} \equiv
+    \frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp}, \quad
+    \lambda_{w r} \equiv
+    \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}.
 \end{align}
 Hence, we can rewrite $\Sigma_3$ as
 \begin{align}
     \Sigma_3 =
     \begin{pmatrix}
         \sigma_{w 3}^2 &
-        \wpthlp \cdot \lambda_{w r} &
+        \wpthlp \cdot \lambda_{w \theta} &
         \wprtp \cdot \lambda_{w r} \\
-        \wpthlp \cdot \lambda_{w r} &
+        \wpthlp \cdot \lambda_{w \theta} &
         \sigma_{\theta_l 3}^2 &
         \rtpthlp \cdot \lambda_{\theta r} \\
         \wprtp \cdot \lambda_{w r} &
