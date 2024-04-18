@@ -35,30 +35,35 @@
 
 
     \singlespacing
+    \renewcommand*\contentsname{\centering\normalfont{TABLE OF CONTENTS}}
     \tableofcontents
     \newpage
 
     \doublespacing
 
+    \renewcommand*\listfigurename{\centering\normalfont{LIST OF FIGURES}}
     \listoffigures
     \newpage
 
+
+    \renewcommand*\listtablename{\centering\normalfont{LIST OF TABLES}}
     \listoftables
     \newpage
 
+    \renewcommand*\listlistingname{\centering\normalfont{LIST OF LISTINGS}}
     \listoflistings
     \newpage
 
-    \printglossary[type=\acronymtype, title={List of Acronyms}]
+    \printglossary[type=\acronymtype, title={\centering\normalfont{LIST OF ACRONYMS}}]
     \newpage
 
-    \printglossary[type=symbolslist, title={List of Symbols}]
+    \printglossary[type=symbolslist, title={\centering\normalfont{LIST OF SYMBOLS}}]
     \newpage
 
     \thispagestyle{plain}
 
-    \include{content/frontmatter/acknowledgments}
-    \newpage
+    %\include{content/frontmatter/acknowledgments}
+    %\newpage
 
     \pagenumbering{arabic}
 
