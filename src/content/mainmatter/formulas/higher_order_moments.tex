@@ -1,8 +1,16 @@
-\section{Higher-order moments in terms of pdf parameters}\label{sec:higher_order_moments}
+\section{Leveraging the pdf for higher-order moment calculations}
+\label{sec:higher_order_moments}
 
-Once the \gls{pdf} parameters have been specified,
-all higher-order moments can be calculated by integration over the \gls{pdf}.
-The needed formulas are\footcite{larson2005using}:
+Upon determining the \gls{pdf} parameters,
+we gain the ability to compute all higher-order moments associated with the distribution.
+These moments play a crucial role for closing the already described \glspl{pde}.
+The symbolic calculation of higher-order moments can be achieved
+through integration over the specified \gls{pdf}.
+Formulas for calculating various higher-order moments within the context of a binormal \gls{pdf}
+are readily available in the literature\footcite{larson2005using}.
+
+We state the transformed formulas needed for closure in the following.
+
 \begin{align}
     \label{eq:wp4_div_wp2_2}
     \frac{1}{\tswfact^2} \frac{(1-\delta)}{(1-\delta \lambda_w)^2} \frac{\wpfour}{\left(\wptwo \right)^2}
@@ -40,5 +48,5 @@ The needed formulas are\footcite{larson2005using}:
     (1-\alpha) \widehat{w}_2 \left(\tilde{r}_{t2} \tilde{\theta}_{l2} +
     r_{r_t \theta_l} \tilde{\sigma}_{r_{t2}} \tilde{\sigma}_{\theta_{l2}} \right)
 \end{align}
-The equations for $\wptwortp$ and $\wprtptwo$ are analogous to \cref{eq:wpthlp2_div_wp2_thlp2}
-and \cref{eq:wprtpthlp_div_wp2_thp2_rt2}.
+Equations for $\wptwortp$ and $\wprtptwo$ are similar to \cref{eq:wp2thlp_div_wp2thl2}
+and \cref{eq:wpthlp2_div_wp2_thlp2} by replacing $\theta_l$ with $r_t$ everywhere.

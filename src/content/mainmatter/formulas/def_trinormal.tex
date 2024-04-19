@@ -13,15 +13,13 @@ For our proposed mixture of normals we then have
 where $\mathcal{N}$ denotes the multivariate normal distribution,
 $\alpha \in (0,1)$ is the mixture fraction of the binormal,
 and $\delta \in [0,1)$ is the weight of the third normal.
+The mean vectors and the covariance matrices are defined in the following.
 
-We can just define the sum of our three normals by using a vector for the mean,
-as well as the covariance matrix.
-For the purpose of readability,
-we define the mean vectors of the first
+We define the mean vectors of the first
 and second normal distributions as $\mu_1 = (w_1, \theta_{l1}, r_{t1})^\top$,
 and $\mu_1 = (w_2, \theta_{l2}, r_{t2})^\top$,
 where $w_1 > w_2$ (due to a convention in the code) and the covariance matrices as
-\begin{align*}
+\begin{align}
     \Sigma_1 =
     \begin{pmatrix}
         \sigma_w^2 & 0                                                      & 0                                                      \\
@@ -35,7 +33,7 @@ where $w_1 > w_2$ (due to a convention in the code) and the covariance matrices 
         0          & \sigma_{\theta_{l2}}^2                                 & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} \\
         0          & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} & \sigma_{r_{t2}}^2
     \end{pmatrix}.
-\end{align*}
+\end{align}
 It might be of interest that there is no correlation between $w$ and $\theta_l$ or $w$ and $r_t$.
 That is to make the \glspl{pdf} mathematically more tractable by therefore also taking away some variability.
 This is not the case for the third normal, though.
@@ -43,7 +41,7 @@ This is not the case for the third normal, though.
 It has already been said,
 that we would like to place the third normal right at the mean,
 therefore $\mu_3$ and $\Sigma_3$ are defined as
-\begin{align*}
+\begin{align}
     \mu_3 =
     \begin{pmatrix}
         \overline{w}        \\
@@ -63,7 +61,7 @@ therefore $\mu_3$ and $\Sigma_3$ are defined as
         \rho_{\theta_l r_t 3} \sigma_{\theta_l 3} \sigma_{r_t 3} &
         \sigma_{r_t 3}^2
     \end{pmatrix}.
-\end{align*}
+\end{align}
 The advantage over just two normal \glspl{pdf} is that
 we can now express a greater variety of shapes.
 We also define some additional relationships for this third normal distribution.

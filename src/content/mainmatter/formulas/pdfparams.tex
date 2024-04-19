@@ -1,17 +1,34 @@
-\section{Finding pdf parameters in terms of moments}\label{sec:pdfparams}
+\section{Solving for pdf parameters by using the moment terms}\label{sec:pdfparams}
 
-We now select a particular member of the normal mixture family
-by mapping the prognosed moments to the \gls{pdf} parameters.
-In other words, we invert equations~\eqref{eq:w_bar_nondim} --~\eqref{eq:c_hat_r_t_theta_l_nondim}
-in order to find the set of \gls{pdf} parameters
-that guarantees that the resulting \gls{pdf} has moments that correspond to the prognosed ones.
-The inversion is non-trivial because the equations are non-linear in the \gls{pdf} parameters.
-However, the \gls{pdf} (\cref{eq:normal_mix_pdf}) is simple enough to permit an analytic solution.
+Having established the prognosed moments for the desired \gls{pdf},
+we now try to retrieve the specific \gls{pdf} that generates these moments.
+This process essentially involves inverting the relationship between the moments
+and the parameters that define the \gls{pdf}.
 
-The solution procedure is as follows.
+In our case, we refer back to the normal mixture family of \glspl{pdf} (\cref{eq:normal_mix_pdf}),
+which offers a representation for atmospheric grid layers.
+To select a particular member within this family that best aligns with the prognosed moments,
+we perform a parameter retrieval step.
+
+This retrieval is achieved by inverting equations~\eqref{eq:w_bar_nondim} to~\eqref{eq:c_hat_r_t_theta_l_nondim}.
+These equations express the prognosed moments (mean, variance, covariances, etc.)
+as functions of the underlying \gls{pdf} parameters (weights, means, and standard deviations).
+By inverting these relationships,
+we aim to find a set of \gls{pdf} parameters
+that produces a distribution with moments matching the prognosed values.
+
+However, it is important to mention that this inversion is not a straightforward process.
+That is because the equations are non-linear with respect to the \gls{pdf} parameters.
+Despite this non-linearity,
+the relatively simple structure of the normal mixture \gls{pdf} (\cref{eq:normal_mix_pdf})
+allows for an analytical solution to the inversion problem.
+This analytical solution enables us to efficiently map the prognosed moments
+back to the corresponding \gls{pdf} parameters.
+
+The proposed solution procedure\footcite{larson2005using} is as follows.
 \begin{enumerate}
-    \item Solve for the \gls{pdf} parameters $\alpha$, $\widehat{w}_1$,
-    and $\widehat{w}_2$ from the moment equations for $\overline{w}$ (\cref{eq:w_bar_nondim}),
+    \item Solve for $\alpha$, $\widehat{w}_1$,
+    and $\widehat{w}_2$ from the equations for $\overline{w}$ (\cref{eq:w_bar_nondim}),
     $\wptwo$ (\cref{eq:wp2_bar_non_dim}), $\wpthree$ (\cref{eq:sk_hat_w_nondim}):
     \begin{align}
         \label{eq:alpha_solved}
@@ -30,14 +47,15 @@ The solution procedure is as follows.
     \end{align}
     Without loss of generality, it has been chosen to set $\widehat{w}_1 > \widehat{w}_2$.
 
-    \item \Cref{eq:alpha_solved} implies that $\widehat{Sk}_w$ is determined solely by $\alpha$:
+    \item Looking at equation \cref{eq:alpha_solved},
+    we see that $\widehat{Sk}_w$ is determined only by $\alpha$:
     \begin{align}
         \label{eq:sk_w_alpha}
         \widehat{Sk}_w
         &= \frac{1-2\alpha}{\sqrt{\alpha(1-\alpha)}}.
     \end{align}
 
-    \item We can obtain $\Tilde{\theta}_{l1}$ and $\Tilde{\theta}_{l2}$ from \cref{eq:thlp_bar_nondim}
+    \item $\tilde{\theta}_{l1}$ and $\tilde{\theta}_{l2}$ are taken from solving \cref{eq:thlp_bar_nondim}
     for $\overline{\theta_l}$, and \cref{eq:c_hat_w_theta_l_nondim} for $\wpthlp$:
     \begin{align}
         \label{eq:thl1_tilde_solved}
@@ -50,8 +68,7 @@ The solution procedure is as follows.
         &= -\frac{\widehat{c}_{w \theta_l}}{\widehat{w}_1}.
     \end{align}
 
-    \item The widths of the normals, $\tilde{\sigma}_{\theta_l 1}$ and $\tilde{\sigma}_{\theta_l 2}$,
-    are determined by satisfying \cref{eq:thlp2_bar} for $\thlptwo$,
+    \item We can get $\tilde{\sigma}_{\theta_l 1}$ and $\tilde{\sigma}_{\theta_l 2}$ by fulfilling \cref{eq:thlp2_bar} for $\thlptwo$,
     and \cref{eq:theta_l_3_bar} for $\thlpthree$:
     \begin{align}
         \label{eq:sigma_tilde_theta1_solved}
@@ -69,16 +86,19 @@ The solution procedure is as follows.
         \frac{1}{3 \widehat{c}_{w \theta_l}}
         \left( \widehat{Sk_{\theta_l}} - \widehat{c}_{w \theta_l}^3 \widehat{Sk}_w \right).
     \end{align}
-    Here $Sk_{\theta_l}$ is the skewness of $\theta_l$.
-    It must be provided either by a prognostic equation or by a diagnostic equation
-    such as \cref{eq:sk_hat_theta_l_nondim} below.
+    $Sk_{\theta_l}$ represents the skewness of $\theta_l$,
+    which has to be provided by an equation such as \cref{eq:sk_hat_theta_l_nondim} below.
 
-    \item Equations for $\tilde{r}_{t1}$, $\tilde{r}_{t2}$, $\tilde{\sigma}_{r_t 1}^2$,
-    and $\tilde{\sigma}_{r_t 2}^2$ are found by expressions identical to \cref{eq:thl1_tilde_solved},
-    \cref{eq:thl2_tilde_solved}, \cref{eq:sigma_tilde_theta1_solved},
-    and \cref{eq:sigma_tilde_theta2_solved}, except that $\theta_l$ is replaced everywhere by $r_t$.
+    \item Finding formulas for $\tilde{r}_{t1}$, $\tilde{r}_{t2}$, $\tilde{\sigma}_{r_t 1}^2$,
+    and $\tilde{\sigma}_{r_t 2}^2$ can be done by replacing $\theta_l$ by $r_t$ everywhere
+    in the equations~\eqref{eq:thl1_tilde_solved},
+    ~\eqref{eq:thl2_tilde_solved},~\eqref{eq:sigma_tilde_theta1_solved},
+    and~\eqref{eq:sigma_tilde_theta2_solved}.
 
-    \item Finally, from \cref{eq:r_t_prime_theta_l_prime_bar} for $\rtpthlp$ we find
+    \item The last step is to get a relationship between $r_{r_t \theta_l}$,
+    the in-between normal correlation and $c_{r_t \theta_l}$,
+    the total correlation.
+    This can be done by using \cref{eq:r_t_prime_theta_l_prime_bar}:
     \begin{align}
         \label{eq:r_r_t_theta_l}
         r_{r_t \theta_l}
@@ -86,6 +106,4 @@ The solution procedure is as follows.
         {\alpha \tilde{\sigma}_{r_{t}1}\tilde{\sigma}_{\theta_{l}1} +
             (1-\alpha) \tilde{\sigma}_{r_{t}2} \tilde{\sigma}_{\theta_{l}2}}.
     \end{align}
-    Here $r_{r_t \theta_l}$ is the in-between normal correlation and $c_{r_t \theta_l}$
-    is the total correlation.
 \end{enumerate}

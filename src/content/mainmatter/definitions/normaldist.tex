@@ -4,10 +4,11 @@ We say that a random variable $X$ is distributed
 according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following \gls{pdf}:
 
 \begin{definition}[\gls{pdf} of a normal distribution]
-    \begin{align*}
+    \begin{align}
+        \label{eq:pdf_normal_dist}
         f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}
         \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)}.
-    \end{align*}
+    \end{align}
 \end{definition}
 
 \subsection{Multivariate normal distribution}\label{subsec:multnormaldist}
@@ -17,7 +18,10 @@ is distributed according to a multivariate normal distribution
 when it has the following joint density function\autocite[p. 59]{izenman_modern_2008}:
 \begin{definition}[\gls{pdf} of a multivariate normal distribution]
     \begin{align}
-        f(\bm{x}| \bm{\mu}, \bm{\Sigma}) = (2\pi)^{-\frac{r}{2}} \left|\bm{\Sigma}\right|^{-\frac{1}{2}} \exp\left(-\frac{1}{2}(x-\bm{\mu})^\top \bm{\Sigma}^{-1} (x-\bm{\mu})\right),
+        f(\bm{x}| \bm{\mu}, \bm{\Sigma})
+        = (2\pi)^{-\frac{r}{2}}
+        \left|\bm{\Sigma}\right|^{-\frac{1}{2}}
+        \exp\left(-\frac{1}{2}(x-\bm{\mu})^\top \bm{\Sigma}^{-1} (x-\bm{\mu})\right),
         \bm{x} \in \mathbb{R}^r,
     \end{align}
     where
@@ -31,7 +35,7 @@ when it has the following joint density function\autocite[p. 59]{izenman_modern_
         \in \mathbb{R}^r
     \end{align}
     is the mean vector, and
-    \begin{align*}
+    \begin{align}
         \bm{\Sigma} =
         \begin{pmatrix}
             \sigma_1^2                & \rho_{12}\sigma_1\sigma_2 & \rho_{13}\sigma_1\sigma_3 & \ldots & \rho_{1r}\sigma_1\sigma_r \\
@@ -41,7 +45,7 @@ when it has the following joint density function\autocite[p. 59]{izenman_modern_
             \rho_{1r}\sigma_1\sigma_r & \ldots                    & \ldots                    & \ldots & \sigma_r^2
         \end{pmatrix}
         \in \mathbb{R}^{r\times r}
-    \end{align*}
+    \end{align}
     is the (symmetric, positive definite) covariance matrix.
     This is also often expressed as $\bm{X} \sim \mathcal{N}(\bm{\mu}, \bm{\Sigma})$,
     meaning that $\bm{X}$ (r $\times$ r random vector) is distributed
@@ -59,8 +63,7 @@ We denote this by the following:
     \mathbb{E}[X^3]
     &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
     = \frac{\mu_3}{\sigma^3}
-    = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}
-    = \frac{\kappa_3}{\kappa_2^{3/2}}, \\
+    = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}, \\
     \mathbb{E}[X^4]
     &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
     = \frac{\mathbb{E}[(X-\mu)^4]}{(\mathbb{E}[(X-\mu)^2])^2}

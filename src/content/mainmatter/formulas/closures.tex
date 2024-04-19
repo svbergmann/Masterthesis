@@ -1,16 +1,28 @@
-\section{Proposed closures for third- and fourth-order moments based on the mixture of trivariate normals}
+\section{Formulating closure relationships for higher-order moments}
 \label{sec:prop_closure}
 
-This section lists formulas for the higher-order moments that are needed for closure
-in the parameterization of $\wpfour$, $\wptwothlp$, $\wpthlptwo$, and $\wprtpthlp$.
-These are obtained by substituting the expressions for the \gls{pdf} parameters
-(\cref{eq:alpha_solved} - \cref{eq:r_r_t_theta_l}) into the equations for the higher-order moments
-(\cref{eq:wp4_div_wp2_2} - \cref{eq:wprtpthlp_div_wp2_thp2_rt2}).
-Formulas for $\wptwortp$ and $\wprtptwo$,
-which are also needed,
-are identical to those for $\wptwothlp$ and $\wpthlptwo$ except that $r_t$ replaces $\theta_l$ everywhere.
+This section delves into the derivation of closure relationships for crucial higher-order moments
+employed within the \gls{CLUBB} parameterization.
 
-First, we list the equation for $\theta_l'^3$, which is obtained by dimensionalizing \cref{eq:Sk_hat_thl_beta}:
+Our focus here lies on achieving closure for the following terms:
+\begin{itemize}
+    \item $\wpfour$: The fourth-order moment of up-/downdrafts,
+    \item $\wptwothlp$: the soo called flux,
+    \item $\wpthlptwo$: the counterpart of the previous one, where we replace every $\theta_l$ by $r_t$,
+    \item $\wprtpthlp$: and the mean over all three standardized variables.
+\end{itemize}
+Closure, in this context,
+refers to expressing these higher-order moments completely in terms of known quantities,
+typically lower-order moments that are directly prognosed by the model.
+The approach to derive those formulas is based on
+the previously established expressions for the \gls{pdf} parameters (equations~\eqref{eq:alpha_solved} to~\eqref{eq:r_r_t_theta_l}).
+By substituting those derived \gls{pdf} parameter expressions
+into the relevant equations for the higher-order moments (equations~\eqref{eq:wp4_div_wp2_2} to~\eqref{eq:wprtpthlp_div_wp2_thp2_rt2}),
+we find the desired closure relationships.
+
+We first present the equation for the third moment of $\theta_l'$, $\overline{\theta_l'}$
+This expression is derived by dimensionalizing \cref{eq:Sk_hat_thl_beta},
+which relates the skewness of $\theta_l$ to the skewness of $w$ and other model parameters.
 \begin{align}
     \label{eq:thlp3_beta}
     \overline{\theta_l'^3}
@@ -22,20 +34,27 @@ First, we list the equation for $\theta_l'^3$, which is obtained by dimensionali
     \frac{(1-\delta \lambda_{w \theta})^2}{1-\tilde{\sigma}_w^2 (1-\delta \lambda_w)(1-\delta \lambda_\theta)}
     \frac{\left(\overline{w'\theta_l'}\right)^2}{\overline{w'^2} \; \overline{\theta_l'^2}}\right).
 \end{align}
-While the scalar third moments are not essential for solving the prognostic equations directly,
-they still play a role in shaping cloud properties.
-This is because cumulus clouds tend to form at the edges,
-or \enquote{tails}, of the \gls{pdf} for a specific variable.
-Typically, as the relative \enquote{width} of the normal distribution in $w$ increases,
-the value of $\thlpthree$ also grows (see \cref{eq:thlp3_beta}) for details).
-In simpler terms,
-a larger $\thlpthree$ corresponds to a broader $w$-marginal \gls{pdf},
-which deviates further from a double delta function (a function with two spikes at zero).
+While the scalar third moments (e.g., $\thlpthree$) may not directly participate
+in solving the prognostic equations within \gls{CLUBB},
+they hold an indirect yet crucial role in shaping cloud properties within atmospheric simulations.
+This influence is coming from the connection between the \gls{pdf} and the cloud formation.
 
-$\wpfour$ does not depend on the thermodynamic scalar moments;
-therefore, it does not depend on $\beta$.
-Substituting \cref{eq:w1_solved} and \cref{eq:w1_solved} into \cref{eq:wp4_div_wp2_2}
-and using \cref{eq:sk_hat_w_nondim}, we find
+Cumulus cloud formation mostly occurs at the edges,
+or \enquote{tails} of the \gls{pdf} for a specific variable.
+These tails represent regions where the probability of encountering extreme values of the variable is relatively higher.
+As the relative \enquote{width} of the normal distribution representing $w$ increases,
+the magnitude of $\thlpthree$ also grows (refer to ~\eqref{eq:thlp3_beta} for details).
+In simpler terms, a larger value of $\thlpthree$ corresponds to a broader \gls{pdf} for the up-/downdraft variable.
+This broader \gls{pdf} deviates more significantly from a double delta function,
+which is a construct with two spikes at zero.
+
+Unlike the scalar third moment,
+$\wpfour$ does not depend on the thermodynamic scalar moments (such as $\thlpthree$).
+Consequently, it is independent of the parameter $\beta$.
+
+To derive the explicit formula for $\wpfour$,
+we can substitute the previously stated expressions for $\widehat{w_1}$ (\cref{eq:w1_solved})
+and $\widehat{w_2}$ (\cref{eq:w2_solved}) into \cref{eq:wp4_div_wp2_2}.
 \begin{align}
     \label{eq:wp4_div_wp2_2_solved}
     \frac{1}{\tswfact^2} \frac{(1-\delta)}{(1-\delta \lambda_w)^2} \frac{\wpfour}{\left(\wptwo\right)^2}
@@ -53,9 +72,17 @@ and also
     \frac{\left(\overline{w'^3}\right)^2}{\overline{w'^2}} \nonumber\\
     &+ \delta 3 \lambda_w^2 \left(\overline{w'^2}\right)^2.
 \end{align}
-Similar to $\wpfour$, $\wptwothlp$ does not depend on $\beta$ for our particular \gls{pdf} family.
-Substituting \cref{eq:w1_solved} - \cref{eq:thl2_tilde_solved} into \cref{eq:wp2thlp_div_wp2thl2},
-we find
+As observed with $\wpfour$,
+$\wptwothlp$ displays independence from the parameter $\beta$
+within the context of the chosen \gls{pdf}.
+
+To proceed, we can substitute the previously derived expressions for
+$\widehat{w_1}$ (\cref{eq:w1_solved}), $\widehat{w_2}$ (\cref{eq:w2_solved}),
+$\widehat{Sk}_w$ (\cref{eq:sk_hat_w_nondim}),
+$\widehat{\tilde{\theta}_{l1}}$ (\cref{eq:thl1_tilde_solved}),
+and $\widehat{\tilde{\theta}_{l2}}$ (\cref{eq:thl2_tilde_solved}) into \cref{eq:wp2thlp_div_wp2thl2}.
+This substitution process will yield an explicit formula for $\wptwothlp$ that solely relies on known quantities,
+such as the prognostic moments directly calculated by the model.
 \begin{align}
     \label{eq:wp2thlp_sk_w_solved}
     \frac{1}{\tswfact} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w) (1-\delta \lambda_\theta)^{1/2}} \frac{\overline{w'^2\theta_l'}}{\overline{w'^2} \left(\overline{\theta_l'^2} \right)^{1/2}}
@@ -82,6 +109,9 @@ and
     &= \frac{2}{3} \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2} \frac{1}{\tswfact^2} \frac{\overline{w'^3}}{\left(\overline{w'^2} \right)^2} \left(\overline{w'\theta_l'} \right)^2 \nonumber\\
     &+ \frac{1}{3} \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})} \tswfact \frac{\overline{w'^2} \; \overline{\theta_l'^3} }{\overline{w'\theta_l'}}.
 \end{align}
+
+\textbf{\textcolor{red}{PROCEED HERE!}}
+
 The formula has a problem because $\wpthlp$ is in the denominator.
 As $\wpthlp$ gets closer to zero, the formula becomes infinitely large, which is called a singularity.
 This can cause issues if we use the formula directly with real-world measurements of $\thlpthree$ and $\wpthlp$.

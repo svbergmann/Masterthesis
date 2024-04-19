@@ -8,43 +8,57 @@ Deriving an analytic closure for a general trinormal \gls{pdf} is difficult.
 However, doing so is tractable in the special case that the third normal component
 is located at the mean of the binormal \gls{pdf}.
 In fact, the trinormal closures can be derived
-by making a simple transformation of the binormal closures.
+by making a simple transformation of the binormal closures\footcite{larson2005using},
+e.g.
+\begin{align}
+    \label{eq:wp2_bar_dGn}
+    \wptwo
+    &= \alpha [(w_1 - \overline{w})^2 + \sigma_w^2]
+    + (1 - \alpha) [(w_2 - \overline{w})^2 + \sigma_w^2].
+\end{align}
 This section will demonstrate that the following transformations,
 denoted by the subscript \enquote{dGn} for the binormal case,
 successfully achieve this conversion.
 \begin{align}
+    \label{eq:w_prime_2_transform}
     \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
-    &= \overline{w'^2}_{dGn}, \label{eq:w_prime_2_transform}
+    &= \overline{w'^2}_{dGn},
 \end{align}
 \begin{align}
+    \label{eq:w_prime_3_transform}
     \overline{w'^3} \frac{1}{1 - \delta}
-    &= \overline{w'^3}_{dGn}, \label{eq:w_prime_3_transform}
+    &= \overline{w'^3}_{dGn},
 \end{align}
 \begin{align}
+    \label{eq:w_prime_3_div_w_prime_2_transform}
     \frac{\overline{w'^3}}{\overline{w'^2}^{3/2}} \frac{(1 - \delta)^{1/2}}{(1 - \lambda_w\delta)^{3/2}}
-    &= \frac{\overline{w'^3}_{dGn}}{\overline{w'^2}_{dGn}^{3/2}}, \label{eq:w_prime_3_div_w_prime_2_transform}
+    &= \frac{\overline{w'^3}_{dGn}}{\overline{w'^2}_{dGn}^{3/2}},
 \end{align}
 \begin{align}
+    \label{eq:theta_l_prime_transform}
     \overline{\theta_l'^2} \frac{1 - \delta\lambda_\theta}{1 - \delta}
-    &= \overline{\theta_l'^2}_{dGn}, \label{eq:theta_l_prime_transform}
+    &= \overline{\theta_l'^2}_{dGn},
 \end{align}
 \begin{align}
+    \label{eq:w_prime_theta_l_prime_transform}
     \overline{w'\theta_l'} \frac{1 - \delta\lambda_{w\theta}}{1 - \delta}
-    &= \overline{w'\theta_l'}_{dGn}, \label{eq:w_prime_theta_l_prime_transform}
+    &= \overline{w'\theta_l'}_{dGn},
 \end{align}
 \begin{align}
+    \label{eq:w_prime_4_transform}
     \left(\overline{w'^4} - 3\delta\lambda_w^2 \left(\overline{w'^2}\right)^2\right) \frac{1}{1 - \delta}
-    &= \overline{w'^4}_{dGn} \label{eq:w_prime_4_transform}
+    &= \overline{w'^4}_{dGn}
 \end{align}
 \begin{align}
+    \label{eq:w_prime_4_div_w_prime_2_transform}
     \left(\frac{\overline{w'^4}}{(\overline{w'^2})^2} - 3\delta\lambda_w^2 \right) \frac{1 - \delta}{(1 - \lambda_w\delta)^2}
-    &= \frac{\overline{w'^4}_{dGn}}{(\overline{w'^2}_{dGn})^2} \label{eq:w_prime_4_div_w_prime_2_transform}
+    &= \frac{\overline{w'^4}_{dGn}}{(\overline{w'^2}_{dGn})^2}
 \end{align}
 To get a sense of what those transformations mean and why they should work,
 we pick e.g. \cref{eq:w_prime_2_transform}.
 If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda}), we get
 \begin{align}
-    \overline{w'^2} (1 - \delta\frac{\sigma_{w 3}^2}{\wptwo})
+    \overline{w'^2} \left(1 - \delta\frac{\sigma_{w 3}^2}{\wptwo}\right)
     &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
     \overline{w'^2} - \delta\sigma_{w 3}^2
     &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
