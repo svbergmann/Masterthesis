@@ -1,4 +1,4 @@
-\section{Formulating closure relationships for higher-order moments}
+\section{Formulating closure relationships for higher-order moments in terms of lower-order moments}
 \label{sec:prop_closure}
 
 This section delves into the derivation of closure relationships for crucial higher-order moments
@@ -7,9 +7,9 @@ employed within the \gls{CLUBB} parameterization.
 Our focus here lies on achieving closure for the following terms:
 \begin{itemize}
     \item $\wpfour$: The fourth-order moment of up-/downdrafts,
-    \item $\wptwothlp$: the soo called flux,
-    \item $\wpthlptwo$: the counterpart of the previous one, where we replace every $\theta_l$ by $r_t$,
-    \item $\wprtpthlp$: and the mean over all three standardized variables.
+    \item $\wptwothlp$: the so called flux of flux,
+    \item $\wpthlptwo$: the flux of variance,
+    \item $\wprtpthlp$: and the flux of covariance.
 \end{itemize}
 Closure, in this context,
 refers to expressing these higher-order moments completely in terms of known quantities,
@@ -20,7 +20,7 @@ By substituting those derived \gls{pdf} parameter expressions
 into the relevant equations for the higher-order moments (equations~\eqref{eq:wp4_div_wp2_2} to~\eqref{eq:wprtpthlp_div_wp2_thp2_rt2}),
 we find the desired closure relationships.
 
-We first present the equation for the third moment of $\theta_l'$, $\overline{\theta_l'}$
+We first present the equation for the third moment of $\theta_l'$, $\overline{\theta_l'^3}$
 This expression is derived by dimensionalizing \cref{eq:Sk_hat_thl_beta},
 which relates the skewness of $\theta_l$ to the skewness of $w$ and other model parameters.
 \begin{align}
@@ -42,7 +42,7 @@ This influence is coming from the connection between the \gls{pdf} and the cloud
 Cumulus cloud formation mostly occurs at the edges,
 or \enquote{tails} of the \gls{pdf} for a specific variable.
 These tails represent regions where the probability of encountering extreme values of the variable is relatively higher.
-As the relative \enquote{width} of the normal distribution representing $w$ increases,
+As the relative \enquote{width} of the normal distribution representing $w$ increases ($\tilde{\sigma}_w$),
 the magnitude of $\thlpthree$ also grows (refer to ~\eqref{eq:thlp3_beta} for details).
 In simpler terms, a larger value of $\thlpthree$ corresponds to a broader \gls{pdf} for the up-/downdraft variable.
 This broader \gls{pdf} deviates more significantly from a double delta function,
@@ -51,7 +51,6 @@ which is a construct with two spikes at zero.
 Unlike the scalar third moment,
 $\wpfour$ does not depend on the thermodynamic scalar moments (such as $\thlpthree$).
 Consequently, it is independent of the parameter $\beta$.
-
 To derive the explicit formula for $\wpfour$,
 we can substitute the previously stated expressions for $\widehat{w_1}$ (\cref{eq:w1_solved})
 and $\widehat{w_2}$ (\cref{eq:w2_solved}) into \cref{eq:wp4_div_wp2_2}.
@@ -110,121 +109,119 @@ and
     &+ \frac{1}{3} \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})} \tswfact \frac{\overline{w'^2} \; \overline{\theta_l'^3} }{\overline{w'\theta_l'}}.
 \end{align}
 
-\textbf{\textcolor{red}{PROCEED HERE!}}
-
-The formula has a problem because $\wpthlp$ is in the denominator.
-As $\wpthlp$ gets closer to zero, the formula becomes infinitely large, which is called a singularity.
-This can cause issues if we use the formula directly with real-world measurements of $\thlpthree$ and $\wpthlp$.
-The resulting diagnosis of $\wpthlptwo$ would be very sensitive to small changes in the measurements
-and might not be reliable (noisy).
-We can fix this singularity by either
-\begin{itemize}
-    \item substitute in the ansatz for $Sk_{\theta_l}$ (\cref{eq:sk_hat_theta_l_nondim})
-    into the original formula (\cref{eq:wpthlp2_div_wp2_thlp2}),
-    \item or, equivalently, substitute \cref{eq:thlp3_beta} for $\thlpthree$.
-    This is possible because \cref{eq:thlp3_beta} shows that $\thlpthree$ is proportional to $\wpthlp$.
-\end{itemize}
-Both approaches effectively remove the singularity from the formula.
-Therefore, we find:
-\begin{align}
-    \label{eq:wpthlp2_div_wp2_thlp2_sk_w}
-    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\overline{w'^2}\right)^{1/2} \overline{\theta_l'^2}}
-    &= \widehat{Sk}_w \left[\frac{1}{3} \beta + \left(1 - \frac{1}{3} \beta \right) \widehat{c}_{w\theta_l}^2 \right],
-\end{align}
-and
-\begin{align}
-    \label{eq:wpthlp2_beta}
-    \overline{w'\theta_l'^2}
-    &= \frac{1}{\tswfact} \frac{(1-\delta \lambda_\theta)}{(1-\delta \lambda_w)}
-    \frac{\overline{w'^3}}{\overline{w'^2}}
-    \left[ \frac{1}{3} \beta \overline{\theta_l'^2}
-    + \frac{\left( 1-\frac{1}{3} \beta \right)}{\tswfact}
-    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)(1-\delta \lambda_\theta)}
-    \frac{\left( \overline{w'\theta_l'} \right)^2}{\overline{w'^2}}
-    \right].
-\end{align}
-Finally, substituting \cref{eq:w1_solved} - \cref{eq:r_r_t_theta_l} into \cref{eq:wprtpthlp_div_wp2_thp2_rt2}
-yields the following formula for the turbulent flux of $\rtpthlp$, $\wprtpthlp$:
-\begin{align}
-    \label{eq:wprtpthlp_div_wp2_thp2_rt2_sk_w}
-    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2}
-        (1-\delta \lambda_\theta)^{1/2}
-        (1-\delta \lambda_{r_t})^{1/2}}
-    \frac{\wprtpthlp}{\tswfact^{1/2}
-        \left( \overline{w'^2} \right)^{1/2}
-        \left(\rtptwo\right)^{1/2} \left(\thlptwo\right)^{1/2}} \nonumber \\
-    = \widehat{c}_{wr_t} \widehat{c}_{w\theta_l} \widehat{Sk}_w
-    + E(w,q_t,\theta_l) \frac{1}{2} \widehat{Sk}_w
-    \left( c_{q_t\theta_l} - \widehat{c}_{wr_t} \widehat{c}_{w\theta_l}\right),
-\end{align}
-and
-\begin{align}
-    \label{eq:wprtpthlp_E}
-    \wprtpthlp
-    &= \frac{\frac{1}{2} E}{\tswfact}
-    \frac{(1-\delta \lambda_{\theta q})} {(1 - \delta \lambda_w)}
-    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
-    &+ \frac{1 - \frac{1}{2} E}{\tswfact^2}
-    \frac{(1-\delta \lambda_{w q})(1-\delta \lambda_{w \theta})}{(1 - \delta \lambda_w)^2}
-    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
-\end{align}
-The function $E(w,r_t,\theta_l)$ is
-\begin{align}
-    \label{eq:E}
-    E &= \frac{1 - \frac{1}{2} \frac{2\alpha}{1-2\alpha} \xi}{1 + \frac{1}{2} \xi},
-\end{align}
-where
-\begin{align}
-    1 + \xi
-    = \frac{1-\alpha}{\alpha} \frac{\tilde{\sigma}_{r_{t2}}}{\tilde{\sigma}_{r_{t1}}} \frac{ \tilde{\sigma}_{\theta_{l2}}}{\tilde{\sigma}_{\theta_{l1}}}
-    = \left(\frac{A_{r_t} - B_{r_t}}{-A_{r_t} - B_{r_t}}\right)^{1/2} \left(\frac{A_{\theta_l} - B_{\theta_l}}{-A_{\theta_l} - B_{\theta_l}}\right)^{1/2},
-\end{align}
-and
-\begin{align}
-    \label{eq:A_thl}
-    A_{\theta_l}
-    &= Sk_{\theta_l} - \frac{3}{2} \widehat{c}_{w\theta_l} \widehat{Sk}_w + \frac{1}{2} \widehat{c}_{w\theta_l}^3 \widehat{Sk}_w,
-\end{align}
-\begin{align}
-    B_{\theta_l}
-    &= \frac{3}{2} \left(4 + \widehat{Sk}_w^2 \right)^{1/2} \widehat{c}_{w\theta_l} \left(1 - \widehat{c}_{w\theta_l}^2\right),
-\end{align}
-and $A_{r_t}$ and $B_{r_t}$ are analogous.
-We now list two cases in which the expression for $E$ simplifies.
-First, if
-\begin{align*}
-    \frac{\tilde{\sigma}_{r_{t2}}}{\tilde{\sigma}_{r_{t1}}} \frac{\tilde{\sigma}_{\theta_{l2}}}{\tilde{\sigma}_{\theta_{l1}}}
-    &= 1
-\end{align*}
-then $E=0$.
-This would occur, for instance,
-if the \enquote{widths} of the first and second normal were equal to each other for both $r_t$ and $\theta_l$,
-that is, if $\tilde{\sigma}_{r_{t2}} = \tilde{\sigma}_{r_{t1}}$
-and $\tilde{\sigma}_{\theta_{l2}} = \tilde{\sigma}_{\theta_{l1}}$.
-Second, if we use the diagnostic ansatz (\cref{eq:sk_hat_theta_l_nondim}) for the scalar skewnesses, then
-\begin{align}
-    \label{eq:xi}
-    \xi = \frac{1 - 2 \zeta}{\zeta},
-\end{align}
-where
-\begin{align}
-    \label{eq:zeta}
-    \zeta = \alpha + \frac{1}{3} \beta \left(1 - 2 \alpha \right).
-\end{align}
-
-Then we find
-\begin{align}
-    \label{eq:E_eq_23beta}
-    E &= \frac{2}{3} \beta,
-\end{align}
-and finally
-\begin{align}
-    \label{eq:wpqtpthlp_beta}
-    \wprtpthlp
-    &= \frac{\frac{1}{3}\beta}{\tswfact}
-    \frac{(1-\delta \lambda_{\theta r})}{(1 - \delta \lambda_w)}
-    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
-    &+ \frac{1 - \frac{1}{3}\beta}{\tswfact^2}
-    \frac{(1-\delta \lambda_{w r})(1-\delta \lambda_{w \theta})} {(1 - \delta \lambda_w)^2}
-    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
-\end{align}
+%The formula has a problem because $\wpthlp$ is in the denominator.
+%As $\wpthlp$ gets closer to zero, the formula becomes infinitely large, which is called a singularity.
+%This can cause issues if we use the formula directly with real-world measurements of $\thlpthree$ and $\wpthlp$.
+%The resulting diagnosis of $\wpthlptwo$ would be very sensitive to small changes in the measurements
+%and might not be reliable (noisy).
+%We can fix this singularity by either
+%\begin{itemize}
+%    \item substitute in the ansatz for $Sk_{\theta_l}$ (\cref{eq:sk_hat_theta_l_nondim})
+%    into the original formula (\cref{eq:wpthlp2_div_wp2_thlp2}),
+%    \item or, equivalently, substitute \cref{eq:thlp3_beta} for $\thlpthree$.
+%    This is possible because \cref{eq:thlp3_beta} shows that $\thlpthree$ is proportional to $\wpthlp$.
+%\end{itemize}
+%Both approaches effectively remove the singularity from the formula.
+%Therefore, we find:
+%\begin{align}
+%    \label{eq:wpthlp2_div_wp2_thlp2_sk_w}
+%    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\overline{w'^2}\right)^{1/2} \overline{\theta_l'^2}}
+%    &= \widehat{Sk}_w \left[\frac{1}{3} \beta + \left(1 - \frac{1}{3} \beta \right) \widehat{c}_{w\theta_l}^2 \right],
+%\end{align}
+%and
+%\begin{align}
+%    \label{eq:wpthlp2_beta}
+%    \overline{w'\theta_l'^2}
+%    &= \frac{1}{\tswfact} \frac{(1-\delta \lambda_\theta)}{(1-\delta \lambda_w)}
+%    \frac{\overline{w'^3}}{\overline{w'^2}}
+%    \left[ \frac{1}{3} \beta \overline{\theta_l'^2}
+%    + \frac{\left( 1-\frac{1}{3} \beta \right)}{\tswfact}
+%    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)(1-\delta \lambda_\theta)}
+%    \frac{\left( \overline{w'\theta_l'} \right)^2}{\overline{w'^2}}
+%    \right].
+%\end{align}
+%Finally, substituting \cref{eq:w1_solved} - \cref{eq:r_r_t_theta_l} into \cref{eq:wprtpthlp_div_wp2_thp2_rt2}
+%yields the following formula for the turbulent flux of $\rtpthlp$, $\wprtpthlp$:
+%\begin{align}
+%    \label{eq:wprtpthlp_div_wp2_thp2_rt2_sk_w}
+%    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2}
+%        (1-\delta \lambda_\theta)^{1/2}
+%        (1-\delta \lambda_{r_t})^{1/2}}
+%    \frac{\wprtpthlp}{\tswfact^{1/2}
+%        \left( \overline{w'^2} \right)^{1/2}
+%        \left(\rtptwo\right)^{1/2} \left(\thlptwo\right)^{1/2}} \nonumber \\
+%    = \widehat{c}_{wr_t} \widehat{c}_{w\theta_l} \widehat{Sk}_w
+%    + E(w,q_t,\theta_l) \frac{1}{2} \widehat{Sk}_w
+%    \left( c_{q_t\theta_l} - \widehat{c}_{wr_t} \widehat{c}_{w\theta_l}\right),
+%\end{align}
+%and
+%\begin{align}
+%    \label{eq:wprtpthlp_E}
+%    \wprtpthlp
+%    &= \frac{\frac{1}{2} E}{\tswfact}
+%    \frac{(1-\delta \lambda_{\theta q})} {(1 - \delta \lambda_w)}
+%    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
+%    &+ \frac{1 - \frac{1}{2} E}{\tswfact^2}
+%    \frac{(1-\delta \lambda_{w q})(1-\delta \lambda_{w \theta})}{(1 - \delta \lambda_w)^2}
+%    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
+%\end{align}
+%The function $E(w,r_t,\theta_l)$ is
+%\begin{align}
+%    \label{eq:E}
+%    E &= \frac{1 - \frac{1}{2} \frac{2\alpha}{1-2\alpha} \xi}{1 + \frac{1}{2} \xi},
+%\end{align}
+%where
+%\begin{align}
+%    1 + \xi
+%    = \frac{1-\alpha}{\alpha} \frac{\tilde{\sigma}_{r_{t2}}}{\tilde{\sigma}_{r_{t1}}} \frac{ \tilde{\sigma}_{\theta_{l2}}}{\tilde{\sigma}_{\theta_{l1}}}
+%    = \left(\frac{A_{r_t} - B_{r_t}}{-A_{r_t} - B_{r_t}}\right)^{1/2} \left(\frac{A_{\theta_l} - B_{\theta_l}}{-A_{\theta_l} - B_{\theta_l}}\right)^{1/2},
+%\end{align}
+%and
+%\begin{align}
+%    \label{eq:A_thl}
+%    A_{\theta_l}
+%    &= Sk_{\theta_l} - \frac{3}{2} \widehat{c}_{w\theta_l} \widehat{Sk}_w + \frac{1}{2} \widehat{c}_{w\theta_l}^3 \widehat{Sk}_w,
+%\end{align}
+%\begin{align}
+%    B_{\theta_l}
+%    &= \frac{3}{2} \left(4 + \widehat{Sk}_w^2 \right)^{1/2} \widehat{c}_{w\theta_l} \left(1 - \widehat{c}_{w\theta_l}^2\right),
+%\end{align}
+%and $A_{r_t}$ and $B_{r_t}$ are analogous.
+%We now list two cases in which the expression for $E$ simplifies.
+%First, if
+%\begin{align*}
+%    \frac{\tilde{\sigma}_{r_{t2}}}{\tilde{\sigma}_{r_{t1}}} \frac{\tilde{\sigma}_{\theta_{l2}}}{\tilde{\sigma}_{\theta_{l1}}}
+%    &= 1
+%\end{align*}
+%then $E=0$.
+%This would occur, for instance,
+%if the \enquote{widths} of the first and second normal were equal to each other for both $r_t$ and $\theta_l$,
+%that is, if $\tilde{\sigma}_{r_{t2}} = \tilde{\sigma}_{r_{t1}}$
+%and $\tilde{\sigma}_{\theta_{l2}} = \tilde{\sigma}_{\theta_{l1}}$.
+%Second, if we use the diagnostic ansatz (\cref{eq:sk_hat_theta_l_nondim}) for the scalar skewnesses, then
+%\begin{align}
+%    \label{eq:xi}
+%    \xi = \frac{1 - 2 \zeta}{\zeta},
+%\end{align}
+%where
+%\begin{align}
+%    \label{eq:zeta}
+%    \zeta = \alpha + \frac{1}{3} \beta \left(1 - 2 \alpha \right).
+%\end{align}
+%
+%Then we find
+%\begin{align}
+%    \label{eq:E_eq_23beta}
+%    E &= \frac{2}{3} \beta,
+%\end{align}
+%and finally
+%\begin{align}
+%    \label{eq:wpqtpthlp_beta}
+%    \wprtpthlp
+%    &= \frac{\frac{1}{3}\beta}{\tswfact}
+%    \frac{(1-\delta \lambda_{\theta r})}{(1 - \delta \lambda_w)}
+%    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
+%    &+ \frac{1 - \frac{1}{3}\beta}{\tswfact^2}
+%    \frac{(1-\delta \lambda_{w r})(1-\delta \lambda_{w \theta})} {(1 - \delta \lambda_w)^2}
+%    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
+%\end{align}

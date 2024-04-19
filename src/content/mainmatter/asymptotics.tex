@@ -68,6 +68,7 @@ then we need
 \end{align}
 as $Sk_w \to 0$.
 That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
+
 \begin{align}
     &\lim_{\delta \to 1, \lambda_w \to 1}
     \frac{1}{\tswfact^{3/2}}
@@ -75,20 +76,83 @@ That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the li
     \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
     \frac{1}{1-\delta} \nonumber \\
     =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{1}{\tswfact^3}
-    \frac{\wpthree^2}{\left(\wptwo \right)^3}
-    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^3}
-    \frac{1}{(1-\delta)^2} \nonumber \\
+    \frac{1}{\left(1-\frac{\sigma_w (1-\delta)^{1/2}}
+    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}}\right)^{3/2}}
+    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+    \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
+    \frac{1}{1-\delta} \nonumber \\
     =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{1}{\tswfact^3}
-    \frac{\wpthree^2}{\left(\wptwo \right)^3}
-    \frac{(1-\delta)^3}{(1-\delta \lambda_w)^3}
-    \frac{1}{(1-\delta)^2} \nonumber \\
+    \frac{1}{
+        \left(\frac{\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
+        {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}}\right)^{3/2}
+    }
+    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
+    \nonumber \\
     =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{1}{\tswfact^3}
-    \frac{\wpthree^2}{\left(\wptwo \right)^3}
-    \underbrace{\frac{1-\delta}{(1-\delta \lambda_w)^3}}_{\to 0}
+    \frac{\left(\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}\right)^{3/2}}
+    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
+    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
+    \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{\left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4}}
+    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
+    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
+    \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{
+        \left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4} \wpthree (1-\delta)^{1/2}
+    }
+    {
+        \left(\wptwo\right)^2 (1-\delta \lambda_w)^2 -
+        (1-\delta)^{1/2} (1-\delta \lambda_w)^{3/2} \sigma_w
+    }
+    \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{
+        \left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4} \wpthree (1-\delta)^{1/2}
+    }
+    {
+        (1-\delta \lambda_w)
+        \left(
+        \left(\wptwo\right)^2 -
+        \frac{(1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
+        \right)
+    }
+    \nonumber \\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{
+        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2}
+    }
+    {
+        (1-\delta \lambda_w)^{1/4}
+        \left(
+        \left(\wptwo\right)^2 -
+        \frac{(1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
+        \right)
+    }
+    \nonumber\\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{
+        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2} (1-\delta \lambda_w)^{-1/4}
+    }
+    {
+        \frac{\left(\wptwo\right)^2 (1-\delta \lambda_w)^{1/2}
+            - (1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
+    }
+    \nonumber\\
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{
+        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2} (1-\delta \lambda_w)^{1/4}
+    }
+    {
+        \left(\wptwo\right)^2 (1-\delta \lambda_w)^{1/2}
+        - (1-\delta)^{1/2} \sigma_w
+    }
 \end{align}
+
 Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
 Of course, one needs to pay attention when computing those equations in the code,
 since we could run into a division by zero error,
