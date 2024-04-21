@@ -14,32 +14,37 @@ To achieve this, the document dives into the details of the proposed method.
 
 We begin by outlining the core problem we aim to address (\cref{ch:problem})
 by starting with the motivation,
-proceeding with a short explanation on how to close turbulence \glspl{pde} (\cref{sec:closing_pdes})
+proceeding with a short explanation on how to close turbulence \glspl{pde}
+(\cref{sec:closing-turbulence-pdes-by-integration-over-a-pdf})
 and explaining how we derive the transformation from the formulas
-given by the paper~\citetitle{larson2005using}\cite{larson2005using} (\cref{sec:transformationequations}).
+given by the paper~\citetitle{larson2005using} by~\citeauthor{larson2005using}
+(\cref{sec:derivation-of-trinormal-closures-by-transformation-of-binormal-closures}).
 After that, we define the goal of this thesis (\cref{sec:goal-of-this-thesis}),
-talk about the inputs and outputs (\cref{sec:inputsandoutputs})
-and provide steps for checking those formulas (\cref{sec:steps_for_checking}).
+talk about the inputs and outputs (\cref{sec:inputs-and-outputs-of-the-verification-procedure})
+and provide steps for checking those formulas (\cref{sec:steps-for-checking-the-formulas}).
 
 Following this motivational chapter,
 we establish a foundation with clear definitions of the relevant concepts,
 including normal distributions and the thermodynamic scalars
 crucial for atmospheric modeling (\cref{ch:definitions}).
 
-\Cref{ch:formulas} forms the heart of this work,
+\Cref{ch:formulas-that-define-the-shape-of-the-pdf-and-moments-in-terms-of-pdf-parameters} forms the heart of this work,
 presenting the actual formulas associated with the extended \gls{CLUBB} model.
-This chapter details the introduction of the third normal \gls{pdf} (\cref{sec:def_trinormal})
-and the derivation of key moments within the model (\cref{sec:dedmoments} - \cref{sec:pdfparams}).
+This chapter details the introduction of the third normal \gls{pdf} (\cref{sec:definition-of-the-trinormal-distribution-p_tmg})
+and the derivation of key moments within the model
+(\cref{sec:a-list-of-lower-order-moments-expressed-in-terms-of-pdf-parameters} -
+\cref{sec:solving-for-pdf-parameters-by-using-the-moment-terms}).
 Additionally,
 \cref{sec:addressing-skeweness-and-achieving-closure} proposes a diagnostic approach
 to account for the skewness of heat and moisture,
-while \cref{sec:prop_closure} introduces analytic closure relations
+while \cref{sec:formulating-closure-relationships-for-higher-order-moments-in-terms-of-lower-order-moments}
+introduces analytic closure relations
 for higher-order moments based on the newly formed mixture of three normal distributions.
 
 To handle the mathematical integrations required by the model,
-\cref{ch:intsympy} explores both exact parametric
+\cref{ch:integration-using-sympy} explores both exact parametric
 and numerical integration techniques of verifying the integrals,
-utilizing the SymPy library (\cref{sec:anaintsympy} \& \cref{sec:numintsympy}).
+utilizing the SymPy library (\cref{sec:analytic-integration} \& \cref{sec:numeric-integration}).
 
 Finally,
 \cref{ch:asymptotics} investigates the asymptotic behavior of the extended model,

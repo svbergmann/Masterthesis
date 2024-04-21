@@ -1,8 +1,8 @@
-\section{Numeric integration}\label{sec:numintsympy}
+\section{Numeric integration}\label{sec:numeric-integration}
 
 Again, for better readability, we choose to check the formula for $\overline{w'^2\theta_l'}$
-(this is \cref{itm:checkingstep_6} from \cref{sec:steps_for_checking}).
-As in \cref{sec:numintsympy}, there needs to be some packages imported.
+(this is \cref{itm:checkingstep_6} from \cref{sec:steps-for-checking-the-formulas}).
+As in \cref{sec:analytic-integration}, there needs to be some packages imported.
 We are importing the same packages as in \cref{lst:import} together with some more (\cref{lst:importnum}).
 \begin{listing}[!ht]
     \caption{Import statements}
@@ -174,7 +174,7 @@ to the function \mintinline{python}{.doit(..)}.
 After that, \mintinline{python}{.evalf(..)} just gives the numerical value.
 We try to prove that the integral value equals the function value, 
 hence we are computing the error between those two columns (\cref{lst:attachdiffnumtodataframe})
-and take the mean (\mintinline{python}{numpy.mean(..)} from the package NumPy\autocite{harris2020array})
+and take the mean (\mintinline{python}{numpy.mean(..)} from the package NumPy~\autocite{harris2020array})
 of these new columns (\cref{lst:calcmeannumdiff}) to see if the error is actually numerically 0.
 \begin{listing}[!ht]
     \caption{Attaching the \enquote{diffnum} column to the dataframe}

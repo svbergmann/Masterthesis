@@ -1,11 +1,12 @@
-\section{Closing turbulence pdes by integration over a pdf}\label{sec:closing_pdes}
+\section{Closing turbulence pdes by integration over a pdf}
+\label{sec:closing-turbulence-pdes-by-integration-over-a-pdf}
 
 The \gls{CLUBB} model relies on a set of \glspl{pde} to represent atmospheric processes.
 These equations require closure,
 implying the expression of all terms solely in terms of known quantities.
 This closure process often involves integrals,
 and verifying their analytical solutions ensures the model's mathematical integrity.
-For instance, consider the following prognostic {\gls{pde}\autocite[p. 21]{larson2022clubbsilhs}}:
+For instance, consider the following prognostic \gls{pde}~\autocite[p. 21]{larson2022clubbsilhs}:
 \begin{align*}
     \frac{\partial \overline{w'\theta_l'}}{\partial t}
     &= -\overline{w}\frac{\partial \overline{w'\theta_l'}}{\partial z}
