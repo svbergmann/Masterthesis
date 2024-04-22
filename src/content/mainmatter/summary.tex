@@ -1,11 +1,57 @@
 \chapter{Summary}\label{ch:summary}
 
-In this thesis we saw how adding a third normal distribution to the \gls{CLUBB} model
-would improve the representation of certain shapes.
-While it is not entirely clear at first why this is an actual improvement,
-there are some plots describing certain behaviors in \cref{sec:motivation-to-add-a-third-normal-component}.
-Once we saw the graphical advantages,
-we then defined the actual goal of this thesis (\cref{sec:goal-of-this-thesis}),
-which happens to be
-proving that certain formulas used in the \gls{CLUBB} model still work
-with certain transformation explained in \cref{sec:derivation-of-trinormal-closures-by-transformation-of-binormal-closures}.
+This thesis explores the potential benefits of incorporating a third normal distribution into the \gls{CLUBB} model,
+a framework used for parameterizing atmospheric processes.
+While the initial motivation for this exploration may not be immediately clear,
+\cref{sec:motivation-to-add-a-third-normal-component} delves into graphical illustrations
+that reveal distinct advantages associated
+with this trinormal representation for capturing specific atmospheric behaviors.
+
+Following this initial groundwork,
+\cref{sec:goal-of-this-thesis} formally establishes the central objective of this research.
+That is, to demonstrate the continued validity of existing \gls{CLUBB} model formulas
+within the context of the proposed trinormal distribution.
+Achieving this is based on using certain transformations,
+shown in \cref{sec:derivation-of-trinormal-closures-by-transformation-of-binormal-closures}.
+
+To validate the accuracy of the transformed formulas,
+a verification framework is established.
+This framework defines the inputs and outputs (\cref{sec:inputs-and-outputs-of-the-verification-procedure})
+associated with both the forward run (code used in the model)
+and the backward run (verification direction).
+This is followed by presenting a step-by-step verification procedure,
+ensuring that the transformed formulas are still valid.
+
+The foundation for this investigation is laid out in \cref{ch:definitions}.
+This chapter provides a brief overview of \glspl{pdf},
+including both, the univariate and the multivariate normal distribution.
+Additionally, it explores the concepts of second, third, and fourth-order moments,
+which play a crucial role in characterizing certain statistical properties,
+but more importantly
+-- at least for this work --
+the shapes of the distributions.
+
+Building upon these definitions,
+\cref{sec:definition-of-the-trinormal-distribution-p_tmg}
+introduces the newly proposed trinormal distribution, denoted as $P_{tmg}$.
+This distribution strategically positions the third normal component in-between the two existing components
+within the \gls{CLUBB} model.
+Furthermore, the chapter establishes key properties associated with this new trinormal mixture \gls{pdf}.
+
+\Cref{ch:formulas-that-define-the-shape-of-the-pdf-and-moments-in-terms-of-pdf-parameters}
+details the transformation of the existing \gls{CLUBB} formulas to work with the trinormal representation.
+This chapter serves as a comprehensive reference for the transformed equations employed throughout the thesis.
+
+Following the establishment of the theoretical framework and the transformed formulas,
+\cref{ch:integration-using-sympy} delves into the actual calculation of the integrals.
+This chapter explores the application of a \gls{cas} -- specifically, SymPy --
+for tackling both, symbolic and numerical integration tasks.
+
+The final chapter -- \cref{ch:asymptotics} --
+investigates the asymptotic behavior of the newly derived functions.
+This analysis shows on how the functions behave as their arguments approach specific values (e.g., one or zero).
+Additionally, the chapter identifies parameter value ranges or limitations
+that must be considered when working with these functions.
+
+In essence, this thesis presents a comprehensive investigation into  incorporating a trinormal distribution into the \gls{CLUBB} model.
+The research demonstrates the compatibility of existing \gls{CLUBB} model formulas with the proposed trinormal representation.
