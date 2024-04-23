@@ -1,0 +1,150 @@
+\section{Calculation for the limit for \texorpdfstring{$\overline{w'^4}$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:calculation-for-the-limit-for-wprime4bar-as-delta-goes-to-1}
+
+{\allowdisplaybreaks
+    \begin{align}
+        \label{eq:limit_wprime4_delta_to_1_calc}
+        \lim_{\delta \to 1}\left(\overline{w'^4}\right)
+        = \lim_{\delta \to 1}
+        &\left(\left(\wptwo\right)^2\right.
+        \frac{(1-\delta \lambda_w)^2}{(1-\delta)}
+        \left(3 \tilde{\sigma}_w^4 + 6 \tswfact \tilde{\sigma}_w^2 + \tswfact^2\right) \nonumber\\
+        &+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)}
+        \frac{\left(\overline{w'^3}\right)^2}{\wptwo}
+        + \left.\delta 3 \lambda_w^2 \left(\wptwo\right)^2\right) \\
+        = \lim_{\delta \to 1}
+        &\left(
+        \frac{
+            \left(\wptwo\right)^2 (1-\delta \lambda_w)^2
+            (4 \tilde{\sigma}_w^2 - 2 \tilde{\sigma}_w^4 + 1)
+        }
+        {(1-\delta)}
+        \right.
+        \nonumber\\
+        &+ \left.
+        \frac{
+            \left(\overline{w'^3}\right)^2 +
+            \delta 3 \lambda_w^2 \left(\wptwo\right)^3 \tswfact (1-\delta \lambda_w)
+        }
+        {
+            \tswfact (1-\delta \lambda_w) \wptwo
+        }
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(
+        \frac{
+            \left(\wptwo\right)^2 (1-\delta \lambda_w)^2
+            \left(4 \frac{\sigma_w^2 (1-\delta)}{\wptwo(1-\delta\lambda_w)} -
+            2 \frac{\sigma_w^4 (1-\delta)^2}{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2} +
+            1\right)
+        }
+        {(1-\delta)}
+        \right.
+        \nonumber\\
+        &+ \left.
+        \frac{
+            \left(\overline{w'^3}\right)^2 +
+            \delta 3 \lambda_w^2 \left(\wptwo\right)^3
+            \left(1-\frac{\sigma_w^2 (1-\delta)}{\wptwo(1-\delta\lambda_w)}\right)
+            (1-\delta \lambda_w)
+        }
+        {
+            \left(1 - \frac{\sigma_w^2 (1-\delta)}{\wptwo(1-\delta\lambda_w)}\right)
+            (1-\delta \lambda_w)
+            \wptwo
+        }
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(
+        \frac{
+            \left(\wptwo\right)^2 (1-\delta \lambda_w)^2
+            \left(\frac{
+                4 \left(\sigma_w^2 (1-\delta) \wptwo(1-\delta\lambda_w)\right) -
+                2 \left(\sigma_w^4 (1-\delta)^2\right) +
+                \left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2
+            }{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}\right)
+        }
+        {(1-\delta)}
+        \right.
+        \nonumber\\
+        &+ \left.
+        \frac{
+            \left(\overline{w'^3}\right)^2 +
+            \delta 3 \lambda_w^2 \left(\wptwo\right)^3
+            \left(\frac{
+                \left(\wptwo(1-\delta\lambda_w)\right) -
+                \sigma_w^2 (1-\delta)
+            }{\wptwo(1-\delta\lambda_w)}\right)
+            (1-\delta \lambda_w)
+        }
+        {
+            \left(\frac{
+                \left(\wptwo(1-\delta\lambda_w)\right) - \sigma_w^2 (1-\delta)
+            }{\wptwo(1-\delta\lambda_w)}\right)
+            (1-\delta \lambda_w)
+            \wptwo
+        }
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(
+        \frac{\left(
+        \overbrace{4 \left(\sigma_w^2 (1-\delta) \wptwo(1-\delta\lambda_w)\right)}^{\to 0} -
+        \overbrace{2 \left(\sigma_w^4 (1-\delta)^2\right)}^{\to 0} +
+        \left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2
+        \right)
+        }
+        {(1-\delta)}
+        \right.
+        \nonumber\\
+        &+ \left.
+        \frac{
+            \left(\overline{w'^3}\right)^2 +
+            \delta 3 \lambda_w^2 \left(\wptwo\right)^2
+            \left(\left(\wptwo(1-\delta\lambda_w)\right) - \overbrace{\sigma_w^2 (1-\delta)}^{\to 0}\right)
+        }
+        {\left( \left(\wptwo(1-\delta\lambda_w)\right) - \underbrace{\sigma_w^2 (1-\delta)}_{\to 0} \right)}
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(
+        \frac{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}{(1-\delta)}
+        + \frac{
+            \left(\overline{w'^3}\right)^2 +
+            \delta 3 \lambda_w^2 \left(\wptwo\right)^3
+            (1-\delta\lambda_w)
+        }{\wptwo(1-\delta\lambda_w)}
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(\frac{
+            \left(\wptwo\right)^3 \left(1-\delta\lambda_w\right)^3 +
+            \overbrace{\left(\overline{w'^3}\right)^2 (1-\delta)}^{\to 0} +
+            \overbrace{\delta 3 \lambda_w^2 \left(\wptwo\right)^3 (1-\delta\lambda_w) (1-\delta)}^{\to 0}
+        }{\wptwo(1-\delta\lambda_w)(1-\delta)}
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(\frac{
+            \left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2
+        }{(1-\delta)}
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(\frac{
+            \left(\wptwo\right)^2
+            \left(1 - 2\delta\lambda_w + \delta^2\lambda_w^2\right)
+        }{(1-\delta)}
+        \right)
+        \\
+        = \lim_{\delta \to 1}
+        &\left(\frac{
+            \left(\wptwo\right)^2
+            \left(1 - 2\delta\frac{\sigma_{w 3}^2}{\wptwo} + \delta^2\left(\frac{\sigma_{w 3}^2}{\wptwo} \right)^2\right)
+        }{(1-\delta)}
+        \right)
+    \end{align}
+}
+

@@ -28,12 +28,12 @@ we need the (self-defined) symbols listed in \cref{lst:defsymb}.
     \caption{Defining symbols}
     \label{lst:defsymb}
     \begin{pythoncode}
-        sigma_w = Symbol('\sigma_w')
+        sigma_w = Symbol('\\sigma_w')
         w_1 = Symbol('w_1')
         w_2 = Symbol('w_2')
-        w_bar = Symbol('\overline{w}')
-        sigma_lambda_w = Symbol('\sigma_{\lambda w}')
-        w_prime_2_bar = Symbol('\overline{w\'^2}')
+        w_bar = Symbol('\\overline{w}')
+        sigma_w_3 = Symbol('\\sigma_{w3}')
+        w_prime_2_bar = Symbol('\\overline{w\'^2}')
     \end{pythoncode}
 \end{listing}
 Having defined the symbols, we can proceed with defining the marginal distribution.
@@ -47,7 +47,7 @@ for displaying some standard symbols (\cref{lst:defmarginals}).
         G_1_w_density = density(G_1_w)(sp.abc.w)
         G_2_w = Normal(name='G_2_w', mean=w_2, std=sigma_w)
         G_2_w_density = density(G_2_w)(sp.abc.w)
-        G_3_w = Normal(name='G_3_w', mean=w_bar, std=sigma_lambda_w)
+        G_3_w = Normal(name='G_3_w', mean=w_bar, std=sigma_w_3)
         G_3_w_density = density(G_3_w)(sp.abc.w)
         G_w = ((1 - sp.abc.delta) * sp.abc.alpha * G_1_w_density +
                (1 - sp.abc.delta) * (1 - sp.abc.alpha) * G_2_w_density +
@@ -73,7 +73,7 @@ which we want to compute (\cref{lst:intwp2bar}).
         \overline{w'^2}
         = \int\limits_{-\infty}^{\infty}
         \left(- \overline{w} + w\right)^{2}
-        \left(\frac{\sqrt{2} \delta e^{- \frac{\left(- \overline{w} + w\right)^{2}}{2 \sigma_{\lambda w}^{2}}}}{2 \sqrt{\pi} \sigma_{\lambda w}}
+        \left(\frac{\sqrt{2} \delta e^{- \frac{\left(- \overline{w} + w\right)^{2}}{2 \sigma_{w3}^{2}}}}{2 \sqrt{\pi} \sigma_{w3}}
         + \frac{\sqrt{2} \alpha \left(1 - \delta\right) e^{- \frac{\left(w - w_{1}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right. \nonumber\\
         + \left.\frac{\sqrt{2} \cdot \left(1 - \alpha\right) \left(1 - \delta\right) e^{- \frac{\left(w - w_{2}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right)
         \, dw \nonumber
@@ -101,7 +101,7 @@ to make the output more readable as well as more comparable to the actual functi
     \begin{align}
         \overline{w'^2}
         = - \overline{w}^{2} \delta + \overline{w}^{2} + 2 \overline{w} \alpha \delta w_{1} - 2 \overline{w} \alpha \delta w_{2} - 2 \overline{w} \alpha w_{1} + 2 \overline{w} \alpha w_{2} + 2 \overline{w} \delta w_{2} - 2 \overline{w} w_{2} \nonumber\\
-        - \sigma_{w}^{2} \delta + \sigma_{w}^{2} + \sigma_{\lambda w}^{2} \delta - \alpha \delta w_{1}^{2} + \alpha \delta w_{2}^{2} + \alpha w_{1}^{2} - \alpha w_{2}^{2} - \delta w_{2}^{2} + w_{2}^{2} \nonumber,
+        - \sigma_{w}^{2} \delta + \sigma_{w}^{2} + \sigma_{w3}^{2} \delta - \alpha \delta w_{1}^{2} + \alpha \delta w_{2}^{2} + \alpha w_{1}^{2} - \alpha w_{2}^{2} - \delta w_{2}^{2} + w_{2}^{2} \nonumber,
     \end{align}
 \end{figure}
 We can now compare \cref{fig:intwp2barcalcout} to the given equation.
@@ -110,11 +110,10 @@ To do this, we first need to define the equation for \cref{eq:wp2_bar} in \cref{
     \caption{Python function for the second order moment}
     \label{lst:intwp2barsym}
     \begin{pythoncode}
-        def w_prime_2_bar_check(delta=sp.abc.delta, alpha=sp.abc.alpha, w_1=w_1, w_2=w_2,
-        w_bar=w_bar, sigma_w=sigma_w, sigma_lambda_w=sigma_lambda_w):
+        def w_prime_2_bar_check(delta=sp.abc.delta, alpha=sp.abc.alpha, w_1=w_1, w_2=w_2, w_bar=w_bar, sigma_w=sigma_w, sigma_w_3=sigma_w_3):
             return (((1 - delta) * alpha * ((w_1 - w_bar) ** 2 + sigma_w ** 2)) 
                 + ((1 - delta) * (1 - alpha) * ((w_2 - w_bar) ** 2 + sigma_w ** 2)) 
-                + (delta * sigma_lambda_w ** 2))
+                + (delta * sigma_w_3 ** 2))
     \end{pythoncode}
 \end{listing}
 We can print this equation using \mintinline{python}{display} again (\cref{lst:intwp2barsymprint}).
@@ -131,7 +130,11 @@ We can print this equation using \mintinline{python}{display} again (\cref{lst:i
     \label{fig:intwp2barsymprintout}
     \begin{align}
         \nonumber
-        \overline{w'^2} = \sigma_{\lambda w}^{2} \delta + \alpha \left(1 - \delta\right) \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{1}\right)^{2}\right) + \left(1 - \alpha\right) \left(1 - \delta\right) \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{2}\right)^{2}\right)
+        \overline{w'^2}
+        = \sigma_{w3}^{2} \delta + \alpha \left(1 - \delta\right)
+        \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{1}\right)^{2}\right) +
+        \left(1 -\alpha\right) \left(1 - \delta\right) \left(\sigma_{w}^{2} +
+        \left(- \overline{w} + w_{2}\right)^{2}\right)
     \end{align}
 \end{figure}
 The last step is to check if those two formulas are equivalent to each other.
@@ -142,8 +145,7 @@ All of this can be seen in \cref{lst:intwp2barfinalcheck}.
     \caption{Check if the integral and the given formula are the same}
     \label{lst:intwp2barfinalcheck}
     \begin{pythoncode}
-        display(sp.factor(sp.Eq(w_prime_2_bar_int_val, w_prime_2_bar_check()),
-            sp.abc.alpha, sp.abc.delta))
+        display(sp.factor(sp.Eq(w_prime_2_bar_int_val, w_prime_2_bar_check()), sp.abc.alpha, sp.abc.delta))
     \end{pythoncode}
 \end{listing}
 This code (\cref{lst:intwp2barfinalcheck}) just displays \mintinline{python}{True},

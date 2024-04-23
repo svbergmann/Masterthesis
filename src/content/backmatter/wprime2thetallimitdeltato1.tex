@@ -1,0 +1,45 @@
+\section{Calculation for the limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:calculation-for-the-limit-for-wprime2thetalbar-as-delta-goes-to-1}
+
+\begin{align}
+    \label{eq:limit_wprime2thetalbar_delta_to_1}
+    \lim_{\delta \to 1}\left(\wptwothlp\right)
+    &= \lim_{\delta \to 1}\left(
+    \frac{1}{\tswfact}
+    \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w}
+    \frac{\overline{w'^3}}{\overline{w'^2}} \overline{w'\theta_l'}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{(1 - \delta \lambda_{w\theta})}
+    {\tswfact(1-\delta \lambda_w)}
+    \frac{\overline{w'^3} \cdot \overline{w'\theta_l'}}{\overline{w'^2}}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{(1 - \delta \lambda_{w\theta}) \cdot \overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {(1 - \frac{\sigma_w^2 (1-\delta)}{\overline{w'^2}(1-\delta\lambda_w)})(1-\delta \lambda_w)\overline{w'^2}}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{(1 - \delta \lambda_{w\theta}) \cdot \overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {\frac{\overline{w'^2}(1-\delta\lambda_w) - \sigma_w^2 (1-\delta)}
+    {\overline{w'^2}(1-\delta\lambda_w)}
+        (1-\delta \lambda_w) \overline{w'^2}}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{(1 - \delta \lambda_{w\theta}) \cdot \overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {\overline{w'^2}(1-\delta\lambda_w) - \underbrace{\sigma_w^2 (1-\delta)}_{\to 0}}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{(1 - \delta \frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp}) \cdot \overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {\overline{w'^2}(1-\delta \frac{\sigma_{w 3}^2}{\wptwo})}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}\left(
+    \frac{\overline{w'^3} \cdot \left(\overline{w'\theta_l'} - \delta \rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}\right)}
+    {\overline{w'^2} - \delta \sigma_{w 3}^2}
+    \right)
+\end{align}

@@ -11,20 +11,20 @@
     Under the Supervision of Professor Vince Larson
 \end{center}
 
-The \gls{CLUBB} model plays a crucial role in simulating atmospheric phenomena.
-It uses the sum of two normal \glspl{pdf} to represent subgrid variability within a single grid layer.
+The \gls{CLUBB} model uses the sum of two normal \gls{pdf} components to represent subgrid variability
+within a single grid layer of an atmospheric model.
 This binormal approach, while computationally efficient,
 restricts the model's ability to capture the full spectrum of potential shapes encountered in real-world atmospheric data.
 
-This thesis proposes an innovative extension to the \gls{CLUBB} model.
-We introduce a third normal \gls{pdf} strategically positioned between the existing two,
+This thesis proposes to introduce a third normal \gls{pdf} component strategically positioned between the existing two,
 significantly enhancing the model's representational flexibility.
 This trinormal representation allows for a wider range of grid-layer shapes
 while permitting analytic solutions for certain higher order moments.
 
 The core of this work lies in deriving the necessary mathematical transformations
 for incorporating the third normal \gls{pdf} seamlessly into the \gls{CLUBB} framework.
-This thesis lists all formulas, inputs, and outputs associated with the extended model.
+This thesis lists all formulas, inputs, and outputs associated with the extended model
+as well as gives an outline on how to check those equations.
 Additionally,
-it tries to describe certain asymptotic behavior of the trinormal \gls{pdf}
+it describes certain asymptotic behavior of the trinormal \gls{pdf}
 under various parameter settings.

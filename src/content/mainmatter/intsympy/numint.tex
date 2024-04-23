@@ -19,19 +19,19 @@ We still use the symbols as in \cref{lst:defsymb}, together with the ones in \cr
     \caption{Defining symbols}
     \label{lst:defsymbnum}
     \begin{pythoncode}
-        sigma_lambda_theta_l = Symbol('\sigma_{\lambda\\theta_l}')
         theta_l_1 = Symbol('\\theta_{l1}') 
         theta_l_2 = Symbol('\\theta_{l2}')
         theta_l_bar = Symbol('\overline{\\theta_l}')
         sigma_theta_l_1 = Symbol('\\sigma_{\\theta_{l1}}')
         sigma_theta_l_2 = Symbol('\\sigma_{\\theta_{l2}}')
-        rho_w_theta_l = Symbol('\rho_{w\\theta_l}')
-        w_prime_3_bar = Symbol('\overline{w\'^3}')
-        w_prime_theta_l_prime_bar = Symbol('\overline{w\'\\theta\'_l}')
-        w_prime_2_theta_prime_l_bar = Symbol('\overline{w\'^2\\theta\'_l}')
-        sigma_tilde_w = Symbol('\Tilde{\sigma}_w')
-        lambda_w_theta = Symbol('\lambda_{w\\theta}')
-        lambda_w = Symbol('\lambda_w')
+        sigma_theta_l_3 = Symbol('\\sigma_{\\theta_l 3}')
+        rho_w_theta_l = Symbol('\\rho_{w\\theta_l}')
+        w_prime_3_bar = Symbol('\\overline{w\'^3}')
+        w_prime_theta_l_prime_bar = Symbol('\\overline{w\'\\theta\'_l}')
+        w_prime_2_theta_prime_l_bar = Symbol('\\overline{w\'^2\\theta\'_l}')
+        sigma_tilde_w = Symbol('\\tilde{\\sigma}_w')
+        lambda_w_theta = Symbol('\\lambda_{w\\theta}')
+        lambda_w = Symbol('\\lambda_w')
     \end{pythoncode}
 \end{listing}
 
@@ -47,10 +47,10 @@ We start defining the integral by defining the marginals (\cref{lst:defmarginals
             std=sp.Matrix([[sigma_w ** 2, 0], [0, sigma_theta_l_2 ** 2]]))
         G_2_w_theta_density = density(G_2_w_theta)(sp.abc.w, sp.abc.theta)
         G_3_w_theta = Normal(name='G_3_w_theta', mean=sp.Matrix([w_bar, theta_l_bar]),
-            std=sp.Matrix([[sigma_lambda_w ** 2, 
-                rho_w_theta_l * sigma_lambda_w * sigma_lambda_theta_l], 
-                [rho_w_theta_l * sigma_lambda_w * sigma_lambda_theta_l, 
-                sigma_lambda_theta_l ** 2]]))
+            std=sp.Matrix([[sigma_w_3 ** 2,
+                rho_w_theta_l * sigma_w_3 * sigma_theta_l_3],
+                [rho_w_theta_l * sigma_w_3 * sigma_theta_l_3,
+                sigma_theta_l_3 ** 2]]))
         G_3_w_theta_density = sp.simplify(density(G_3_w_theta)(sp.abc.w, sp.abc.theta))
         G_w_theta = (
         (1 - sp.abc.delta) * sp.abc.alpha * density(G_1_w_theta)(sp.abc.w, sp.abc.theta) 
@@ -72,11 +72,11 @@ The integral which needs to be computed is then defined as in \cref{lst:wp2theta
 \end{listing}
 
 Here (\cref{lst:wp2thetalbarcheck}), the output is omitted for better readability.
-We do not yet compute the integral, 
-because due to the complexity, 
+We do not yet compute the integral,
+because due to the complexity,
 unfortunately this is not working with \mintinline{python}{SymPy}.
 
-Since there is still the equation to check needed, 
+Since there is still the equation to check needed,
 we proceed by defining a function for that in \cref{lst:intwp2thetalbarsym}.
 \begin{listing}[!ht]
     \caption{Python function for $\overline{w'^2\theta_l}$}
@@ -103,18 +103,18 @@ we proceed by defining a function for that in \cref{lst:intwp2thetalbarsym}.
         &= \frac{\overline{w'\theta'_l} \cdot \overline{w'^3} \left(- \lambda_{w\theta} \delta + 1\right)}{\overline{w'^2} \cdot \left(1 - \Tilde{\sigma}_w^{2}\right) \left(- \lambda_{w} \delta + 1\right)}
     \end{align}
 \end{figure}
-Looking at \cref{fig:intwp2thetalbarsymout}, 
-there are some other equations needed like \cref{eq:w_prime_theta_l_prime_bar}, 
+Looking at \cref{fig:intwp2thetalbarsymout},
+there are some other equations needed like \cref{eq:w_prime_theta_l_prime_bar},
 \cref{eq:wp3_bar}, \cref{eq:wp2_bar}, \cref{eq:sigma_w_tilde}, and \cref{eq:lambda}.
-We do not list the functions to those equations here, 
-because they are defined the same way like the other equations are defined as functions.
+We do not list the functions to those equations here,
+because they are defined the same way as the other equations are defined as functions.
 
-Instead, since we cannot compute the integral analytically, 
-we can create a \mintinline{python}{dataframe} 
+Instead, since we cannot compute the integral analytically,
+we can create a \mintinline{python}{dataframe}
 using \mintinline{python}{pandas}\autocite{mckinney-proc-scipy-2010}.
 The columns for this dataframe are going to be all the inputs we have.
-To get all permutations, 
-this code (\cref{lst:createdataframe}) is also using \mintinline{python}{product(..)} 
+To get all permutations,
+this code (\cref{lst:createdataframe}) is also using \mintinline{python}{product(..)}
 from the \mintinline{python}{itertools} package.
 \begin{listing}[!ht]
     \caption{Create a dataframe and putting in arbitrary numbers}
@@ -129,7 +129,7 @@ from the \mintinline{python}{itertools} package.
     \end{pythoncode}
 \end{listing}
 
-We append another column which is called \enquote{checkval} 
+We append another column which is called \enquote{checkval}
 and lists the values for the given equation to check.
 \begin{listing}[!ht]
     \caption{Attaching the \enquote{checkval} column to the dataframe}
@@ -143,17 +143,17 @@ and lists the values for the given equation to check.
                  sp.abc.delta: x[sp.abc.delta], rho_w_theta_l: x[rho_w_theta_l]}), axis=1))
     \end{pythoncode}
 \end{listing}
-This code also uses the function defined in \cref{lst:intwp2thetalbarsym}, 
+This code also uses the function defined in \cref{lst:intwp2thetalbarsym},
 where all other equations are substituted into.
-The function \mintinline{python}{df.apply(..)} is used 
-to apply the function given in the parenthesis to all rows of the dataframe 
-by specifying a \mintinline{python}{lambda x}, 
+The function \mintinline{python}{df.apply(..)} is used
+to apply the function given in the parenthesis to all rows of the dataframe
+by specifying a \mintinline{python}{lambda x},
 where \mintinline{python}{x} is corresponding to the given dataframe, \mintinline{python}{df}.
-Lastly, there is also the \mintinline{python}{axis=1} parameter, 
+Lastly, there is also the \mintinline{python}{axis=1} parameter,
 which specifies the direction of applying the function.
 
-Next, we are actually computing $\overline{w'^2\theta_l}$ numerically by using the quadrature method 
-and applying the values of this integrals 
+Next, we are actually computing $\overline{w'^2\theta_l}$ numerically by using the quadrature method
+and applying the values of this integrals
 to a new column in the dataframe (\cref{lst:attachnuminttodataframe}).
 \begin{listing}[!ht]
     \caption{Attaching the \enquote{numint} column to the dataframe}
@@ -168,11 +168,11 @@ to a new column in the dataframe (\cref{lst:attachnuminttodataframe}).
         }).doit(conds='none', method='quad').evalf()), axis=1))
     \end{pythoncode}
 \end{listing}
-Here, we are using the integral which has been specified earlier 
-and adding the parameter \mintinline{python}{method='quad'} 
+Here, we are using the integral which has been specified earlier
+and adding the parameter \mintinline{python}{method='quad'}
 to the function \mintinline{python}{.doit(..)}.
 After that, \mintinline{python}{.evalf(..)} just gives the numerical value.
-We try to prove that the integral value equals the function value, 
+We try to prove that the integral value equals the function value,
 hence we are computing the error between those two columns (\cref{lst:attachdiffnumtodataframe})
 and take the mean (\mintinline{python}{numpy.mean(..)} from the package NumPy~\autocite{harris2020array})
 of these new columns (\cref{lst:calcmeannumdiff}) to see if the error is actually numerically 0.

@@ -6,7 +6,7 @@
 
 import sympy as sp
 from IPython.display import display
-from sympy import abc, oo
+from sympy import oo
 
 import checked_functions as c_f
 import symbols as sym

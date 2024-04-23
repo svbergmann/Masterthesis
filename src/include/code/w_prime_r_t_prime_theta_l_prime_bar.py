@@ -13,7 +13,7 @@ pd.set_option('display.max_rows', None)
 
 import sympy as sp
 from IPython.display import display
-from sympy import abc, oo, Rational
+from sympy import oo, Rational
 
 import checked_functions as c_f
 import symbols as sym
@@ -56,7 +56,7 @@ display(sp.Eq(sym.G_w_theta_l_r_t, c_f.G_w_theta_l_r_t))
 
 w_prime_r_t_prime_theta_l_prime_bar = sp.Integral(
     (sp.abc.w - sym.w_bar) * (sym.r_t - sym.r_t_bar) * (
-                sp.abc.theta - sym.theta_l_bar) * c_f.G_w_theta_l_r_t,
+            sp.abc.theta - sym.theta_l_bar) * c_f.G_w_theta_l_r_t,
     [sp.abc.w, -oo, oo],
     [sym.theta_l, -oo, oo],
     [sym.r_t, -oo, oo])
