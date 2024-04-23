@@ -7,7 +7,7 @@ employed within the \gls{CLUBB} parameterization.
 Our focus here lies on achieving closure for the following terms:
 \begin{itemize}
     \item $\wpfour$: The fourth-order moment of up-/downdrafts,
-    \item $\wptwothlp$: the so called flux of flux,
+    \item $\wptwothlp$: the so-called flux of flux,
     \item $\wpthlptwo$: the flux of variance,
     \item $\wprtpthlp$: and the flux of covariance.
 \end{itemize}
@@ -43,7 +43,7 @@ Cumulus cloud formation mostly occurs at the edges,
 or \enquote{tails} of the \gls{pdf} for a specific variable.
 These tails represent regions where the probability of encountering extreme values of the variable is relatively higher.
 As the relative \enquote{width} of the normal distribution representing $w$ increases ($\tilde{\sigma}_w$),
-the magnitude of $\thlpthree$ also grows (refer to ~\eqref{eq:thlp3_beta} for details).
+the magnitude of $\thlpthree$ also grows (refer to ~\cref{eq:thlp3_beta} for details).
 In simpler terms, a larger value of $\thlpthree$ corresponds to a broader \gls{pdf} for the up-/downdraft variable.
 This broader \gls{pdf} deviates more significantly from a double delta function,
 which is a construct with two spikes at zero.
@@ -60,7 +60,7 @@ and $\widehat{w_2}$ (\cref{eq:w2_solved}) into \cref{eq:wp4_div_wp2_2}.
     &= 3 \frac{\tsw^4}{\tswfact^2} + 6 \frac{\tsw^2}{\tswfact} + 1 \nonumber\\
     &+ \widehat{Sk}_w^2 + \frac{1}{\tswfact^2} \frac{(1-\delta)}{(1-\delta \lambda_w)^2} \delta 3 \lambda_w^2,
 \end{align}
-and also
+leading to
 \begin{align}
     \label{eq:wp4}
     \overline{w'^4}
@@ -76,10 +76,10 @@ $\wptwothlp$ displays independence from the parameter $\beta$
 within the context of the chosen \gls{pdf}.
 
 To proceed, we can substitute the previously derived expressions for
-$\widehat{w_1}$ (\cref{eq:w1_solved}), $\widehat{w_2}$ (\cref{eq:w2_solved}),
+$\widehat{w}_1$ (\cref{eq:w1_solved}), $\widehat{w}_2$ (\cref{eq:w2_solved}),
 $\widehat{Sk}_w$ (\cref{eq:sk_hat_w_nondim}),
-$\widehat{\tilde{\theta}_{l1}}$ (\cref{eq:thl1_tilde_solved}),
-and $\widehat{\tilde{\theta}_{l2}}$ (\cref{eq:thl2_tilde_solved}) into \cref{eq:wp2thlp_div_wp2thl2}.
+$\tilde{\theta}_{l1}$ (\cref{eq:thl1_tilde_solved}),
+and $\tilde{\theta}_{l2}$ (\cref{eq:thl2_tilde_solved}) into \cref{eq:wp2thlp_div_wp2thl2}.
 This substitution process will yield an explicit formula for $\wptwothlp$ that solely relies on known quantities,
 such as the prognostic moments directly calculated by the model.
 \begin{align}

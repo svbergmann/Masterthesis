@@ -1,5 +1,4 @@
-\section{Addressing skewness and achieving closure}
-\label{sec:addressing-skeweness-and-achieving-closure}
+\section{Approximation of scalar skewnesses}\label{sec:approximation-of-scalar-skewnesses}
 
 Closing the system of prognostic equations within \gls{CLUBB} needs the specification of
 the skewness terms $Sk_{\theta_l}$ and $Sk_{r_t}$.
@@ -54,8 +53,8 @@ to be either smaller or larger than $\left| Sk_w \right|$.
 This behavior depends on the interplay between the variance of $w$ ($\tsw^2$),
 the covariance ($c_{w \theta_l}$),
 and the parameter $\beta$.
-This highlights the potential for discrepancies between the estimated skewness
-and the actual skewness observed in real-world atmospheric data.
+This highlights the potential for an inconsistency between the estimated skewness and the other binormal moments,
+e.g.\ a single value of $\beta$ may not correspond exactly to any trivariate normal distribution
 
 To summarize, \cref{eq:Sk_hat_thl_beta} offers a computationally efficient method for skewness estimation,
 but it comes with limitations.
@@ -92,22 +91,3 @@ This substitution leads to a more concise representation.
 \end{align}
 where the correlation of $r_t$ and $\theta_l$ within the individual normal distributions is $r_{r_t \theta_l}$,
 and $c_{r_t \theta_l}$ represents the total correlation across the entire trinormal \gls{pdf}.
-
-\gls{CLUBB} chooses a specific formula for the $w$-\enquote{width} of the individual normals,
-which is the following.
-\begin{align}
-    \label{eq:sigma_tilde_w_restricted}
-    \tsw^2
-    &= \gamma \left[1 - \max(c_{w \theta_l}^2, c_{w r_t}^2) \right].
-\end{align}
-The stated formula incorporates the covariances
--- $c_{w r_t}^2$ and $c_{w \theta_l}^2$ --
-and ensures that $\tilde{\sigma}_w^2$ is bounded between 0 and 1.
-That is because a new dimensionless parameter $\gamma$ was introduced
-whose domain is $[0, 1)$.
-This mathematical safeguard guarantees
-that even when the original covariances ($c_{w r_t}^2$ and $c_{w \theta_l}^2$)
-become large in magnitude,
-the derived variance remains within a realistic and mathematically tractable bound
-($0 \leq \widehat{c}_{w \theta_l}^2, \widehat{c}_{w r_t}^2$ < 1).
-It also follows, that $\tilde{\sigma}_{r_{ti}}$, and $r_{r_t \theta_l}$ remain in a realistic bound.

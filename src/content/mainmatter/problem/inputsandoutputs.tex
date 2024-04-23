@@ -19,7 +19,7 @@ So we try to solve these \gls{pdf} parameters (13),
 namely $\alpha$, $\widehat{w}_1$, $\widehat{w}_2$, $\tilde{\theta}_{l1}$, $\tilde{\theta}_{l2}$, $\tilde{r}_{t1}$,
 $\tilde{r}_{t2}$, $\tilde{\sigma}_w$, $\tilde{\sigma}_{\theta_{l1}}$, $\tilde{\sigma}_{\theta_{l2}}$,
 $\tilde{\sigma}_{r_{t1}}$, $\tilde{\sigma}_{r_{t2}}$, and $r_{r_t \theta_l}$.
-All the formulas are listed in \cref{ch:formulas}.
+All the formulas are listed in \cref{ch:formulas-that-define-the-shape-of-the-pdf-and-moments-in-terms-of-pdf-parameters}.
 Ultimately, the code needs to express even higher order moments such as $\overline{w'^2 \theta_l'}$
 in terms of the lower order moments.
 These higher order moments are the outputs in the \enquote{forward run}.
@@ -49,4 +49,4 @@ is the \gls{pdf} of the sum of all three normal distributions.
 Since some integrals are challenging to verify symbolically with SymPy,
 we are using the quadrature method of SymPy to calculate the integrals
 and choose arbitrary values for the inputs.
-All of this can be seen in \cref{sec:numintsympy}.
+All of this can be seen in \cref{sec:numeric-integration}.

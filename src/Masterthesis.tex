@@ -1,5 +1,3 @@
-%! Compiler = pdflatex --shell-escape
-
 \documentclass[12pt, listof=totoc, bibliography=totoc, parskip=full, numbers=noenddot]{scrreprt}
 \setcounter{secnumdepth}{\subsubsectionnumdepth}
 
@@ -14,9 +12,9 @@
 
     \setcounter{page}{1}
     \thispagestyle{empty}
-
+    \hypersetup{pageanchor=false}
     \include{content/frontmatter/titlepage}
-
+    \hypersetup{pageanchor=true}
     \newpage
     \clearpage
     \pagestyle{plain}
@@ -34,28 +32,28 @@
     \vfill
 
     \singlespacing
-    \renewcommand*\contentsname{\centering\normalfont{TABLE OF CONTENTS}}
+    \renewcommand*\contentsname{\texorpdfstring{\centering\normalfont{TABLE OF CONTENTS}}{TABLE OF CONTENTS}}
     \tableofcontents
     \newpage
 
     \doublespacing
 
-    \renewcommand*\listfigurename{\centering\normalfont{LIST OF FIGURES}}
+    \renewcommand*\listfigurename{\texorpdfstring{\centering\normalfont{LIST OF FIGURES}}{LIST OF FIGURES}}
     \listoffigures
     \newpage
 
-    \renewcommand*\listtablename{\centering\normalfont{LIST OF TABLES}}
+    \renewcommand*\listtablename{\texorpdfstring{\centering\normalfont{LIST OF TABLES}}{LIST OF TABLES}}
     \listoftables
     \newpage
 
-    \renewcommand*\listlistingname{\centering\normalfont{LIST OF LISTINGS}}
+    \renewcommand*\listlistingname{\texorpdfstring{\centering\normalfont{LIST OF LISTINGS}}{LIST OF LISTINGS}}
     \listoflistings
     \newpage
 
-    \printglossary[type=\acronymtype, title={\centering\normalfont{LIST OF ACRONYMS}}]
+    \printglossary[type=\acronymtype, title={\texorpdfstring{\centering\normalfont{LIST OF ACRONYMS}}{LIST OF ACRONYMS}}]
     \newpage
 
-    \printglossary[type=symbolslist, title={\centering\normalfont{LIST OF SYMBOLS}}]
+    \printglossary[type=symbolslist, title={\texorpdfstring{\centering\normalfont{LIST OF SYMBOLS}}{LIST OF SYMBOLS}}]
     \newpage
 
     \thispagestyle{plain}
