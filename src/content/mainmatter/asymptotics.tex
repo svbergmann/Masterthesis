@@ -41,7 +41,7 @@ That is, for instance,
 that the variance of $w$ over the whole \gls{pdf} has to be strictly greater than $\delta$ times
 the squared standard deviation in $w$ of the third normal distribution.
 
-For realizability, it turns out that we want
+To make the resulting \glspl{pdf} realizable, it turns out\autocite{larson2022clubbsilhs}, that we need to have
 $-1 < \widehat{c}_{w \theta_l}, \widehat{c}_{w r_t}, \widehat{c}_{r_t \theta_l} < 1$.
 This is for instance:
 \begin{align}
@@ -53,13 +53,18 @@ So it might be safer to set
 \begin{align}
     \label{eq:lambda_corr_ineq}
     \lambda_w , \lambda_r < \lambda_{w r}
-    \iff
-    \frac{\sigma_{w 3}^2}{\wptwo}, \frac{\sigma_{r_t 3}^2}{\rtptwo} <
-    \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}
+    &\iff
+    \left(\frac{\sigma_{w 3}^2}{\wptwo} < \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}\right)
+    \land
+    \left(\frac{\sigma_{r_t 3}^2}{\rtptwo} < \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}\right) \nonumber\\
+    &\iff
+    \left(\sigma_{w 3} \wprtp < \rho_{w r_t} \sigma_{r_t 3} \wptwo\right)
+    \land
+    \left(\sigma_{r_t 3} \wprtp < \rho_{w r_t} \sigma_{w 3} \rtptwo\right) \nonumber\\
 \end{align}
 so that the \gls{rhs} is greater and the bound is less restrictive.
 If we assume $\lambda_\theta = \lambda_r$ and $\lambda_{w\theta} = \lambda_{wr}$,
-then we have 5 new \gls{pdf} parameters:
+then the model gains 5 new \gls{pdf} parameters:
 $\delta$, $\lambda_w$, $\lambda_\theta$, $\lambda_{w \theta}$, $\lambda_{\theta r}$.
 If we want the \gls{pdf} to revert to a single normal distribution in the limit of zero skewness,
 then we need
@@ -70,91 +75,25 @@ then we need
 \end{align}
 as $Sk_w \to 0$.
 That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
-
 \begin{align}
-    &\lim_{\delta \to 1, \lambda_w \to 1}
+    \lim_{\delta \to 1, \lambda_w \to 1}\left(\widehat{Sk}_w\right)
+    =&\lim_{\delta \to 1, \lambda_w \to 1}
     \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
     \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
     \frac{1}{1-\delta} \nonumber \\
     =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{1}{\left(1-\frac{\sigma_w (1-\delta)^{1/2}}
-    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}}\right)^{3/2}}
+    \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
     \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
     \frac{1}{1-\delta} \nonumber \\
     =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{1}{
-        \left(\frac{\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
-        {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}}\right)^{3/2}
-    }
+    \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
+    \frac{\overbrace{(1-\delta)^{1/2}}^{\to 0}}{(1-\delta \lambda_w)^{3/2}}
     \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{\left(\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2}\right)^{3/2}}
-    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
-    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
-    \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{\left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4}}
-    {\left(\wptwo\right)^{1/2} \left(1-\delta\lambda_w\right)^{1/2} - \sigma_w (1-\delta)^{1/2}}
-    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{3/2}}
-    \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{
-        \left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4} \wpthree (1-\delta)^{1/2}
-    }
-    {
-        \left(\wptwo\right)^2 (1-\delta \lambda_w)^2 -
-        (1-\delta)^{1/2} (1-\delta \lambda_w)^{3/2} \sigma_w
-    }
-    \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{
-        \left(\wptwo\right)^{3/4} \left(1-\delta\lambda_w\right)^{3/4} \wpthree (1-\delta)^{1/2}
-    }
-    {
-        (1-\delta \lambda_w)
-        \left(
-        \left(\wptwo\right)^2 -
-        \frac{(1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
-        \right)
-    }
-    \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{
-        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2}
-    }
-    {
-        (1-\delta \lambda_w)^{1/4}
-        \left(
-        \left(\wptwo\right)^2 -
-        \frac{(1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
-        \right)
-    }
-    \nonumber\\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{
-        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2} (1-\delta \lambda_w)^{-1/4}
-    }
-    {
-        \frac{\left(\wptwo\right)^2 (1-\delta \lambda_w)^{1/2}
-            - (1-\delta)^{1/2} \sigma_w}{(1-\delta \lambda_w)^{1/2}}
-    }
-    \nonumber\\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
-    \frac{
-        \left(\wptwo\right)^{3/4} \wpthree (1-\delta)^{1/2} (1-\delta \lambda_w)^{1/4}
-    }
-    {
-        \left(\wptwo\right)^2 (1-\delta \lambda_w)^{1/2}
-        - (1-\delta)^{1/2} \sigma_w
-    }
+    =& \quad 0
 \end{align}
-
 Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
 Of course, one needs to pay attention when computing those equations in the code,
 since we could run into a division by zero error,
@@ -163,6 +102,7 @@ depending on which values are computed first.
 Also, we want to see how the \enquote{main} equations behave in the limit of $\delta \to 1$ as well as any $\lambda \to 1$.
 For those limits, we assume all lower-order moments as constants, because in the code, they are just given to us.
 We start with letting $\delta \to 1$.
+
 
 \section{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprime4bar-as-delta-goes-to-1}
@@ -178,10 +118,49 @@ We start with letting $\delta \to 1$.
     \right)
 \end{align}
 
+
 \section{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprime2thetalbar-as-delta-goes-to-1}
 
 \begin{align}
     \label{eq:limit_wprime2thetalbar_delta_to_1}
     \lim_{\delta \to 1}\left(\wptwothlp\right)
+    = \lim_{\delta \to 1}\left(
+    \frac{\overline{w'^3} \cdot \left(\overline{w'\theta_l'} - \delta \rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}\right)}
+    {\overline{w'^2} - \delta \sigma_{w 3}^2}
+    \right)
+\end{align}
+
+
+\section{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:limit-for-wprimethetal2bar-as-delta-goes-to-1}
+
+\begin{align}
+    \label{eq:limit_wprimethetalprime2bar_delta_to_1}
+    \lim_{\delta \to 1}\left(\wptwothlp\right)
+    = \frac{2}{3}
+    &\left(
+    \lim_{\delta \to 1}
+    \left(
+    \frac{
+        \wpthree \left(\wpthlp \right)^2 - 2\delta\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3} \wpthree \left(\wpthlp \right) +
+        \delta^2 \rho_{w \theta_l}^2 \sigma_{w 3}^2 \sigma_{\theta_l 3}^2\wpthree
+    }
+    {
+        \left(\wptwo\right)^2 - 2\wptwo\delta\sigma_{w 3}^2 + \delta^2\sigma_{w 3}^4
+    }
+    \right)
+    \right.
+    \nonumber\\ &+
+    \left.
+    \lim_{\delta \to 1}
+    \left(
+    \frac{
+        \wptwo \; \thlptwo - 2\delta\sigma_{w 3}^2 \thlptwo + \delta^2 \thlptwo \frac{\sigma_{w 3}^4}{\wptwo}
+    }
+    {
+        (1-\delta \lambda_{w \theta}) \wpthlp
+    }
+    \right)
+    \right)
 \end{align}
