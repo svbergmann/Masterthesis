@@ -169,7 +169,17 @@ to a new column in the dataframe (\cref{lst:attachnuminttodataframe}).
     \end{pythoncode}
 \end{listing}
 Here, we are using the integral which has been specified earlier
-and adding the parameter \mintinline{python}{method='quad'}
+and specify the numerical integration method by adding the parameter \mintinline{python}{method='quad'}
+\footnote{
+    This parameter is telling SymPy to use the quadrature method to compute the given integral numerically.
+    For further explanation on how this method is working,
+    we refer to the SymPy documentation which can be found here:
+    \url{https://docs.sympy.org/latest/modules/integrals/integrals.html},
+    as well as the SciPy documentation on integration, which can be found here:
+    \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html}.
+    Some SciPy~\cite{2020SciPy-NMeth} functions are called by the SymPy library.
+    Therefore, this reference shows up here.
+}
 to the function \mintinline{python}{.doit(..)}.
 After that, \mintinline{python}{.evalf(..)} just gives the numerical value.
 We try to prove that the integral value equals the function value,
