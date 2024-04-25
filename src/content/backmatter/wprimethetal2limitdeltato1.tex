@@ -4,100 +4,36 @@
 \begin{align}
     \label{eq:limit_wprimethetalprime2bar_delta_to_1_calc}
     \lim_{\delta \to 1}\left(\wpthlptwo\right)
-    = \lim_{\delta \to 1}
-    &\left(
+    &= \lim_{\delta \to 1}
+    \left(
     \frac{
         2 (1-\delta \lambda_{w \theta})^2 \wpthree \left(\wpthlp \right)^2
     }
-    {3 (1-\delta \lambda_w)^2 \tswfact^2 \left(\wptwo \right)^2} +
+    {3 (1-\delta \lambda_w)^2 \cancelto{1}{\tswfact}^2 \left(\wptwo \right)^2} +
     \frac{
-        (1-\delta \lambda_w) \tswfact \wptwo \; \thlptwo
+        (1-\delta \lambda_w) \cancelto{1}{\tswfact} \wptwo \; \thlptwo
     }
     {3 (1-\delta \lambda_{w \theta}) \wpthlp}
     \right)
     \\
-    = \lim_{\delta \to 1}
-    &\left(
-    \frac{
-        2 (1-\delta \lambda_{w \theta})^3 \wpthree \left(\wpthlp \right)^3 +
-        (1-\delta \lambda_w)^3 \tswfact^3 \left(\wptwo\right)^3 \; \thlptwo
-    }
-    {
-        3 (1-\delta \lambda_w)^2 \tswfact^2 \left(\wptwo \right)^2 (1-\delta \lambda_{w \theta}) \wpthlp
-    }
-    \right)
-    \\
-    = \lim_{\delta \to 1}
-    &\left(
-    \frac{
-        2 (1-\delta \lambda_{w \theta})^3 \wpthree \left(\wpthlp \right)^3 +
-        (1-\delta \lambda_w)^3 \left(1 - \frac{\overbrace{\sigma_w^2 (1-\delta)}^{\to 0}}{\wptwo (1-\delta\lambda_w)}\right)^3 \left(\wptwo\right)^3 \; \thlptwo
-    }
-    {
-        3 (1-\delta \lambda_w)^2 \left(1 - \underbrace{\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)}}_{\to 0}\right)^2 \left(\wptwo \right)^2 (1-\delta \lambda_{w \theta}) \wpthlp
-    }
-    \right)
-    \\
-    = \lim_{\delta \to 1}
-    &\left(
-    \frac{
-        2 (1-\delta \lambda_{w \theta})^3 \wpthree \left(\wpthlp \right)^3 +
-        (1-\delta \lambda_w)^3 \left(\wptwo\right)^3 \; \thlptwo
-    }
-    {
-        3 (1-\delta \lambda_w)^2 \left(\wptwo \right)^2 (1-\delta \lambda_{w \theta}) \wpthlp
-    }
-    \right)
-    \\
-    = \frac{2}{3}
-    &\left(
+    &= \frac{2}{3} \lim_{\delta \to 1}
+    \left(
+    \frac{(1-\delta \lambda_{w \theta})^2 \wpthree \left(\wpthlp \right)^2}
+    {(1-\delta \lambda_w)^2 \left(\wptwo \right)^2}
+    \right) +
     \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(1 - 2\delta\frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp} +
-        \delta^2\left(\frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp}\right)^2\right) \wpthree \left(\wpthlp \right)^2
+        (1-\delta \lambda_w) \wptwo \; \thlptwo
     }
     {
-        \left(\wptwo\right)^2 - 2\wptwo\delta\sigma_{w 3}^2 + \delta^2\sigma_{w 3}^4
+        3 (1-\delta \lambda_{w \theta}) \wpthlp
     }
-    \right)
-    \right.
-    \nonumber\\ &+
-    \left.
-    \lim_{\delta \to 1}
-    \left(
-    \frac{
-        \left(1 - 2\delta\frac{\sigma_{w 3}^2}{\wptwo} + \delta^2\left(\frac{\sigma_{w 3}^2}{\wptwo} \right)^2\right) \wptwo \; \thlptwo
-    }
-    {
-        (1-\delta \lambda_{w \theta}) \wpthlp
-    }
-    \right)
     \right)
     \\
-    = \frac{2}{3}
-    &\left(
+    &= \frac{2 \wpthree \left(\wpthlp \right)^2}{3 \left(\wptwo \right)^2} \lim_{\delta \to 1}
+    \left(\left(\frac{1-\delta \lambda_{w \theta}}{1-\delta \lambda_w}\right)^2\right) +
+    \frac{\wptwo \; \thlptwo}{3 \wpthlp}
     \lim_{\delta \to 1}
-    \left(
-    \frac{
-        \wpthree \left(\wpthlp \right)^2 - 2\delta\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3} \wpthree \left(\wpthlp \right) +
-        \delta^2 \rho_{w \theta_l}^2 \sigma_{w 3}^2 \sigma_{\theta_l 3}^2\wpthree
-    }
-    {
-        \left(\wptwo\right)^2 - 2\wptwo\delta\sigma_{w 3}^2 + \delta^2\sigma_{w 3}^4
-    }
-    \right)
-    \right.
-    \nonumber\\ &+
-    \left.
-    \lim_{\delta \to 1}
-    \left(
-    \frac{
-        \wptwo \; \thlptwo - 2\delta\sigma_{w 3}^2 \thlptwo + \delta^2 \thlptwo \frac{\sigma_{w 3}^4}{\wptwo}
-    }
-    {
-        (1-\delta \lambda_{w \theta}) \wpthlp
-    }
-    \right)
-    \right)
+    \left(\frac{1-\delta \lambda_w}{1-\delta \lambda_{w \theta}}\right)
 \end{align}

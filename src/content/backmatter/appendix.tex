@@ -34,6 +34,22 @@ and
 \end{align}
 
 We also treat the lower-order moments as fixed, as well as all the $\lambda$`s because those are inputs in the code.
+To make the calculation even more readable,
+we calculate two limits here.
+\begin{align}
+    \label{eq:sigma_w_tilde_2_limit_delta_to_1}
+    \lim_{\delta \to 1}\left(\tilde{\sigma}_w^2\right)
+    = \lim_{\delta \to 1}\left(\frac{\sigma_w^2 \cancelto{0}{(1-\delta)}}{\wptwo (1-\delta\lambda_w)}\right)
+    = 0,
+\end{align}
+and
+\begin{align}
+    \label{eq:sigma_w_tilde_4_limit_delta_to_1}
+    \lim_{\delta \to 1}\left(\tilde{\sigma}_w^4\right)
+    = \lim_{\delta \to 1}\left(\frac{\sigma_w^4 \cancelto{0}{(1-\delta)}^2}{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}\right)
+    = 0.
+\end{align}
+
 
 \input{content/backmatter/wprime4limitdeltato1}
 
