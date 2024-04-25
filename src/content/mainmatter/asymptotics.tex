@@ -76,21 +76,29 @@ then we need
 as $Sk_w \to 0$.
 That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
 \begin{align}
-    \lim_{\delta \to 1, \lambda_w \to 1}\left(\widehat{Sk}_w\right)
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \lim_{\delta \to 1}\left(\widehat{Sk}_w\right)
+    =&\lim_{\delta \to 1}
+    \left(
     \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
     \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
-    \frac{1}{1-\delta} \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{1-\delta}
+    \right)
+    \nonumber \\
+    =&\lim_{\delta \to 1}
+    \left(
     \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
     \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
-    \frac{1}{1-\delta} \nonumber \\
-    =&\lim_{\delta \to 1, \lambda_w \to 1}
+    \frac{1}{1-\delta}
+    \right)
+    \nonumber \\
+    =&\lim_{\delta \to 1}
+    \left(
     \frac{1}{\tswfact^{3/2}}
     \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
     \frac{\cancelto{0}{(1-\delta)^{1/2}}}{(1-\delta \lambda_w)^{3/2}}
+    \right)
     \nonumber \\
     =& \quad 0
 \end{align}
@@ -108,6 +116,11 @@ For those limits, we assume all lower-order moments as constants because they ar
 \label{sec:limits-for-delta-to-1}
 
 We start with letting $\delta \to 1$.
+Also, we are evaluating the following proposed fit for $\lambda_w$:
+\begin{align}
+    \lambda_w = \frac{1-\sqrt[3]{1-\delta}}{\delta},
+\end{align}
+where we treat $\lambda_w$ as a constant until the final step.
 
 \subsection{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{subsec:limit-for-wprime4bar-as-delta-goes-to-1}
@@ -115,13 +128,29 @@ We start with letting $\delta \to 1$.
 \begin{align}
     \label{eq:limit_wprime4_delta_to_1}
     \lim_{\delta \to 1}\left(\overline{w'^4}\right)
-    = \left(\wptwo\right)^2 \lim_{\delta \to 1} \left(\frac{ (1-\delta \lambda_w)^2}{(1-\delta)}\right) +
-    \frac{\left(\overline{w'^3}\right)^2}{\wptwo} \lim_{\delta \to 1}\left(\frac{1}{(1-\delta \lambda_w)} \right) +
-    3 \lambda_w^2 \left(\wptwo\right)^2
+    = \left(\wptwo\right)^2 \lim_{\delta \to 1} \left(\frac{ (1-\delta \lambda_w)^2}{1-\delta}\right) +
+    \frac{\left(\overline{w'^3}\right)^2}{\wptwo} \lim_{\delta \to 1}\left(\frac{1}{1-\delta \lambda_w} \right) +
+    \lim_{\delta \to 1}\left(\delta 3 \lambda_w^2 \left(\wptwo\right)^2\right)
 \end{align}
 Looking at this limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprime4bar-as-delta-goes-to-1}),
-where we held the lower-order moments fixed and not dependent on $\delta$,
-unfortunately, we see that the kurtosis of $w$ diverges.
+where we held the lower-order moments fixed and not depending on $\delta$,
+unfortunately, we see that the fourth-order moment of $w$ diverges.
+We try the proposed fit for $\lambda_w$:
+\begin{align}
+    \label{eq:limit_wprime4_delta_to_1_lambda_w_fit}
+    \lim_{\delta \to 1}\left(\overline{w'^4}\right)
+    &= \left(\wptwo\right)^2
+    \lim_{\delta \to 1} \left(\frac{(1 - \left(1-\cancelto{0}{\sqrt[3]{1-\delta}}\quad\right)^2}{1-\delta}\right)
+    \\
+    &+ \frac{\left(\overline{w'^3}\right)^2}{\wptwo}
+    \lim_{\delta \to 1}\left(\frac{1}{1-\left(1 - \left(1-\cancelto{0}{\sqrt[3]{1-\delta}}\quad\right) \right)} \right)
+    \\
+    &+ 3
+    \lim_{\delta \to 1}\left(\left( 1 - \left(1-\cancelto{0}{\sqrt[3]{1-\delta}}\quad\right) \right)^2 \left(\wptwo\right)^2\right)
+    \\
+    &= \frac{\left(\overline{w'^3}\right)^2}{\wptwo}
+\end{align}
+At least, we have a convergence to a ratio between the squared skewness and the variance now.
 
 \subsection{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{subsec:limit-for-wprime2thetalbar-as-delta-goes-to-1}
@@ -134,7 +163,7 @@ unfortunately, we see that the kurtosis of $w$ diverges.
     \left(\frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w}\right)
 \end{align}
 This limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprime2thetalprimebar-as-delta-goes-to-1})
-is suggesting that if we want to have a limit as 0 as $\delta \to 1$ for $\wptwortp$ we should set $\lambda_{w\theta} = 1$.
+is suggesting that if we want to have a limit of 0 as $\delta \to 1$ for $\wptwortp$ we should set $\lambda_{w\theta} = 1$.
 Otherwise, if we set $\lambda_w = 0$, we get a limit that depends on the ratio between $\wpthree \cdot \wpthlp$ and $\wptwo$.
 
 \subsection{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
@@ -161,7 +190,7 @@ This limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for
     \lim_{\delta \to 1}\left(\wprtpthlp\right)
     &= \lim_{\delta \to 1}
     \left(
-        (1 - \delta) \alpha (w_1 - \overline{w}) \left[
+    (1 - \delta) \alpha (w_1 - \overline{w}) \left[
         \left(r_{t1} - \overline{r_t}\right)
         \left(\theta_{l1} - \overline{\theta_l}\right) +
         r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
