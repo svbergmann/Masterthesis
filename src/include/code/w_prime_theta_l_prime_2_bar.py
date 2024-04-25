@@ -13,10 +13,12 @@ pd.set_option('display.max_rows', None)
 
 import sympy as sp
 from IPython.display import display
-from sympy import oo, Rational
+from sympy import abc, oo, Rational, init_printing
 
 import checked_functions as c_f
 import symbols as sym
+init_printing()
+
 
 # # This document aims to numerically check $\overline{w'\theta_l'^2}$
 
@@ -27,20 +29,24 @@ import symbols as sym
 
 display(sp.Eq(sym.G_1_w_theta, c_f.G_1_w_theta_density))
 
+
 # In[3]:
 
 
 display(sp.Eq(sym.G_2_w_theta, c_f.G_2_w_theta_density))
+
 
 # In[4]:
 
 
 display(sp.Eq(sym.G_3_w_theta, c_f.G_3_w_theta_density))
 
+
 # In[5]:
 
 
 display(sp.Eq(sym.G_w_theta, c_f.G_w_theta, evaluate=False))
+
 
 # In[6]:
 
@@ -52,6 +58,7 @@ w_prime_theta_l_2_prime_bar = sp.Integral(
 
 display(sp.Eq(sym.w_prime_theta_prime_l_2_bar, w_prime_theta_l_2_prime_bar))
 
+
 # In[7]:
 
 
@@ -62,12 +69,14 @@ w_prime_theta_l_2_prime_bar = w_prime_theta_l_2_prime_bar.subs({
 
 display(sp.Eq(sym.w_prime_theta_prime_l_2_bar, w_prime_theta_l_2_prime_bar))
 
+
 # The equation in the document is:
 
 # In[8]:
 
 
 display(sp.Eq(sym.w_prime_theta_prime_l_2_bar, c_f.w_prime_theta_l_prime_2_bar()))
+
 
 # For this we still need $\tilde{\sigma_w}$:
 
@@ -76,12 +85,14 @@ display(sp.Eq(sym.w_prime_theta_prime_l_2_bar, c_f.w_prime_theta_l_prime_2_bar()
 
 display(sp.Eq(sym.sigma_tilde_w, c_f.sigma_tilde_w()))
 
+
 # And $\overline{w'^{2}}$:
 
 # In[10]:
 
 
 display(sp.Eq(sym.w_prime_2_bar, c_f.w_prime_2_bar()))
+
 
 # And $\overline{w'^{3}}$:
 
@@ -90,12 +101,14 @@ display(sp.Eq(sym.w_prime_2_bar, c_f.w_prime_2_bar()))
 
 display(sp.Eq(sym.w_prime_3_bar, c_f.w_prime_3_bar()))
 
+
 # And $\overline{w'\theta'_l}$:
 
 # In[12]:
 
 
 display(sp.Eq(sym.w_prime_theta_l_prime_bar, c_f.w_prime_theta_l_prime_bar()))
+
 
 # And $\lambda_w$:
 
@@ -104,6 +117,7 @@ display(sp.Eq(sym.w_prime_theta_l_prime_bar, c_f.w_prime_theta_l_prime_bar()))
 
 display(sp.Eq(sym.lambda_w, c_f.lambda_w()))
 
+
 # And $\lambda_{w\theta}$:
 
 # In[14]:
@@ -111,12 +125,14 @@ display(sp.Eq(sym.lambda_w, c_f.lambda_w()))
 
 display(sp.Eq(sym.lambda_w_theta, c_f.lambda_w_theta()))
 
+
 # And $\overline{\theta_l'^3}$:
 
 # In[15]:
 
 
 display(sp.Eq(sym.theta_l_prime_3_bar, c_f.theta_l_prime_3_bar()))
+
 
 # Putting those all together yields:
 
@@ -141,6 +157,7 @@ w_prime_theta_l_prime_2_bar_check_val = w_prime_theta_l_prime_2_bar_check_val.su
 })
 
 display(sp.Eq(sym.w_prime_theta_prime_l_2_bar, w_prime_theta_l_prime_2_bar_check_val))
+
 
 # Since the integral is too difficult to be calculated analytically, at least with sympy, we try to put in some arbitrary numbers for the pdf parameters, to simplify the equations.
 
@@ -168,12 +185,13 @@ df = pd.DataFrame(
              sym.theta_l_2,
              sym.sigma_theta_l_1,
              sym.sigma_theta_l_2,
-             sym.sigma_lambda_theta_l,
+             sym.sigma_theta_l_3,
              sym.sigma_w,
-             sym.sigma_lambda_w,
+             sym.sigma_w_3,
              sp.abc.alpha,
              sp.abc.delta,
              sym.rho_w_theta_l])
+
 
 # In[18]:
 
@@ -187,13 +205,14 @@ df['check_val'] = (
                  sym.theta_l_2: x[sym.theta_l_2],
                  sym.sigma_theta_l_1: x[sym.sigma_theta_l_1],
                  sym.sigma_theta_l_2: x[sym.sigma_theta_l_2],
-                 sym.sigma_lambda_theta_l: x[sym.sigma_lambda_theta_l],
+                 sym.sigma_theta_l_3: x[sym.sigma_theta_l_3],
                  sym.sigma_w: x[sym.sigma_w],
-                 sym.sigma_lambda_w: x[sym.sigma_lambda_w],
+                 sym.sigma_w_3: x[sym.sigma_w_3],
                  sp.abc.alpha: x[sp.abc.alpha],
                  sp.abc.delta: x[sp.abc.delta],
                  sym.rho_w_theta_l: x[sym.rho_w_theta_l]
              }).evalf(), axis=1))
+
 
 # Calculate the moment analytically:
 
@@ -208,28 +227,32 @@ df['num_int'] = (
         sym.theta_l_2: x[sym.theta_l_2],
         sym.sigma_theta_l_1: x[sym.sigma_theta_l_1],
         sym.sigma_theta_l_2: x[sym.sigma_theta_l_2],
-        sym.sigma_lambda_theta_l: x[sym.sigma_lambda_theta_l],
+        sym.sigma_theta_l_3: x[sym.sigma_theta_l_3],
         sym.sigma_w: x[sym.sigma_w],
-        sym.sigma_lambda_w: x[sym.sigma_lambda_w],
+        sym.sigma_w_3: x[sym.sigma_w_3],
         sp.abc.alpha: x[sp.abc.alpha],
         sp.abc.delta: x[sp.abc.delta],
         sym.rho_w_theta_l: x[sym.rho_w_theta_l]
     }).doit(conds='none', method='quad').evalf(), axis=1))
+
 
 # In[20]:
 
 
 df['diff'] = abs(df['check_val'] - df['num_int'])
 
+
 # In[21]:
 
 
 df['diff_num'] = abs(df['check_val'].astype(float) - df['num_int'].astype(float))
 
+
 # In[22]:
 
 
 display(df)
+
 
 # In[23]:
 
@@ -237,3 +260,4 @@ display(df)
 import numpy as np
 
 print('The mean error between the rhs and the lhs is:', np.mean(df['diff_num']))
+

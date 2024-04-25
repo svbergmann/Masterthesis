@@ -143,10 +143,34 @@ Otherwise, if we set $\lambda_w = 0$, we get a limit that depends on the ratio b
 \begin{align}
     \label{eq:limit_wprimethetalprime2bar_delta_to_1}
     \lim_{\delta \to 1}\left(\wptwothlp\right)
-    = \frac{2 \wpthree \left(\wpthlp \right)^2}{3 \left(\wptwo \right)^2} \lim_{\delta \to 1}
+    = \frac{1}{3}\left(
+    \frac{2 \wpthree \left(\wpthlp \right)^2}{\left(\wptwo \right)^2} \lim_{\delta \to 1}
     \left(\left(\frac{1-\delta \lambda_{w \theta}}{1-\delta \lambda_w}\right)^2\right) +
-    \frac{\wptwo \; \thlptwo}{3 \wpthlp}
+    \frac{\wptwo \; \thlptwo}{\wpthlp}
     \lim_{\delta \to 1}
     \left(\frac{1-\delta \lambda_w}{1-\delta \lambda_{w \theta}}\right)
+    \right)
 \end{align}
 This limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprimethetalprime2bar-as-delta-goes-to-1})
+
+\subsection{Limit for \texorpdfstring{$\wprtpthlp$}{wprimertprimethetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{subsec:limit-for-wprimertprimethetalbar-as-delta-goes-to-1}
+
+\begin{align}
+    \label{eq:limit_wprimertprimethetalbar_delta_to_1}
+    \lim_{\delta \to 1}\left(\wprtpthlp\right)
+    &= \lim_{\delta \to 1}
+    \left(
+        (1 - \delta) \alpha (w_1 - \overline{w}) \left[
+        \left(r_{t1} - \overline{r_t}\right)
+        \left(\theta_{l1} - \overline{\theta_l}\right) +
+        r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
+        \right] \right.\nonumber\\
+    &\quad\quad\quad+ \left.(1 - \delta) (1 - \alpha) (w_2 - \overline{w}) \left[
+        \left(r_{t2} - \overline{r_t}\right)
+        \left(\theta_{l2} - \overline{\theta_l}\right) +
+        r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}
+        \right]
+    \right) \nonumber\\
+    &=\quad 0
+\end{align}
