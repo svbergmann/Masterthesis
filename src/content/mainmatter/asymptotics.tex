@@ -112,10 +112,10 @@ where again $c_2$ is some constant and $\epsilon$ is the same as above.
 If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}), where we treat $\epsilon$ as zero, we get:
 \begin{align}
     \lim_{\delta \to 1} \left(\frac{1 - \delta\lambda_w}{1 - \delta}\right)
-    &= \lim_{\delta \to 1} \left(\frac{1 - \delta((1 - c_1) \delta + c_1)}{1 - \delta}\right) \\
-    &= \lim_{\delta \to 1} \left(\frac{1 - ((1 - c_1) \delta^2 + c_1\delta)}{1 - \delta}\right) \\
-    &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta^2 - c_1\delta)}{1 - \delta}\right) \\
-    &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta(\delta - 1)}{1 - \delta}\right) \\
+    &= \lim_{\delta \to 1} \left(\frac{1 - \delta((1 - c_1) \delta + c_1)}{1 - \delta}\right)
+    = \lim_{\delta \to 1} \left(\frac{1 - ((1 - c_1) \delta^2 + c_1\delta)}{1 - \delta}\right) \\
+    &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta^2 - c_1\delta}{1 - \delta}\right)
+    = \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta(\delta - 1)}{1 - \delta}\right) \\
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2}{1 - \delta}\right)
     - \lim_{\delta \to 1} \left(\frac{c_1\delta(1 - \delta)}{1 - \delta}\right) \\
     \text{(L'Hôpital)}
@@ -124,6 +124,13 @@ If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}), where 
     &= 2 - c_1.
 \end{align}
 Then we can also define the range of $c_1$ which should be $(0, 2)$ because we want to have $0 < \delta\lambda_w < 1$.
+For the reciprocal, we then have
+\begin{align}
+    \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta\lambda_w}\right)
+    &= \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta^2 + c_1\delta^2 - c_1\delta}\right)
+    \overset{\left[\frac{0}{0}\right]}{=} \lim_{\delta \to 1} \left(\frac{-1}{- 2\delta + 2c_1\delta - c_1}\right) \\
+    &= \frac{-1}{-2 + c_1} = \frac{1}{2 - c_1}
+\end{align}
 
 For calculating the following limits, it has been used, that (based on \cref{eq:sigma_w_tilde})
 \begin{align}
