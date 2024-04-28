@@ -84,16 +84,16 @@ To ensure those points, as well as no division by zero in the code, we can defin
 which means that in the limit as $\delta \to 1$,
 $(1-\delta)$ should \enquote{behave as} the absolute value of the skewness of $w$,
 \begin{align}
-    0 < \lim_{\delta\to 1} \frac{1-\delta\lambda_x}{1-\delta} < \infty,
+    0 < \lim_{\delta\to 1} \left(\frac{1-\delta\lambda_x}{1-\delta}\right) < \infty,
 \end{align}
 where $x$ means any of $w$, $r_t$, or $\theta_l$,
 \begin{align}
-    0 < \lim_{\delta\to 1} \frac{1-\delta\lambda_x}{1-\delta\lambda_y} < \infty
+    0 < \lim_{\delta\to 1} \left(\frac{1-\delta\lambda_x}{1-\delta\lambda_y}\right) < \infty
 \end{align}
 where $x$ is the same as above and $y$ means any of $w$, $r_t$, or $\theta_l$, $x \neq y$,
 \begin{align}
-    0 < \lim_{\delta \to 1} \tsw^2 = \frac{\sigma_w^2}{\wptwo}
-    \frac{1-\delta}{1-\delta \lambda_w} < 1.
+    0 < \lim_{\delta \to 1} \left(\tsw\right)^2
+    = \lim_{\delta \to 1} \left(\frac{\sigma_w^2}{\wptwo} \frac{1-\delta}{1-\delta \lambda_w}\right) < 1.
 \end{align}
 To ensure \cref{eq:delta_propto}, we can use a linear \enquote{fit}, which looks like
 \begin{align}
@@ -129,10 +129,11 @@ For the reciprocal, we then have
     \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta\lambda_w}\right)
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta^2 + c_1\delta^2 - c_1\delta}\right)
     \overset{\left[\frac{0}{0}\right]}{=} \lim_{\delta \to 1} \left(\frac{-1}{- 2\delta + 2c_1\delta - c_1}\right) \\
-    &= \frac{-1}{-2 + c_1} = \frac{1}{2 - c_1}
+    &= \frac{-1}{-2 + c_1} = \frac{1}{2 - c_1}.
 \end{align}
 
-For calculating the following limits, it has been used, that (based on \cref{eq:sigma_w_tilde})
+We now proceed and calculate all the other limits.
+First, we use (based on \cref{eq:sigma_w_tilde})
 \begin{align}
     \label{eq:sigma_w_tilde_2}
     \tilde{\sigma}_w^2
@@ -145,14 +146,7 @@ and
     &= \frac{\sigma_w^4 (1-\delta)^2}{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}.
 \end{align}
 
-We also treat the lower-order moments as fixed,
-and use that $\lambda_w \to 1$ as $\delta \to 1$ due to the definition of $\lambda_w$ (see~\cref{eq:lambda}).
-Since $\delta$ approaches 1 faster than $\delta \lambda_w$,
-we can define a new constant $c$ which describes the limit of the ratio of
-\begin{align}
-    \lim_{\delta, \lambda_w \to 1} \left( \frac{1-\delta}{1-\delta\lambda_w} \right) = c \geq 1
-\end{align}
-
+We also treat the lower-order moments as fixed.
 To make the calculation even more readable,
 we calculate two limits here.
 \begin{align}

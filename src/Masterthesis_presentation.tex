@@ -1,8 +1,11 @@
 \documentclass[10pt]{beamer}
+
+\newcommand{\mytitle}{Adding a third normal to CLUBB}
+\newcommand{\myauthor}{Sven Bergmann}
 % \usepackage[utf8]{inputenc}
 % \usepackage{xeCJK}
 \usepackage{graphicx}
-\usepackage {mathtools}
+%\usepackage {mathtools}
 % \usepackage{utopia} %font utopia imported
 \usetheme{CambridgeUS}
 \usecolortheme{dolphin}
@@ -23,13 +26,24 @@
 \setbeamercolor*{palette secondary}{bg=myNewcolorA, fg = white}
 \setbeamercolor*{palette tertiary}{bg=myNewColorA, fg = white}
 \setbeamercolor*{titlelike}{fg=myNewColorA}
-\setbeamercolor*{title}{bg=myNewColorA}
+\setbeamercolor*{title}{bg=myNewColorA, fg=black}
 \setbeamercolor*{item}{fg=myNewColorA}
 \setbeamercolor*{caption name}{fg=myNewColorA}
 \usefonttheme{professionalfonts}
-\usepackage{natbib}
-\usepackage{hyperref}
+
+\usepackage{bm}
+%\usepackage[unicode]{hyperref}
+\hypersetup{
+    pdftitle = {\mytitle},
+    pdfauthor = {\myauthor}
+}
+%\usepackage[standard, hyperref]{ntheorem}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[style=alphabetic, backend=biber]{biblatex}
 \usepackage{blkarray}
+\addbibresource{include/bibliography.bib}
 %------------------------------------------------------------
 \titlegraphic{\includegraphics[height=1.5cm]{include/pictures/photo}}
 
@@ -38,13 +52,11 @@
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{date}{size=\small}
 \setbeamerfont{institute}{size=\small}
-\title[University of Wisconsin Milwaukee]{Enter Your Study Title Here}
-\subtitle{ Your Subtitle is Here}
-\author[Your Name]{Your Name}
+\title[University of Wisconsin Milwaukee]{\mytitle}
+\author[\myauthor]{\myauthor}
 
 \institute[]{University of Wisconsin Milwaukee}
-\date[\textcolor{white}{\today} ]
-{\today}
+\date[\textcolor{white}{05/03/2024}]{05/03/2024}
 
 %------------------------------------------------------------
 %This block of commands puts the table of contents at the
@@ -220,12 +232,6 @@
             \item Conclusion 2: Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             \item Conclusion 3: Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         \end{itemize}
-    \end{frame}
-
-
-    \section*{Acknowledgement}
-    \begin{frame}
-        \textcolor{myNewColorA}{\Huge{\centerline{Thank you!}}}
     \end{frame}
 
 \end{document}
