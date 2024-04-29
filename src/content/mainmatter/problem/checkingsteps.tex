@@ -19,11 +19,11 @@ We always want to check if \gls{lhs} equals \gls{rhs}:
 
     \item\label{itm:checkingstep_3}
     Once the means are known, we calculate the central variances,
-    e.g.  $\overline{w'^2} = \overline{(w-\overline{w})^2}$ by integration over the \gls{pdf}.
-    The formula for $\overline{w'^2}$ (\cref{eq:wp2_bar}) in terms of the \gls{pdf} parameters can be checked.
+    e.g.  $\wptwo = \overline{(w-\overline{w})^2}$ by integration over the \gls{pdf}.
+    The formula for $\wptwo$ (\cref{eq:wp2_bar}) in terms of the \gls{pdf} parameters can be checked.
 
     \item\label{itm:checkingstep_4}
-    Once the variances, e.g. $\overline{w'^2}$, are known,
+    Once the variances, e.g. $\wptwo$, are known,
     then the \emph{non-dimensional} \gls{pdf} parameters such as $\lambda_w$ (\cref{eq:lambda})
     can be calculated by their definitions.
 
@@ -33,14 +33,14 @@ We always want to check if \gls{lhs} equals \gls{rhs}:
 
     \item\label{itm:checkingstep_6}
     Finally, we can calculate the higher order moments,
-    i.e. $\overline{w'^4}$ (\cref{eq:wp4}) or $\overline{w'^2 \theta_l'}$ (\cref{eq:wp2thlp_solved})
-    or $\overline{w' \theta_l'^2}$ (\cref{eq:wpthlp2_solved}),
+    i.e. $\wpfour$ (\cref{eq:wp4}) or $\wptwothlp$ (\cref{eq:wp2thlp_solved})
+    or $\wpthlptwo$ (\cref{eq:wpthlp2_solved}),
     by integration over the \gls{pdf}.
 
 %    \item\label{itm:checkingstep_7}
 %    The integral $\overline{w'\theta_l'^2}$ is complicated.
-%    If it is written in terms of $\overline{\theta_l'^3}$ (\cref{eq:wpthlp2_solved}),
-%    then $\overline{\theta_l'^3}$ can be integrated (\cref{eq:theta_l_3_bar})
+%    If it is written in terms of $\thlpthree$ (\cref{eq:wpthlp2_solved}),
+%    then $\thlpthree$ can be integrated (\cref{eq:theta_l_3_bar})
 %    and substituted into the \gls{rhs} of \cref{eq:wpthlp2_solved}.
 %    If $\wpthlptwo$ is written in terms of $\beta$ (\cref{eq:wpthlp2_beta}),
 %    then we need to integrate to find $\thlpthree$,

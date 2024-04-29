@@ -21,51 +21,51 @@ denoted by the subscript \enquote{dGn} for the binormal case,
 successfully achieve this conversion.
 \begin{align}
     \label{eq:w_prime_2_transform}
-    \overline{w'^2} \frac{1 - \delta\lambda_w}{1 - \delta}
-    &= \overline{w'^2}_{dGn},
+    \wptwo \frac{1 - \delta\lambda_w}{1 - \delta}
+    &= \wptwo_{dGn},
 \end{align}
 \begin{align}
     \label{eq:w_prime_3_transform}
-    \overline{w'^3} \frac{1}{1 - \delta}
-    &= \overline{w'^3}_{dGn},
+    \wpthree \frac{1}{1 - \delta}
+    &= \wpthree_{dGn},
 \end{align}
 \begin{align}
     \label{eq:w_prime_3_div_w_prime_2_transform}
-    \frac{\overline{w'^3}}{\overline{w'^2}^{3/2}} \frac{(1 - \delta)^{1/2}}{(1 - \lambda_w\delta)^{3/2}}
-    &= \frac{\overline{w'^3}_{dGn}}{\overline{w'^2}_{dGn}^{3/2}},
+    \frac{\wpthree}{\wptwo^{3/2}} \frac{(1 - \delta)^{1/2}}{(1 - \lambda_w\delta)^{3/2}}
+    &= \frac{\wpthree_{dGn}}{\wptwo_{dGn}^{3/2}},
 \end{align}
 \begin{align}
     \label{eq:theta_l_prime_transform}
-    \overline{\theta_l'^2} \frac{1 - \delta\lambda_\theta}{1 - \delta}
-    &= \overline{\theta_l'^2}_{dGn},
+    \thlptwo \frac{1 - \delta\lambda_\theta}{1 - \delta}
+    &= \thlptwo_{dGn},
 \end{align}
 \begin{align}
     \label{eq:w_prime_theta_l_prime_transform}
-    \overline{w'\theta_l'} \frac{1 - \delta\lambda_{w\theta}}{1 - \delta}
-    &= \overline{w'\theta_l'}_{dGn},
+    \wpthlp \frac{1 - \delta\lambda_{w\theta}}{1 - \delta}
+    &= \wpthlp_{dGn},
 \end{align}
 \begin{align}
     \label{eq:w_prime_4_transform}
-    \left(\overline{w'^4} - 3\delta\lambda_w^2 \left(\overline{w'^2}\right)^2\right) \frac{1}{1 - \delta}
-    &= \overline{w'^4}_{dGn}
+    \left(\wpfour - 3\delta\lambda_w^2 \left(\wptwo\right)^2\right) \frac{1}{1 - \delta}
+    &= \wpfour_{dGn}
 \end{align}
 \begin{align}
     \label{eq:w_prime_4_div_w_prime_2_transform}
-    \left(\frac{\overline{w'^4}}{(\overline{w'^2})^2} - 3\delta\lambda_w^2 \right) \frac{1 - \delta}{(1 - \lambda_w\delta)^2}
-    &= \frac{\overline{w'^4}_{dGn}}{(\overline{w'^2}_{dGn})^2}
+    \left(\frac{\wpfour}{(\wptwo)^2} - 3\delta\lambda_w^2 \right) \frac{1 - \delta}{(1 - \lambda_w\delta)^2}
+    &= \frac{\wpfour_{dGn}}{(\wptwo_{dGn})^2}
 \end{align}
 To get a sense of what those transformations mean and why they should work,
 we pick e.g. \cref{eq:w_prime_2_transform}.
 If we substitute in the already defined formula for $\lambda_w$ (\cref{eq:lambda}), we get
 \begin{align}
-    \overline{w'^2} \left(1 - \delta\frac{\sigma_{w 3}^2}{\wptwo}\right)
-    &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
-    \overline{w'^2} - \delta\sigma_{w 3}^2
-    &= (1 - \delta)\overline{w'^2}_{dGn} \nonumber\\
-    \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\overline{w'^2}_{dGn} + \delta\sigma_{w 3}^2 \nonumber\\
-    \overline{w'^2}
-    &= \overline{w'^2}_{dGn} - \delta\left(\overline{w'^2}_{dGn} - \sigma_{w 3}^2\right).
+    \wptwo \left(1 - \delta\frac{\sigma_{w 3}^2}{\wptwo}\right)
+    &= (1 - \delta)\wptwo_{dGn} \nonumber\\
+    \wptwo - \delta\sigma_{w 3}^2
+    &= (1 - \delta)\wptwo_{dGn} \nonumber\\
+    \wptwo
+    &= \wptwo_{dGn} - \delta\wptwo_{dGn} + \delta\sigma_{w 3}^2 \nonumber\\
+    \wptwo
+    &= \wptwo_{dGn} - \delta\left(\wptwo_{dGn} - \sigma_{w 3}^2\right).
 \end{align}
 Our analysis reveals a key relationship between the parameter $\delta$
 and the overall variance (often referred to as \enquote{width}) of the trinormal distribution.

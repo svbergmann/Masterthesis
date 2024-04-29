@@ -9,18 +9,18 @@ it is a crucial step towards understanding a system.
 
 When forecasting the weather (\enquote{forward run}),
 the code provides us with a set of moment terms:
-$\overline{w}$, $\overline{w'^2}$, $\overline{w'^3}$, $\overline{\theta_l}$, $\overline{w'\theta_l'}$,
-$\overline{r_t}$, $\overline{w' r_t'}$, $\overline{\theta_l'^2}$, $\overline{r_t'^2}$, $\overline{r_t'\theta_l'}$.
+$\overline{w}$, $\wptwo$, $\wpthree$, $\overline{\theta_l}$, $\wpthlp$,
+$\overline{r_t}$, $\wprtp$, $\thlptwo$, $\rtptwo$, $\overline{r_t'\theta_l'}$.
 These are the inputs.
 From these inputs,
 we want to determine certain parameters which describe the shape of the underlying \gls{pdf}.
 Those \gls{pdf} parameters are standardized and some also normalized.
 So we try to solve these \gls{pdf} parameters (13),
 namely $\alpha$, $\widehat{w}_1$, $\widehat{w}_2$, $\tilde{\theta}_{l1}$, $\tilde{\theta}_{l2}$, $\tilde{r}_{t1}$,
-$\tilde{r}_{t2}$, $\tilde{\sigma}_w$, $\tilde{\sigma}_{\theta_{l1}}$, $\tilde{\sigma}_{\theta_{l2}}$,
+$\tilde{r}_{t2}$, $\tsw$, $\tilde{\sigma}_{\theta_{l1}}$, $\tilde{\sigma}_{\theta_{l2}}$,
 $\tilde{\sigma}_{r_{t1}}$, $\tilde{\sigma}_{r_{t2}}$, and $r_{r_t \theta_l}$.
 All the formulas are listed in \cref{ch:formulas-that-define-the-shape-of-the-pdf-and-moments-in-terms-of-pdf-parameters}.
-Ultimately, the code needs to express even higher order moments such as $\overline{w'^2 \theta_l'}$
+Ultimately, the code needs to express even higher order moments such as $\wptwothlp$
 in terms of the lower order moments.
 These higher order moments are the outputs in the \enquote{forward run}.
 

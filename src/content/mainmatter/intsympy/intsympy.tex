@@ -19,6 +19,370 @@ By following this step-by-step example,
 the reader will gain a solid understanding of how SymPy can be used,
 not only for this thesis.
 
-\input{content/mainmatter/intsympy/anaint}
 
-\input{content/mainmatter/intsympy/numint}
+\section{Analytic integration}\label{sec:analytic-integration}
+
+For simplicity and readability, we choose the check for the formula of $\wptwo$
+(this is \cref{itm:checkingstep_3} from \cref{sec:steps-for-checking-the-formulas}).
+One starts by importing and -- obviously -- installing the packages if they are not there yet.
+Importing the package \mintinline{python}{display} is useful for later on printing the equations.
+Thus, this results in the code in \cref{lst:import}.
+\begin{listing}[!ht]
+    \caption{Import statements}
+    \label{lst:import}
+    \begin{pythoncode}
+        import sympy as sp
+        from IPython.display import display
+        from sympy import abc, oo, Symbol, Integral
+        from sympy.stats import Normal, density
+    \end{pythoncode}
+\end{listing}
+In this listing,
+\mintinline{python}{sympy} was defined to be called \mintinline{python}{sp}
+and from \mintinline{python}{sympy} we directly imported some packages,
+too, which are needed later on.
+
+Next, we define all symbols which are needed to calculate the given integral
+and therefore also to print the equations nicely.
+Since we are checking $\wptwo$,
+we need the (self-defined) symbols listed in \cref{lst:defsymb}.
+\begin{listing}[!ht]
+    \caption{Defining symbols}
+    \label{lst:defsymb}
+    \begin{pythoncode}
+        sigma_w = Symbol('\\sigma_w')
+        w_1 = Symbol('w_1')
+        w_2 = Symbol('w_2')
+        w_bar = Symbol('\\overline{w}')
+        sigma_w_3 = Symbol('\\sigma_{w3}')
+        w_prime_2_bar = Symbol('\\overline{w\'^2}')
+    \end{pythoncode}
+\end{listing}
+Having defined the symbols, we can proceed with defining the marginal distribution.
+Now, we are also using \mintinline{python}{sympy.abc}
+for displaying some standard symbols (\cref{lst:defmarginals}).
+\begin{listing}[!ht]
+    \caption{Defining the marginals}
+    \label{lst:defmarginals}
+    \begin{pythoncode}
+        G_1_w = Normal(name='G_1_w', mean=w_1, std=sigma_w)
+        G_1_w_density = density(G_1_w)(sp.abc.w)
+        G_2_w = Normal(name='G_2_w', mean=w_2, std=sigma_w)
+        G_2_w_density = density(G_2_w)(sp.abc.w)
+        G_3_w = Normal(name='G_3_w', mean=w_bar, std=sigma_w_3)
+        G_3_w_density = density(G_3_w)(sp.abc.w)
+        G_w = ((1 - sp.abc.delta) * sp.abc.alpha * G_1_w_density +
+               (1 - sp.abc.delta) * (1 - sp.abc.alpha) * G_2_w_density +
+               sp.abc.delta * G_3_w_density)
+    \end{pythoncode}
+\end{listing}
+Having done that
+we can actually display the integral
+which we want to compute (\cref{lst:intwp2bar}).
+\begin{listing}[!ht]
+    \caption{Defining and displaying the needed integral}
+    \label{lst:intwp2bar}
+    \begin{pythoncode}
+        w_prime_2_bar_int = sp.Integral((sp.abc.w - w_bar) ** 2 * G_w, [sp.abc.w, -oo, oo])
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2bar}}
+    \label{fig:intwp2barout}
+    \begin{align}
+        \wptwo
+        = \int\limits_{-\infty}^{\infty}
+        \left(- \overline{w} + w\right)^{2}
+        \left(\frac{\sqrt{2} \delta e^{- \frac{\left(- \overline{w} + w\right)^{2}}{2 \sigma_{w3}^{2}}}}{2 \sqrt{\pi} \sigma_{w3}}
+        + \frac{\sqrt{2} \alpha \left(1 - \delta\right) e^{- \frac{\left(w - w_{1}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right. \nonumber\\
+        + \left.\frac{\sqrt{2} \cdot \left(1 - \alpha\right) \left(1 - \delta\right) e^{- \frac{\left(w - w_{2}\right)^{2}}{2 \sigma_{w}^{2}}}}{2 \sqrt{\pi} \sigma_{w}}\right)
+        \, dw \nonumber
+    \end{align}
+\end{figure}
+Looking at \cref{fig:intwp2barout},
+this is exactly the integral which we want to compute.
+Using the command \mintinline{python}{.doit(conds='none')} in \cref{lst:intwp2barcalc},
+we can actually calculate the given integral,
+where we assume that all given constants are real.
+We are also using \mintinline{python}{.simplify()} here
+to make the output more readable as well as more comparable to the actual function we want to check.
+\begin{listing}[!ht]
+    \caption{Calculating and printing the integral}
+    \label{lst:intwp2barcalc}
+    \begin{pythoncode}
+        w_prime_2_bar_int_val = w_prime_2_bar_int.doit(conds='none').simplify()
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int_val))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2barcalc}}
+    \label{fig:intwp2barcalcout}
+    \begin{align}
+        \wptwo
+        = - \overline{w}^{2} \delta + \overline{w}^{2} + 2 \overline{w} \alpha \delta w_{1} - 2 \overline{w} \alpha \delta w_{2} - 2 \overline{w} \alpha w_{1} + 2 \overline{w} \alpha w_{2} + 2 \overline{w} \delta w_{2} - 2 \overline{w} w_{2} \nonumber\\
+        - \sigma_{w}^{2} \delta + \sigma_{w}^{2} + \sigma_{w3}^{2} \delta - \alpha \delta w_{1}^{2} + \alpha \delta w_{2}^{2} + \alpha w_{1}^{2} - \alpha w_{2}^{2} - \delta w_{2}^{2} + w_{2}^{2} \nonumber,
+    \end{align}
+\end{figure}
+We can now compare \cref{fig:intwp2barcalcout} to the given equation.
+To do this, we first need to define the equation for \cref{eq:wp2_bar} in \cref{lst:intwp2barsym}.
+\begin{listing}[!ht]
+    \caption{Python function for the second order moment}
+    \label{lst:intwp2barsym}
+    \begin{pythoncode}
+        def w_prime_2_bar_check(delta=sp.abc.delta, alpha=sp.abc.alpha, w_1=w_1, w_2=w_2, w_bar=w_bar, sigma_w=sigma_w, sigma_w_3=sigma_w_3):
+            return (((1 - delta) * alpha * ((w_1 - w_bar) ** 2 + sigma_w ** 2))
+                + ((1 - delta) * (1 - alpha) * ((w_2 - w_bar) ** 2 + sigma_w ** 2))
+                + (delta * sigma_w_3 ** 2))
+    \end{pythoncode}
+\end{listing}
+We can print this equation using \mintinline{python}{display} again (\cref{lst:intwp2barsymprint}).
+\begin{listing}[!ht]
+    \caption{Printing the symbolic equation}
+    \label{lst:intwp2barsymprint}
+    \begin{pythoncode}
+        display(sp.Eq(w_prime_2_bar, w_prime_2_bar_check()))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2barsymprint}}
+    \label{fig:intwp2barsymprintout}
+    \begin{align}
+        \nonumber
+        \wptwo
+        = \sigma_{w3}^{2} \delta + \alpha \left(1 - \delta\right)
+        \left(\sigma_{w}^{2} + \left(- \overline{w} + w_{1}\right)^{2}\right) +
+        \left(1 -\alpha\right) \left(1 - \delta\right) \left(\sigma_{w}^{2} +
+        \left(- \overline{w} + w_{2}\right)^{2}\right)
+    \end{align}
+\end{figure}
+The last step is to check if those two formulas are equivalent to each other.
+We can do this by using \mintinline{python}{Eq(..)} from the package \mintinline{python}{SymPy}.
+\mintinline{python}{factor(..)} tries to factor the given variables to make the comparison easier.
+All of this can be seen in \cref{lst:intwp2barfinalcheck}.
+\begin{listing}[!ht]
+    \caption{Check if the integral and the given formula are the same}
+    \label{lst:intwp2barfinalcheck}
+    \begin{pythoncode}
+        display(sp.factor(sp.Eq(w_prime_2_bar_int_val, w_prime_2_bar_check()), sp.abc.alpha, sp.abc.delta))
+    \end{pythoncode}
+\end{listing}
+This code (\cref{lst:intwp2barfinalcheck}) just displays \mintinline{python}{True},
+which is exactly what we wanted to have.
+
+
+\section{Numeric integration}\label{sec:numeric-integration}
+
+Again, for better readability, we choose to check the formula for $\overline{w'^2\theta_l'}$
+(this is \cref{itm:checkingstep_6} from \cref{sec:steps-for-checking-the-formulas}).
+As in \cref{sec:analytic-integration}, there needs to be some packages imported.
+We are importing the same packages as in \cref{lst:import} together with some more (\cref{lst:importnum}).
+\begin{listing}[!ht]
+    \caption{Import statements}
+    \label{lst:importnum}
+    \begin{pythoncode}
+        from itertools import product
+        import pandas as pd
+        import numpy as np
+    \end{pythoncode}
+\end{listing}
+Since we are going to need some more symbols, we also need to define those.
+We still use the symbols as in \cref{lst:defsymb}, together with the ones in \cref{lst:defsymbnum}.
+\begin{listing}[!ht]
+    \caption{Defining symbols}
+    \label{lst:defsymbnum}
+    \begin{pythoncode}
+        theta_l_1 = Symbol('\\theta_{l1}')
+        theta_l_2 = Symbol('\\theta_{l2}')
+        theta_l_bar = Symbol('\overline{\\theta_l}')
+        sigma_theta_l_1 = Symbol('\\sigma_{\\theta_{l1}}')
+        sigma_theta_l_2 = Symbol('\\sigma_{\\theta_{l2}}')
+        sigma_theta_l_3 = Symbol('\\sigma_{\\theta_l 3}')
+        rho_w_theta_l = Symbol('\\rho_{w\\theta_l}')
+        w_prime_3_bar = Symbol('\\overline{w\'^3}')
+        w_prime_theta_l_prime_bar = Symbol('\\overline{w\'\\theta\'_l}')
+        w_prime_2_theta_prime_l_bar = Symbol('\\overline{w\'^2\\theta\'_l}')
+        sigma_tilde_w = Symbol('\\tilde{\\sigma}_w')
+        lambda_w_theta = Symbol('\\lambda_{w\\theta}')
+        lambda_w = Symbol('\\lambda_w')
+    \end{pythoncode}
+\end{listing}
+
+We start defining the integral by defining the marginals (\cref{lst:defmarginalsnum}).
+\begin{listing}[!ht]
+    \caption{Defining the marginals}
+    \label{lst:defmarginalsnum}
+    \begin{pythoncode}
+        G_1_w_theta = Normal(name='G_1_w_theta', mean=sp.Matrix([w_1, theta_l_1]),
+            std=sp.Matrix([[sigma_w ** 2, 0], [0, sigma_theta_l_1 ** 2]]))
+        G_1_w_theta_density = density(G_1_w_theta)(sp.abc.w, sp.abc.theta)
+        G_2_w_theta = Normal(name='G_2_w_theta', mean=sp.Matrix([w_2, theta_l_2]),
+            std=sp.Matrix([[sigma_w ** 2, 0], [0, sigma_theta_l_2 ** 2]]))
+        G_2_w_theta_density = density(G_2_w_theta)(sp.abc.w, sp.abc.theta)
+        G_3_w_theta = Normal(name='G_3_w_theta', mean=sp.Matrix([w_bar, theta_l_bar]),
+            std=sp.Matrix([[sigma_w_3 ** 2,
+                rho_w_theta_l * sigma_w_3 * sigma_theta_l_3],
+                [rho_w_theta_l * sigma_w_3 * sigma_theta_l_3,
+                sigma_theta_l_3 ** 2]]))
+        G_3_w_theta_density = sp.simplify(density(G_3_w_theta)(sp.abc.w, sp.abc.theta))
+        G_w_theta = (
+        (1 - sp.abc.delta) * sp.abc.alpha * density(G_1_w_theta)(sp.abc.w, sp.abc.theta)
+        + (1 - sp.abc.delta) * (1 - sp.abc.alpha) * density(G_2_w_theta)(sp.abc.w, sp.abc.theta)
+        + sp.abc.delta * G_3_w_theta_density)
+    \end{pythoncode}
+\end{listing}
+
+The integral which needs to be computed is then defined as in \cref{lst:wp2thetalbarcheck}.
+\begin{listing}[!ht]
+    \caption{Defining and displaying the needed integral}
+    \label{lst:wp2thetalbarcheck}
+    \begin{pythoncode}
+        w_prime_2_theta_l_prime_bar = sp.Integral((sp.abc.w - w_bar) ** 2 *
+            (sp.abc.theta - theta_l_bar) * G_w_theta,
+            [sp.abc.w, -oo, oo], [sp.abc.theta, -oo, oo])
+        display(sp.Eq(w_prime_2_theta_prime_l_bar, w_prime_2_theta_l_prime_bar))
+    \end{pythoncode}
+\end{listing}
+
+Here (\cref{lst:wp2thetalbarcheck}), the output is omitted for better readability.
+We do not yet compute the integral,
+because due to the complexity,
+unfortunately this is not working with \mintinline{python}{SymPy}.
+
+Since there is still the equation to check needed,
+we proceed by defining a function for that in \cref{lst:intwp2thetalbarsym}.
+\begin{listing}[!ht]
+    \caption{Python function for $\overline{w'^2\theta_l}$}
+    \label{lst:intwp2thetalbarsym}
+    \begin{pythoncode}
+        def w_prime_2_theta_l_prime_bar_check(sigma_tilde_w = sigma_tilde_w,
+            delta = sp.abc.delta, lambda_w_theta = lambda_w_theta, lambda_w = lambda_w,
+            w_prime_3_bar = w_prime_3_bar, w_prime_2_bar = w_prime_2_bar,
+            w_prime_theta_l_prime_bar = w_prime_theta_l_prime_bar):
+            return ((1 / (1 - sigma_tilde_w ** 2)) *
+                ((1 - delta * lambda_w_theta) / (1 - delta * lambda_w)) *
+                (w_prime_3_bar / w_prime_2_bar) *
+                w_prime_theta_l_prime_bar)
+        display(sp.Eq(w_prime_2_theta_prime_l_bar, w_prime_2_theta_l_prime_bar_check()))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:intwp2thetalbarsym}}
+    \label{fig:intwp2thetalbarsymout}
+    \begin{align}
+        \nonumber
+        \overline{w'^2\theta'_l}
+        &= \frac{\overline{w'\theta'_l} \cdot \wpthree \left(- \lambda_{w\theta} \delta + 1\right)}{\wptwo \cdot \left(1 - \tsw^{2}\right) \left(- \lambda_{w} \delta + 1\right)}
+    \end{align}
+\end{figure}
+Looking at \cref{fig:intwp2thetalbarsymout},
+there are some other equations needed like \cref{eq:w_prime_theta_l_prime_bar},
+\cref{eq:wp3_bar}, \cref{eq:wp2_bar}, \cref{eq:sigma_w_tilde}, and \cref{eq:lambda}.
+We do not list the functions to those equations here,
+because they are defined the same way as the other equations are defined as functions.
+
+Instead, since we cannot compute the integral analytically,
+we can create a \mintinline{python}{dataframe}
+using \mintinline{python}{pandas}\autocite{mckinney-proc-scipy-2010}.
+The columns for this dataframe are going to be all the inputs we have.
+To get all permutations,
+this code (\cref{lst:createdataframe}) is also using \mintinline{python}{product(..)}
+from the \mintinline{python}{itertools} package.
+\begin{listing}[!ht]
+    \caption{Create a dataframe and putting in arbitrary numbers}
+    \label{lst:createdataframe}
+    \begin{pythoncode}
+        df = pd.DataFrame(product([0, 1],[-2, 2],[-1, 2],[0, 3], [Rational(1, 10)],
+            [Rational(3, 10)],[Rational(4, 10)],[Rational(7, 10)],[Rational(6, 10)],
+            [Rational(5, 10)],[Rational(1, 10), Rational(5, 10)],[Rational(5, 10)]),
+            columns=[w_1, w_2, theta_l_1, theta_l_2, sigma_theta_l_1, sigma_theta_l_2,
+            sigma_lambda_theta_l, sigma_w, sigma_lambda_w, sp.abc.alpha, sp.abc.delta,
+            rho_w_theta_l])
+    \end{pythoncode}
+\end{listing}
+
+We append another column which is called \enquote{checkval}
+and lists the values for the given equation to check.
+\begin{listing}[!ht]
+    \caption{Attaching the \enquote{checkval} column to the dataframe}
+    \label{lst:attachcheckvaltodataframe}
+    \begin{pythoncode}
+        df['checkval'] = (df.apply(lambda x: w_prime_2_theta_l_prime_bar_check_val.subs({
+                 w_1: x[w_1], w_2: x[w_2], theta_l_1: x[theta_l_1], theta_l_2: x[theta_l_2],
+                 sigma_theta_l_1: x[sigma_theta_l_1], sigma_theta_l_2: x[sigma_theta_l_2],
+                 sigma_lambda_theta_l: x[sigma_lambda_theta_l], sigma_w: x[sigma_w],
+                 sigma_lambda_w: x[sigma_lambda_w], sp.abc.alpha: x[sp.abc.alpha],
+                 sp.abc.delta: x[sp.abc.delta], rho_w_theta_l: x[rho_w_theta_l]}), axis=1))
+    \end{pythoncode}
+\end{listing}
+This code also uses the function defined in \cref{lst:intwp2thetalbarsym},
+where all other equations are substituted into.
+The function \mintinline{python}{df.apply(..)} is used
+to apply the function given in the parenthesis to all rows of the dataframe
+by specifying a \mintinline{python}{lambda x},
+where \mintinline{python}{x} is corresponding to the given dataframe, \mintinline{python}{df}.
+Lastly, there is also the \mintinline{python}{axis=1} parameter,
+which specifies the direction of applying the function.
+
+Next, we are actually computing $\overline{w'^2\theta_l}$ numerically by using the quadrature method
+and applying the values of this integrals
+to a new column in the dataframe (\cref{lst:attachnuminttodataframe}).
+\begin{listing}[!ht]
+    \caption{Attaching the \enquote{numint} column to the dataframe}
+    \label{lst:attachnuminttodataframe}
+    \begin{pythoncode}
+        df['numint'] = (df.apply(lambda x: Rational(w_prime_2_theta_l_prime_bar.subs({
+            w_1: x[w_1],w_2: x[w_2], theta_l_1: x[theta_l_1], theta_l_2: x[theta_l_2],
+            sigma_theta_l_1: x[sigma_theta_l_1], sigma_theta_l_2: x[sigma_theta_l_2],
+            sigma_lambda_theta_l: x[sigma_lambda_theta_l], sigma_w: x[sigma_w],
+            sigma_lambda_w: x[sigma_lambda_w], sp.abc.alpha: x[sp.abc.alpha],
+            sp.abc.delta: x[sp.abc.delta], rho_w_theta_l: x[rho_w_theta_l]
+        }).doit(conds='none', method='quad').evalf()), axis=1))
+    \end{pythoncode}
+\end{listing}
+Here, we are using the integral which has been specified earlier
+and specify the numerical integration method by adding the parameter \mintinline{python}{method='quad'}
+\footnote{
+    This parameter is telling SymPy to use the quadrature method to compute the given integral numerically.
+    For further explanation on how this method is working,
+    we refer to the SymPy documentation which can be found here:
+    \url{https://docs.sympy.org/latest/modules/integrals/integrals.html},
+    as well as the SciPy documentation on integration, which can be found here:
+    \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html}.
+    Some SciPy~\cite{2020SciPy-NMeth} functions are called by the SymPy library.
+    Therefore, this reference shows up here.
+}
+to the function \mintinline{python}{.doit(..)}.
+After that, \mintinline{python}{.evalf(..)} just gives the numerical value.
+We try to prove that the integral value equals the function value,
+hence we are computing the error between those two columns (\cref{lst:attachdiffnumtodataframe})
+and take the mean (\mintinline{python}{numpy.mean(..)} from the package NumPy~\autocite{harris2020array})
+of these new columns (\cref{lst:calcmeannumdiff}) to see if the error is actually numerically 0.
+\begin{listing}[!ht]
+    \caption{Attaching the \enquote{diffnum} column to the dataframe}
+    \label{lst:attachdiffnumtodataframe}
+    \begin{pythoncode}
+        df['diffnum'] = abs(df['checkval'].astype(float) - df['numint'].astype(float))
+    \end{pythoncode}
+\end{listing}
+\begin{listing}[!ht]
+    \caption{Calculating the mean difference}
+    \label{lst:calcmeannumdiff}
+    \begin{pythoncode}
+        print('The mean error between the rhs and the lhs is:', np.mean(df['diffnum']))
+    \end{pythoncode}
+\end{listing}
+\begin{figure}[!ht]
+    \centering
+    \caption{Output of \cref{lst:calcmeannumdiff}}
+    \label{fig:calcmeannumdiffout}
+    The mean error between the rhs and the lhs is: 1.3753423344481015e-124
+\end{figure}
+
+In \cref{fig:calcmeannumdiffout}, we see that the mean error is basically 0 which we wanted.
+It should be noted that based on the configuration of each individual computer,
+the solutions can slightly differ due to floating point arithmetic.

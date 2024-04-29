@@ -20,19 +20,19 @@ By substituting those derived \gls{pdf} parameter expressions
 into the relevant equations for the higher-order moments (equations~\eqref{eq:wp4_div_wp2_2} to~\eqref{eq:wprtpthlp_div_wp2_thp2_rt2}),
 we find the desired closure relationships.
 
-We first present the equation for the third moment of $\theta_l'$, $\overline{\theta_l'^3}$
+We first present the equation for the third moment of $\theta_l'$, $\thlpthree$
 This expression is derived by dimensionalizing \cref{eq:Sk_hat_thl_beta},
 which relates the skewness of $\theta_l$ to the skewness of $w$ and other model parameters.
 \begin{align}
     \label{eq:thlp3_beta}
-    \overline{\theta_l'^3}
+    \thlpthree
     &= \frac{(1-\delta \lambda_{w \theta})(1-\delta \lambda_\theta)}{\tswfact^2 (1-\delta \lambda_w)^2}
-    \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}
-    \overline{\theta_l'^2} \;
-    \overline{w'\theta_l'}
+    \frac{\wpthree}{\left( \wptwo \right)^2}
+    \thlptwo \;
+    \wpthlp
     \left(\beta + (1-\beta)
-    \frac{(1-\delta \lambda_{w \theta})^2}{1-\tilde{\sigma}_w^2 (1-\delta \lambda_w)(1-\delta \lambda_\theta)}
-    \frac{\left(\overline{w'\theta_l'}\right)^2}{\overline{w'^2} \; \overline{\theta_l'^2}}\right).
+    \frac{(1-\delta \lambda_{w \theta})^2}{1-\tsw^2 (1-\delta \lambda_w)(1-\delta \lambda_\theta)}
+    \frac{\left(\wpthlp\right)^2}{\wptwo \; \thlptwo}\right).
 \end{align}
 While the scalar third moments (e.g., $\thlpthree$) may not directly participate
 in solving the prognostic equations within \gls{CLUBB},
@@ -42,7 +42,7 @@ This influence is coming from the connection between the \gls{pdf} and the cloud
 Cumulus cloud formation mostly occurs at the edges,
 or \enquote{tails} of the \gls{pdf} for a specific variable.
 These tails represent regions where the probability of encountering extreme values of the variable is relatively higher.
-As the relative \enquote{width} of the normal distribution representing $w$ increases ($\tilde{\sigma}_w$),
+As the relative \enquote{width} of the normal distribution representing $w$ increases ($\tsw$),
 the magnitude of $\thlpthree$ also grows (refer to ~\cref{eq:thlp3_beta} for details).
 In simpler terms, a larger value of $\thlpthree$ corresponds to a broader \gls{pdf} for the up-/downdraft variable.
 This broader \gls{pdf} deviates more significantly from a double delta function,
@@ -63,13 +63,13 @@ and $\widehat{w_2}$ (\cref{eq:w2_solved}) into \cref{eq:wp4_div_wp2_2}.
 leading to
 \begin{align}
     \label{eq:wp4}
-    \overline{w'^4}
-    &= \left(\overline{w'^2}\right)^2
+    \wpfour
+    &= \left(\wptwo\right)^2
     \frac{(1-\delta \lambda_w)^2}{(1-\delta)}
-    \left(3 \tilde{\sigma}_w^4 + 6 \tswfact \tilde{\sigma}_w^2 + \tswfact^2\right) \nonumber\\
+    \left(3 \tsw^4 + 6 \tswfact \tsw^2 + \tswfact^2\right) \nonumber\\
     &+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)}
-    \frac{\left(\overline{w'^3}\right)^2}{\overline{w'^2}} \nonumber\\
-    &+ \delta 3 \lambda_w^2 \left(\overline{w'^2}\right)^2.
+    \frac{\left(\wpthree\right)^2}{\wptwo} \nonumber\\
+    &+ \delta 3 \lambda_w^2 \left(\wptwo\right)^2.
 \end{align}
 As observed with $\wpfour$,
 $\wptwothlp$ displays independence from the parameter $\beta$
@@ -84,21 +84,21 @@ This substitution process will yield an explicit formula for $\wptwothlp$ that s
 such as the prognostic moments directly calculated by the model.
 \begin{align}
     \label{eq:wp2thlp_sk_w_solved}
-    \frac{1}{\tswfact} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w) (1-\delta \lambda_\theta)^{1/2}} \frac{\overline{w'^2\theta_l'}}{\overline{w'^2} \left(\overline{\theta_l'^2} \right)^{1/2}}
+    \frac{1}{\tswfact} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w) (1-\delta \lambda_\theta)^{1/2}} \frac{\overline{w'^2\theta_l'}}{\wptwo \left(\thlptwo \right)^{1/2}}
     &= \widehat{c}_{w\theta_l} \widehat{Sk}_w,
 \end{align}
 and
 \begin{align}
     \label{eq:wp2thlp_solved}
     \overline{w'^2\theta_l'}
-    &= \frac{1}{\tswfact} \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w} \frac{\overline{w'^3}}{\overline{w'^2}} \overline{w'\theta_l'}.
+    &= \frac{1}{\tswfact} \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w} \frac{\wpthree}{\wptwo} \wpthlp.
 \end{align}
 $\wpthlptwo$ depends explicitly on $Sk_{\theta_l}$.
 Substituting \cref{eq:w1_solved} - \cref{eq:sigma_tilde_theta2_solved}
 into \cref{eq:wprtpthlp_div_wp2_thp2_rt2} yields
 \begin{align}
     \label{eq:wpthlp2_sk_w_solved}
-    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\overline{w'^2}\right)^{1/2} \overline{\theta_l'^2}}
+    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\wptwo\right)^{1/2} \thlptwo}
     &= \frac{2}{3} \widehat{c}_{w\theta_l}^2 \widehat{Sk}_w + \frac{1}{3} \frac{ \widehat{Sk_{\theta_l}} } {\widehat{c}_{w\theta_l}},
 \end{align}
 and
@@ -125,7 +125,7 @@ and
 %Therefore, we find:
 %\begin{align}
 %    \label{eq:wpthlp2_div_wp2_thlp2_sk_w}
-%    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\overline{w'^2}\right)^{1/2} \overline{\theta_l'^2}}
+%    \frac{1}{\tswfact^{1/2}} \frac{(1-\delta)^{1/2}}{(1-\delta \lambda_w)^{1/2} (1-\delta \lambda_\theta)} \frac{\overline{w'\theta_l'^2}}{\left(\wptwo\right)^{1/2} \thlptwo}
 %    &= \widehat{Sk}_w \left[\frac{1}{3} \beta + \left(1 - \frac{1}{3} \beta \right) \widehat{c}_{w\theta_l}^2 \right],
 %\end{align}
 %and
@@ -133,11 +133,11 @@ and
 %    \label{eq:wpthlp2_beta}
 %    \overline{w'\theta_l'^2}
 %    &= \frac{1}{\tswfact} \frac{(1-\delta \lambda_\theta)}{(1-\delta \lambda_w)}
-%    \frac{\overline{w'^3}}{\overline{w'^2}}
-%    \left[ \frac{1}{3} \beta \overline{\theta_l'^2}
+%    \frac{\wpthree}{\wptwo}
+%    \left[ \frac{1}{3} \beta \thlptwo
 %    + \frac{\left( 1-\frac{1}{3} \beta \right)}{\tswfact}
 %    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)(1-\delta \lambda_\theta)}
-%    \frac{\left( \overline{w'\theta_l'} \right)^2}{\overline{w'^2}}
+%    \frac{\left( \wpthlp \right)^2}{\wptwo}
 %    \right].
 %\end{align}
 %Finally, substituting \cref{eq:w1_solved} - \cref{eq:r_r_t_theta_l} into \cref{eq:wprtpthlp_div_wp2_thp2_rt2}
@@ -148,7 +148,7 @@ and
 %        (1-\delta \lambda_\theta)^{1/2}
 %        (1-\delta \lambda_{r_t})^{1/2}}
 %    \frac{\wprtpthlp}{\tswfact^{1/2}
-%        \left( \overline{w'^2} \right)^{1/2}
+%        \left( \wptwo \right)^{1/2}
 %        \left(\rtptwo\right)^{1/2} \left(\thlptwo\right)^{1/2}} \nonumber \\
 %    = \widehat{c}_{wr_t} \widehat{c}_{w\theta_l} \widehat{Sk}_w
 %    + E(w,q_t,\theta_l) \frac{1}{2} \widehat{Sk}_w
@@ -160,10 +160,10 @@ and
 %    \wprtpthlp
 %    &= \frac{\frac{1}{2} E}{\tswfact}
 %    \frac{(1-\delta \lambda_{\theta q})} {(1 - \delta \lambda_w)}
-%    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
+%    \rtpthlp \frac{\wpthree}{\wptwo} \nonumber\\
 %    &+ \frac{1 - \frac{1}{2} E}{\tswfact^2}
 %    \frac{(1-\delta \lambda_{w q})(1-\delta \lambda_{w \theta})}{(1 - \delta \lambda_w)^2}
-%    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
+%    \wprtp \; \wpthlp \frac{\wpthree}{\left( \wptwo \right)^2}.
 %\end{align}
 %The function $E(w,r_t,\theta_l)$ is
 %\begin{align}
@@ -220,8 +220,8 @@ and
 %    \wprtpthlp
 %    &= \frac{\frac{1}{3}\beta}{\tswfact}
 %    \frac{(1-\delta \lambda_{\theta r})}{(1 - \delta \lambda_w)}
-%    \rtpthlp \frac{\overline{w'^3}}{\overline{w'^2}} \nonumber\\
+%    \rtpthlp \frac{\wpthree}{\wptwo} \nonumber\\
 %    &+ \frac{1 - \frac{1}{3}\beta}{\tswfact^2}
 %    \frac{(1-\delta \lambda_{w r})(1-\delta \lambda_{w \theta})} {(1 - \delta \lambda_w)^2}
-%    \wprtp \; \wpthlp \frac{\overline{w'^3}}{\left( \overline{w'^2} \right)^2}.
+%    \wprtp \; \wpthlp \frac{\wpthree}{\left( \wptwo \right)^2}.
 %\end{align}

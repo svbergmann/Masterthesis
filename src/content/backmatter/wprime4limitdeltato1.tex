@@ -1,21 +1,21 @@
-\section{Calculation for the limit for \texorpdfstring{$\overline{w'^4}$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\section{Calculation for the limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:calculation-for-the-limit-for-wprime4bar-as-delta-goes-to-1}
 
 \begin{align}
     \label{eq:limit_wprime4_delta_to_1_calc}
-    \lim_{\delta \to 1}\left(\overline{w'^4}\right)
+    \lim_{\delta \to 1}\left(\wpfour\right)
     &= \lim_{\delta \to 1}
     \left(\left(\wptwo\right)^2\right.
     \cancelto{0}{\frac{(1-\delta \lambda_w)^2}{(1-\delta)}}
-    \left(3 \tilde{\sigma}_w^4 + 6 \tswfact \tilde{\sigma}_w^2 + \tswfact^2\right) \nonumber\\
+    \left(3 \tsw^4 + 6 \tswfact \tsw^2 + \tswfact^2\right) \nonumber\\
     &\quad+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)}
-    \frac{\left(\overline{w'^3}\right)^2}{\wptwo}
+    \frac{\left(\wpthree\right)^2}{\wptwo}
     + \left. \delta 3 \lambda_w^2 \left(\wptwo\right)^2\right)
     \\
     &= \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(\overline{w'^3}\right)^2
+        \left(\wpthree\right)^2
     }
     {
         \wptwo
@@ -28,7 +28,7 @@
     &= \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(\overline{w'^3}\right)^2
+        \left(\wpthree\right)^2
     }{
         \wptwo (1-\delta\lambda_w) - \sigma_w^2 (1-\delta)
     }
@@ -38,7 +38,7 @@
     &= \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(\overline{w'^3}\right)^2
+        \left(\wpthree\right)^2
     }{
         (1-\delta\lambda_w)
         \left(\wptwo - \sigma_w^2 \underbrace{\left(\frac{1-\delta}{1-\delta\lambda_w}\right)}_{\to \frac{1}{2 - c_1}}\right)
@@ -49,23 +49,27 @@
     &= \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(\overline{w'^3}\right)^2
+        \left(\wpthree\right)^2
     }{
-        (1-\delta\lambda_w)
+        (1 - \delta\lambda_w)
         \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
     }
-    + 3 \delta \lambda_w^2 \left(\wptwo\right)^2
+    \right.
+    \nonumber\\
+    &\quad+
+    \left.3 \delta \left(c_1^2\delta^2 - 2c_1^2\delta + c_1^2 - 2c_1\delta^2 + 2c_1\delta + \delta^2\right) \left(\wptwo\right)^2
     \right)
     \\
     &= \lim_{\delta \to 1}
     \left(
     \frac{
-        \left(\overline{w'^3}\right)^2
+        \left(\wpthree\right)^2
     }{
-        \wptwo - \frac{\sigma_w^2}{2 - c_1} - \delta \lambda_w \wptwo + \frac{\delta \lambda_w \sigma_w^2}{2 - c_1}
+        (1 - \delta\lambda_w)
+        \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
     }
-    + 3 \delta \lambda_w^2 \left(\wptwo\right)^2
     \right)
+    + 3 \left(\wptwo\right)^2
 \end{align}
 
 

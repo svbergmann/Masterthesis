@@ -8,11 +8,11 @@ This closure process often involves integrals,
 and verifying their analytical solutions ensures the model's mathematical integrity.
 For instance, consider the following prognostic \gls{pde}~\autocite[p. 21]{larson2022clubbsilhs}:
 \begin{align*}
-    \frac{\partial \overline{w'\theta_l'}}{\partial t}
-    &= -\overline{w}\frac{\partial \overline{w'\theta_l'}}{\partial z}
-    - \frac{1}{\rho_s} \frac{\partial \rho_s \overline{w'^2 \theta_l'}}{\partial z}
-    - \overline{w'^2} \frac{\partial \overline{\theta_l'}}{\partial z}
-    - \overline{w'\theta_l'} \frac{\partial \overline{w}}{\partial z}
+    \frac{\partial \wpthlp}{\partial t}
+    &= -\overline{w}\frac{\partial \wpthlp}{\partial z}
+    - \frac{1}{\rho_s} \frac{\partial \rho_s \wptwothlp}{\partial z}
+    - \wptwo \frac{\partial \overline{\theta_l'}}{\partial z}
+    - \wpthlp \frac{\partial \overline{w}}{\partial z}
     + \ldots
 \end{align*}
 While the details of initial and boundary conditions are essential
@@ -23,6 +23,5 @@ That is because the model steps forward in time
 and therefore needs the repeated calculation of moments
 for each unclosed prognostic equation at every time step.
 Those already expensive computational steps need to use mathematically simpler moment representations
-of e.g. $\overline{w'^2 \theta_l'}$,
-even if they introduce slight limitations
+of e.g. $\wptwothlp$, even if they introduce slight limitations
 in capturing the full variability of the underlying atmospheric state.
