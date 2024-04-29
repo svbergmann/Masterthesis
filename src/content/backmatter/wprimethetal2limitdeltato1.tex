@@ -6,36 +6,119 @@
     \lim_{\delta \to 1}\left(\wpthlptwo\right)
     &= \lim_{\delta \to 1}
     \left(
+    \frac{2}{3}
+    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2}
+    \frac{1}{\tswfact^2}
+    \frac{\wpthree}{\left(\wptwo \right)^2}
+    \left(\wpthlp \right)^2
+    \right.
+    \nonumber\\
+    &\quad\quad\quad+
+    \left.
+    \frac{1}{3}
+    \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
+    \tswfact
+    \frac{\wptwo \; \thlpthree}{\wpthlp}
+    \right)
+    \nonumber\\
+    &= \lim_{\delta \to 1}
+    \left(
     \frac{
         2 (1-\delta \lambda_{w \theta})^2 \wpthree \left(\wpthlp \right)^2
     }
-    {3 (1-\delta \lambda_w)^2 \cancelto{1}{\tswfact}^2 \left(\wptwo \right)^2} +
+    {
+        3 (1-\delta \lambda_w)^2
+    \left(\frac{\wptwo (1-\delta\lambda_w) - \sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)}\right)^2 \left(\wptwo \right)^2
+    }
+    \right.
+    \nonumber\\
+    &\quad\quad+
+    \left.
     \frac{
-        (1-\delta \lambda_w) \cancelto{1}{\tswfact} \wptwo \; \thlptwo
+        \wptwo (1-\delta\lambda_w) - \sigma_w^2 (1-\delta) \thlptwo
     }
     {3 (1-\delta \lambda_{w \theta}) \wpthlp}
     \right)
     \\
-    &= \frac{2}{3} \lim_{\delta \to 1}
-    \left(
-    \frac{(1-\delta \lambda_{w \theta})^2 \wpthree \left(\wpthlp \right)^2}
-    {(1-\delta \lambda_w)^2 \left(\wptwo \right)^2}
-    \right) +
-    \lim_{\delta \to 1}
+    &= \lim_{\delta \to 1}
     \left(
     \frac{
-        (1-\delta \lambda_w) \wptwo \; \thlptwo
+        2 (1-\delta \lambda_{w \theta})^2 \wpthree \left(\wpthlp \right)^2
     }
     {
-        3 (1-\delta \lambda_{w \theta}) \wpthlp
+        3 \left(
+        \wptwo^2 (1-\delta\lambda_w)^2 - 2 \wptwo (1-\delta\lambda_w) \sigma_w^2 (1-\delta) + \sigma_w^4 (1-\delta)^2
+    \right)
     }
+    \right.
+    \nonumber\\
+    &\quad\quad+
+    \left.
+    \underbrace{\left(\frac{1-\delta\lambda_w}{1-\delta \lambda_{w \theta}}\right)}_{\to \frac{-2 + c_2}{-2 + c_1}}
+    \frac{\wptwo}{3 \wpthlp}
+    -
+    \underbrace{\left(\frac{1-\delta}{1-\delta \lambda_{w \theta}}\right)}_{\to \frac{1}{2 - c_2}}
+    \frac{\sigma_w^2 \thlptwo}{3 \wpthlp}
     \right)
     \\
-    &= \frac{1}{3}\left(
-    \frac{2 \wpthree \left(\wpthlp \right)^2}{\left(\wptwo \right)^2} \lim_{\delta \to 1}
-    \left(\left(\frac{1-\delta \lambda_{w \theta}}{1-\delta \lambda_w}\right)^2\right) +
-    \frac{\wptwo \; \thlptwo}{\wpthlp}
-    \lim_{\delta \to 1}
-    \left(\frac{1-\delta \lambda_w}{1-\delta \lambda_{w \theta}}\right)
+    &= \lim_{\delta \to 1}
+    \left(
+    \frac{
+        2 \wpthree \left(\wpthlp \right)^2
+    }
+    {
+        3 \left(\wptwo^2 -
+        2 \wptwo \sigma_w^2 \underbrace{\left(\frac{1-\delta}{1-\delta\lambda_w}\right)}_{\to \frac{1}{2 - c_1}} +
+        \sigma_w^4 \underbrace{\left(\frac{1-\delta}{1-\delta\lambda_w}\right)^2}_{\to \left(\frac{1}{2 - c_1}\right)^2}
+        \right)
+    }
+    \right.
+    \nonumber\\
+    &\quad\quad+
+    \left.
+    \frac{-2 + c_2}{-2 + c_1} \cdot
+    \frac{\wptwo}{3 \wpthlp}
+    -
+    \frac{1}{2 - c_2} \cdot
+    \frac{\sigma_w^2 \thlptwo}{3 \wpthlp}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}
+    \left(
+    \frac{
+        2 \wpthree \left(\wpthlp \right)^2
+    }
+    {
+        3 \left(\wptwo^2 - 2 \wptwo \sigma_w^2 \frac{1}{2 - c_1} + \sigma_w^4 \left(\frac{1}{2 - c_1}\right)^2 \right)
+    }
+    \right.
+    \nonumber\\
+    &\quad\quad+
+    \left.
+    \frac{-2 + c_2}{-2 + c_1} \cdot
+    \frac{\wptwo}{3 \wpthlp}
+    -
+    \frac{1}{2 - c_2} \cdot
+    \frac{\sigma_w^2 \thlptwo}{3 \wpthlp}
+    \right)
+    \\
+    &= \lim_{\delta \to 1}
+    \left(
+    \frac{
+        2 \wpthree \left(\wpthlp \right)^2
+    }
+    {
+        3 \left(\wptwo^2 - 2 \wptwo \frac{\sigma_w^2}{2 - c_1} + \left(\frac{\sigma_w^2}{2 - c_1}\right)^2 \right)
+    }
+    \right.
+    \nonumber\\
+    &\quad\quad+
+    \left.
+    \frac{
+        (-2\wptwo + c_2\wptwo) (2 - c_2) + 2\sigma_w^2 \thlptwo - c_1\sigma_w^2 \thlptwo
+    }
+    {
+        (-2 + c_1) (2 - c_2) 3 \wpthlp
+    }
     \right)
 \end{align}

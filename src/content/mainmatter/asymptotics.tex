@@ -109,9 +109,10 @@ The fit for the other $\lambda$'s is
     = (1 - c_2) \delta + c_2 - \epsilon (1 - c_2),
 \end{align}
 where again $c_2$ is some constant and $\epsilon$ is the same as above.
-If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}), where we treat $\epsilon$ as zero, we get:
+If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}), where we treat $\epsilon$ as zero,
+and $x$ is one of the three variates, we get:
 \begin{align}
-    \lim_{\delta \to 1} \left(\frac{1 - \delta\lambda_w}{1 - \delta}\right)
+    \lim_{\delta \to 1} \left(\frac{1 - \delta\lambda_x}{1 - \delta}\right)
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta((1 - c_1) \delta + c_1)}{1 - \delta}\right)
     = \lim_{\delta \to 1} \left(\frac{1 - ((1 - c_1) \delta^2 + c_1\delta)}{1 - \delta}\right) \\
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta^2 - c_1\delta}{1 - \delta}\right)
@@ -126,10 +127,34 @@ If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}), where 
 Then we can also define the range of $c_1$ which should be $(0, 2)$ because we want to have $0 < \delta\lambda_w < 1$.
 For the reciprocal, we then have
 \begin{align}
-    \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta\lambda_w}\right)
+    \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta\lambda_x}\right)
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta^2 + c_1\delta^2 - c_1\delta}\right)
     \overset{\left[\frac{0}{0}\right]}{=} \lim_{\delta \to 1} \left(\frac{-1}{- 2\delta + 2c_1\delta - c_1}\right) \\
     &= \frac{-1}{-2 + c_1} = \frac{1}{2 - c_1}.
+\end{align}
+Another limit also show up very often, which is
+\begin{align}
+    \lim_{\delta \to 1} \left(\frac{(1 - \delta\lambda_x)^2}{1 - \delta}\right)
+    &= \lim_{\delta \to 1} \left(\frac{(1 - \delta\lambda_x) (1 - \delta\lambda_x)}{1 - \delta}\right)
+    = (2 - c_1) \lim_{\delta \to 1} (1 - \delta\lambda_x) \\
+    &= 0.
+\end{align}
+Since the formula for $\lambda_{w\theta} = \lambda_{q\theta} = \lambda_{wq}$ is the same just with a different constant $c_2$,
+we can also calculate another limit for a fraction which appears very frequently.
+Again, we use $xy$ for $w\theta_l$, $wr_t$, or $\theta_l r_t$.
+\begin{align}
+    \lim_{\delta \to 1} \left(\frac{1 - \delta \lambda_{xy}}{1 - \delta \lambda_x}\right)
+    &= \lim_{\delta \to 1} \left(\frac{1 - \delta ((1 - c_2) \delta + c_2)}{1 - \delta ((1 - c_1) \delta + c_1)}\right)
+    = \lim_{\delta \to 1} \left(\frac{1 - \delta (\delta - \delta c_2 + c_2)}{1 - \delta (\delta - \delta c_1 + c_1)}\right) \\
+    &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + \delta^2 c_2 - \delta c_2}{1 - \delta^2 + \delta^2 c_1 - \delta c_1}\right)
+    \overset{\left[\frac{0}{0}\right]}{=}
+    \lim_{\delta \to 1} \left(\frac{- 2\delta + 2\delta c_2 - c_2}{- 2\delta + 2\delta c_1 - c_1}\right) \\
+    &= \lim_{\delta \to 1} \left(\frac{- 2\delta + 2\delta c_2 - c_2}{- 2\delta + 2\delta c_1 - c_1}\right) \\
+    &= \frac{-2 + c_1}{-2 + c_2},
+\end{align}
+For the reciprocal it is just
+\begin{align}
+    \lim_{\delta \to 1} \left(\frac{1 - \delta \lambda_x}{1 - \delta \lambda_{xy}}\right) = \frac{-2 + c_2}{-2 + c_1}.
 \end{align}
 
 We now proceed and calculate all the other limits.
@@ -151,65 +176,77 @@ To make the calculation even more readable,
 we calculate two limits here.
 \begin{align}
     \label{eq:sigma_w_tilde_2_limit_delta_to_1}
-    \lim_{\delta, \lambda_w \to 1}\left(\tilde{\sigma}_w^2\right)
-    = \lim_{\delta, \lambda_w \to 1}\left(\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)}\right)
-    = c \cdot \frac{\sigma_w^2}{\wptwo},
+    \lim_{\delta \to 1}\left(\tilde{\sigma}_w^2\right)
+    = \lim_{\delta \to 1}\left(\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)}\right)
+    = \left(\frac{1}{2 - c_1}\right) \cdot \frac{\sigma_w^2}{\wptwo},
 \end{align}
 and
 \begin{align}
     \label{eq:sigma_w_tilde_4_limit_delta_to_1}
-    \lim_{\delta, \lambda_w \to 1}\left(\tilde{\sigma}_w^4\right)
-    = \lim_{\delta, \lambda_w \to 1}\left(\frac{\sigma_w^4 (1-\delta)^2}{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}\right)
-    = c \cdot \left(\frac{\sigma_w^2}{\wptwo}\right)^2.
+    \lim_{\delta \to 1}\left(\tilde{\sigma}_w^4\right)
+    &= \lim_{\delta \to 1}\left(\frac{\sigma_w^4 (1-\delta)^2}{\left(\wptwo\right)^2 \left(1-\delta\lambda_w\right)^2}\right)
+    = \left(\frac{\sigma_w^4}{\left(\wptwo\right)^2}\right) \lim_{\delta \to 1} \left(\frac{1-\delta}{1-\delta\lambda_w}\right)^2 \\
+    &= \left(\frac{1}{2 - c_1}\right)^2 \cdot \left(\frac{\sigma_w^2}{\wptwo}\right)^2.
 \end{align}
 
-That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
-\begin{align}
-    \lim_{\delta \to 1}\left(\widehat{Sk}_w\right)
-    =&\lim_{\delta \to 1}
-    \left(
-    \frac{1}{\tswfact^{3/2}}
-    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
-    \frac{1}{1-\delta}
-    \right)
-    \nonumber \\
-    =&\lim_{\delta \to 1}
-    \left(
-    \frac{1}{\tswfact^{3/2}}
-    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
-    \frac{1}{1-\delta}
-    \right)
-    \nonumber \\
-    =&\lim_{\delta \to 1}
-    \left(
-    \frac{1}{\tswfact^{3/2}}
-    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-    \frac{\cancelto{0}{(1-\delta)^{1/2}}}{(1-\delta \lambda_w)^{3/2}}
-    \right)
-    \nonumber \\
-    =& \quad 0
-\end{align}
-Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
-Of course, one needs to pay attention when computing those equations in the code,
-since we could run into a division by zero error,
-depending on which values are computed first.
+%That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
+%\begin{align}
+%    \lim_{\delta \to 1}\left(\widehat{Sk}_w\right)
+%    &=\lim_{\delta \to 1}
+%    \left(
+%    \frac{1}{\tswfact^{3/2}}
+%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+%    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
+%    \frac{1}{1-\delta}
+%    \right)
+%    \nonumber \\
+%    &=
+%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+%    \lim_{\delta \to 1}
+%    \left(
+%    \frac{1}{(1-\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)})^{3/2}}
+%    \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
+%    \frac{1}{1-\delta}
+%    \right)
+%    \nonumber \\
+%    &=
+%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+%    \left(\frac{1}{2-c_1}\right)^{3/2}
+%    \lim_{\delta \to 1}
+%    \left(
+%    \frac{\left(\sigma_w^2 (1-\delta)\right)^{3/2}}{\left(\wptwo (1-\delta\lambda_w) - \sigma_w^2 (1-\delta)\right)^{3/2}}
+%    \frac{1}{1-\delta}
+%    \right)
+%    \nonumber \\
+%    &=
+%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+%    \left(\frac{1}{2-c_1}\right)^{3/2}
+%    \lim_{\delta \to 1}
+%    \left(
+%    \frac{\sigma_w^3 (1-\delta)^{1/2}}{\left(\wptwo (1 - \delta^2 + c_1\delta^2 - c_1\delta) - \sigma_w^2 (1-\delta)\right)^{3/2}}
+%    \right)
+%    \nonumber \\
+%    &=
+%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
+%    \left(\frac{1}{2-c_1}\right)^{3/2}
+%    \lim_{\delta \to 1}
+%    \left(
+%    \frac{\sigma_w^3 (1-\delta)^{1/2}}{\left(\wptwo - \wptwo\delta^2 + \wptwo c_1\delta^2 - \wptwo c_1\delta - \sigma_w^2 + \sigma_w^2\delta)\right)^{3/2}}
+%    \right)
+%    \nonumber \\
+%    =& \quad 0
+%\end{align}
+%Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
+%Of course, one needs to pay attention when computing those equations in the code,
+%since we could run into a division by zero error,
+%depending on which values are computed first.
 
-Also, we want to see how the \enquote{main} equations behave in the limit of $\delta \to 1$
-as well as any $\lambda \to 1$.
+We want to see how the \enquote{main} equations behave in the limit of $\delta \to 1$.
 For those limits, we assume all lower-order moments as constants because they are just given to us in the code.
 
 
 \section{Limits for \texorpdfstring{$\delta \to 1$}{delta to 1}}
 \label{sec:limits-for-delta-to-1}
-
-We start with letting $\delta \to 1$.
-Also, we are evaluating the following proposed fit for $\lambda_w$:
-\begin{align}
-    \lambda_w = \frac{1-\sqrt[3]{1-\delta}}{\delta},
-\end{align}
-where we treat $\lambda_w$ as a constant until the final step.
 
 \subsection{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{subsec:limit-for-wprime4bar-as-delta-goes-to-1}

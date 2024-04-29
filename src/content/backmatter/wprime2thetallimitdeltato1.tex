@@ -5,7 +5,7 @@
     \label{eq:limit_wprime2thetalbar_delta_to_1_calc}
     \lim_{\delta \to 1}\left(\wptwothlp\right)
     &= \lim_{\delta \to 1}\left(
-    \frac{1}{\cancelto{1}{\tswfact}}
+    \frac{1}{\tswfact}
     \quad
     \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w}
     \frac{\overline{w'^3}}{\overline{w'^2}} \overline{w'\theta_l'}
@@ -13,10 +13,26 @@
     \\
     &= \lim_{\delta \to 1}\left(
     \frac{(1 - \delta \lambda_{w\theta}) \cdot \overline{w'^3} \cdot \overline{w'\theta_l'}}
-    {(1-\delta \lambda_w)\overline{w'^2}}
+    {(1-\delta \lambda_w)\overline{w'^2} (1-\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)})}
     \right)
     \\
-    &= \frac{\overline{w'^3} \cdot \overline{w'\theta_l'}}{\overline{w'^2}}
-    \lim_{\delta \to 1}
-    \left(\frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w}\right)
+    &= \lim_{\delta \to 1}\left(
+    \underbrace{\left(\frac{1 - \delta \lambda_{w\theta}}{1 - \delta\lambda_w}\right)}_{\to \frac{-2 + c_1}{-2 + c_2}}
+    \frac{\overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {\left(\wptwo - \sigma_w^2 \underbrace{\left(\frac{1-\delta}{1-\delta\lambda_w}\right)}_{\to \frac{1}{2 - c_1}}\right)}
+    \right)
+    \\
+    &= \frac{-2 + c_1}{-2 + c_2} \cdot
+    \frac{\overline{w'^3} \cdot \overline{w'\theta_l'}}
+    {\wptwo - \frac{\sigma_w^2}{2 - c_1}}
+    = \frac{\overline{w'^3} \cdot \overline{w'\theta_l'} \cdot (c_1 - 2)}
+    {(c_2 - 2)\wptwo - \frac{(c_2 - 2)\sigma_w^2}{2 - c_1}} \\
+    &= \frac{\overline{w'^3} \cdot \overline{w'\theta_l'} \cdot (c_1 - 2)}
+    {\frac{(2 - c_1) (\wptwo c_2 - 2\wptwo) - \sigma_w^2 c_2 + 2\sigma_w^2}{2 - c_1}}
+    = \frac{\overline{w'^3} \cdot \overline{w'\theta_l'} \cdot (c_1 - 2)}
+    {\frac{2\wptwo c_2 - 4\wptwo - c_1 c_2 \wptwo + 2 c_1 \wptwo - \sigma_w^2 c_2 + 2\sigma_w^2}{2 - c_1}} \\
+    &= \frac{\overline{w'^3} \cdot \overline{w'\theta_l'} \cdot (c_1 - 2) \cdot (2 - c_1)}
+    {2\wptwo c_2 - 4\wptwo - c_1 c_2 \wptwo + 2 c_1 \wptwo - \sigma_w^2 c_2 + 2\sigma_w^2} \\
+    &= \frac{\overline{w'^3} \cdot \overline{w'\theta_l'} \cdot (c_1 - 2) \cdot (2 - c_1)}
+    {(2 - c_2) (c_1\wptwo + \sigma_w^2 - 2\wptwo)}
 \end{align}
