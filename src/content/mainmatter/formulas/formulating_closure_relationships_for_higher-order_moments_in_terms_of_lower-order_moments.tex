@@ -11,6 +11,8 @@ Our focus here lies on achieving closure for the following terms:
     \item $\wpthlptwo$: the flux of variance,
     \item $\wprtpthlp$: and the flux of covariance.
 \end{itemize}
+Note, that $\wprtpthlp$ is just listed for completeness,
+we already found the formula for this moment (see~\cref{eq:w_prime_theta_l_prime_bar}).
 Closure, in this context,
 refers to expressing these higher-order moments completely in terms of known quantities,
 typically lower-order moments that are directly prognosed by the model.
@@ -90,7 +92,7 @@ such as the prognostic moments directly calculated by the model.
 and
 \begin{align}
     \label{eq:wp2thlp_solved}
-    \overline{w'^2\theta_l'}
+    \wptwothlp
     &= \frac{1}{\tswfact} \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w} \frac{\wpthree}{\wptwo} \wpthlp.
 \end{align}
 $\wpthlptwo$ depends explicitly on $Sk_{\theta_l}$.
@@ -104,7 +106,7 @@ into \cref{eq:wprtpthlp_div_wp2_thp2_rt2} yields
 and
 \begin{align}
     \label{eq:wpthlp2_solved}
-    \overline{w'\theta_l'^2}
+    \wpthlptwo
     &= \frac{2}{3} \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2} \frac{1}{\tswfact^2} \frac{\wpthree}{\left(\wptwo \right)^2} \left(\wpthlp \right)^2 \nonumber\\
     &+ \frac{1}{3} \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})} \tswfact \frac{\wptwo \; \thlpthree}{\wpthlp}.
 \end{align}

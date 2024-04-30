@@ -38,6 +38,14 @@
 \usepackage[style=alphabetic, backend=biber]{biblatex}
 \addbibresource{include/bibliography.bib}
 
+\usepackage[newfloat, outputdir=../auxil]{minted}
+\newminted{python}{
+    autogobble,
+    frame=single,
+    breaklines,
+    fontsize=\footnotesize
+}
+
 \titlegraphic{\includegraphics[height=1.5cm]{include/pictures/photo}}
 
 \setbeamerfont{title}{size=\large}
@@ -213,7 +221,8 @@
     \subsection{Inputs and Outputs}\label{subsec:inputs-and-outputs}
 
     \begin{frame}{Forward run (weather forecast)}
-        \begin{itemize}[<+->]
+        \begin{itemize}
+            [<+->]
             \item Given: $\overline{w}$, $\wptwo$, $\wpthree$, $\overline{\theta_l}$, $\wpthlp$,
             $\overline{r_t}$, $\wprtp$, $\thlptwo$, $\rtptwo$, $\rtpthlp$.
             \item Searched for: Parameters, which describe the shape of the underlying pdf,
@@ -223,7 +232,8 @@
     \end{frame}
 
     \begin{frame}{Backward run (verification direction)}
-        \begin{itemize}[<+->]
+        \begin{itemize}
+            [<+->]
             \item Given: pdf parameters, e.g.\ mean, standard deviation
             \item Searched for: lower- and higher-order moments
         \end{itemize}
@@ -413,19 +423,57 @@
 
     \section{Formulas for higher-order moments}\label{sec:formulas-for-higher-order-moments}
 
-    \begin{frame}{$\overline{w'^4}$}
-
+    \begin{frame}
+        \begin{align}
+            \label{eq:wp4}
+            \wpfour
+            &= \left(\wptwo\right)^2
+            \frac{(1-\delta \lambda_w)^2}{(1-\delta)}
+            \left(3 \tsw^4 + 6 \tswfact \tsw^2 + \tswfact^2\right) \nonumber\\
+            &+ \frac{1}{\tswfact} \frac{1}{(1-\delta \lambda_w)}
+            \frac{\left(\wpthree\right)^2}{\wptwo} \nonumber\\
+            &+ \delta 3 \lambda_w^2 \left(\wptwo\right)^2
+        \end{align}
     \end{frame}
 
-    \begin{frame}{$\overline{w'^4}$}
-
+    \begin{frame}
+        \begin{align}
+            \label{eq:wp2thlp_solved}
+            \wptwothlp
+            &= \frac{1}{\tswfact} \frac{1 - \delta \lambda_{w\theta}}{1-\delta \lambda_w} \frac{\wpthree}{\wptwo} \wpthlp
+        \end{align}
     \end{frame}
 
-    \begin{frame}{$\overline{w'^4}$}
-
+    \begin{frame}
+        \begin{align}
+            \label{eq:wpthlp2_solved}
+            \wpthlptwo
+            &= \frac{2}{3} \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2} \frac{1}{\tswfact^2} \frac{\wpthree}{\left(\wptwo \right)^2} \left(\wpthlp \right)^2 \nonumber\\
+            &+ \frac{1}{3} \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})} \tswfact \frac{\wptwo \; \thlpthree}{\wpthlp}
+        \end{align}
     \end{frame}
 
-    \begin{frame}{$\overline{w'^4}$}
+    \begin{frame}
+        \begin{align}
+            \label{eq:w_prime_r_t_prime_t_l_prime_bar}
+            \wprtpthlp
+            &= (1 - \delta) \alpha (w_1 - \overline{w}) \left[
+                \left(r_{t1} - \overline{r_t}\right)
+                \left(\theta_{l1} - \overline{\theta_l}\right) +
+                r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
+                \right] \nonumber\\
+            &+ (1 - \delta) (1 - \alpha) (w_2 - \overline{w}) \left[
+                \left(r_{t2} - \overline{r_t}\right)
+                \left(\theta_{l2} - \overline{\theta_l}\right) +
+                r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}
+                \right]
+        \end{align}
+    \end{frame}
+
+
+    \section{Asymptotics}\label{sec:asymptotics}
+
+    \begin{frame}{}
 
     \end{frame}
 
@@ -434,15 +482,22 @@
 
     \begin{frame}
         \begin{center}
-            \textbf{DEMONSTRATION}
+            \textbf{DEMONSTRATION} \\
+            (Analytic integration using SymPy~\autocite{10.7717/peerj-cs.103})
         \end{center}
     \end{frame}
 
-
-    \section{Asymptotics}\label{sec:asymptotics}
-
-    \begin{frame}{}
-
+    \begin{frame}[allowframebreaks, fragile]{Code to follow along the demonstration}
+        \begin{listing}[!ht]
+            \caption{Import statements}
+            \label{lst:import}
+            \begin{pythoncode}
+                import sympy as sp
+                from IPython.display import display
+                from sympy import abc, oo, Symbol, Integral
+                from sympy.stats import Normal, density
+            \end{pythoncode}
+        \end{listing}
     \end{frame}
 
 
