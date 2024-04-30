@@ -250,12 +250,8 @@ and
 We want to see how the \enquote{main} equations behave in the limit of $\delta \to 1$.
 For those limits, we assume all lower-order moments as constants because they are just given to us in the code.
 
-
-\section{Limits for \texorpdfstring{$\delta \to 1$}{delta to 1}}
-\label{sec:limits-for-delta-to-1}
-
-\subsection{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
-\label{subsec:limit-for-wprime4bar-as-delta-goes-to-1}
+\section{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:limit-for-wprime4bar-as-delta-goes-to-1}
 
 \begin{align}
     \label{eq:limit_wprime4_delta_to_1}
@@ -273,9 +269,15 @@ For those limits, we assume all lower-order moments as constants because they ar
 Looking at this limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprime4bar-as-delta-goes-to-1}),
 where we held the lower-order moments fixed and not depending on $\delta$,
 unfortunately, we see that the fourth-order moment of $w$ diverges.
+Using the additional assumption from above though,
+where we assumed,
+that the skewness goes as $1-\delta$,
+this limit converges to $3 \left(\wptwo\right)^2$.
+This is exactly as expected,
+because in the limit as $\delta \to 1$ we want to revert to a single normal distribution.
 
-\subsection{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
-\label{subsec:limit-for-wprime2thetalbar-as-delta-goes-to-1}
+\section{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:limit-for-wprime2thetalbar-as-delta-goes-to-1}
 
 \begin{align}
     \label{eq:limit_wprime2thetalbar_delta_to_1}
@@ -284,32 +286,42 @@ unfortunately, we see that the fourth-order moment of $w$ diverges.
 \end{align}
 This limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprime2thetalprimebar-as-delta-goes-to-1})
 is finite, where one just needs to pay attention on how to choose $c_1$ and $c_2$ respectively.
+Also, again with taking the additional assumption from above,
+the third-order-moment goes to zero as $\delta \to 1$.
+This results in this limit also converging to 0,
+which also makes sense.
 
-\subsection{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
-\label{subsec:limit-for-wprimethetal2bar-as-delta-goes-to-1}
+\section{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:limit-for-wprimethetal2bar-as-delta-goes-to-1}
+
+Here, looking at the calculation of the limit
+(\cref{sec:calculation-for-the-limit-for-wprimethetalprime2bar-as-delta-goes-to-1}),
+where no additional assumption were used at first,
+we can see that the solution does not give too much insights for this limit.
+If we instead again use the same assumption as above,
+specifically, that the third-order-moments go to zero as $\delta$ approaches 1,
+we see that this limit is also going to zero, exactly as wanted.
 
 \begin{align}
     \label{eq:limit_wprimethetalprime2bar_delta_to_1}
     \lim_{\delta \to 1}\left(\wptwothlp\right)
-    = \frac{1}{3}
+    = \lim_{\delta \to 1}
     \left(
-    \frac{
-        2 \wpthree \left(\wpthlp \right)^2
-    }
-    {
-        \left(\wptwo^2 - 2 \wptwo \frac{\sigma_w^2}{2 - c_1} + \left(\frac{\sigma_w^2}{2 - c_1}\right)^2 \right)
-    }
+    \frac{2}{3}
+    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2}
+    \frac{1}{\tswfact^2}
+    \frac{\wpthree}{\left(\wptwo \right)^2}
+    \left(\wpthlp \right)^2
     +
-    \frac{\wptwo(2 - c_2)}{\wpthlp(2 - c_1)}
-    -
-    \frac{\sigma_w^2 \thlptwo}{\wpthlp (2 - c_2)}
+    \frac{1}{3}
+    \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
+    \tswfact
+    \frac{\wptwo \; \thlpthree}{\wpthlp}
     \right)
 \end{align}
-This limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprimethetalprime2bar-as-delta-goes-to-1})
-is at least finite.
 
-\subsection{Limit for \texorpdfstring{$\wprtpthlp$}{wprimertprimethetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
-\label{subsec:limit-for-wprimertprimethetalbar-as-delta-goes-to-1}
+\section{Limit for \texorpdfstring{$\wprtpthlp$}{wprimertprimethetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+\label{sec:limit-for-wprimertprimethetalbar-as-delta-goes-to-1}
 
 \begin{align}
     \label{eq:limit_wprimertprimethetalbar_delta_to_1}

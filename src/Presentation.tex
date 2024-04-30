@@ -473,8 +473,69 @@
 
     \section{Asymptotics}\label{sec:asymptotics}
 
-    \begin{frame}{}
+    \begin{frame}{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        \begin{align}
+            \label{eq:limit_wprime4_delta_to_1}
+            \lim_{\delta \to 1}\left(\wpfour\right)
+            = \left(
+            \frac{
+                \left(\wpthree\right)^2
+            }{
+                (1 - \delta\lambda_w)
+                \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
+            }
+            \right)
+            + 3 \left(\wptwo\right)^2
+        \end{align}
+    \end{frame}
 
+    \begin{frame}{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        \begin{align}
+            \label{eq:limit_wprime2thetalbar_delta_to_1}
+            \lim_{\delta \to 1}\left(\wptwothlp\right)
+            = \frac{(c_1 - 2)^2 \wpthlp \cdot \wpthree}{(c_2 - 2)\left((c_1 - 2)\wptwo + \sigma_w^2\right)}
+        \end{align}
+    \end{frame}
+
+    \begin{frame}{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        \begin{align}
+            \label{eq:limit_wprimethetalprime2bar_delta_to_1}
+            \lim_{\delta \to 1}\left(\wptwothlp\right)
+            = \lim_{\delta \to 1}
+            \left(
+            \frac{2}{3}
+            \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2}
+            \frac{1}{\tswfact^2}
+            \frac{\wpthree}{\left(\wptwo \right)^2}
+            \left(\wpthlp \right)^2
+            +
+            \frac{1}{3}
+            \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
+            \tswfact
+            \frac{\wptwo \; \thlpthree}{\wpthlp}
+            \right)
+        \end{align}
+    \end{frame}
+
+    \begin{frame}{Limit for \texorpdfstring{$\wprtpthlp$}{wprimertprimethetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        \begin{align}
+            \label{eq:limit_wprimertprimethetalbar_delta_to_1}
+            \lim_{\delta \to 1}\left(\wprtpthlp\right)
+            &= \lim_{\delta \to 1}
+            \left(
+            (1 - \delta) \alpha (w_1 - \overline{w}) \left[
+                \left(r_{t1} - \overline{r_t}\right)
+                \left(\theta_{l1} - \overline{\theta_l}\right) +
+                r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
+                \right] \right.\nonumber\\
+            &\quad+ \left.(1 - \delta) (1 - \alpha) (w_2 - \overline{w}) \left[
+                \left(r_{t2} - \overline{r_t}\right)
+                \left(\theta_{l2} - \overline{\theta_l}\right) +
+                r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}
+                \right]
+            \right) \nonumber\\
+            &=\quad 0
+        \end{align}
     \end{frame}
 
 
@@ -498,6 +559,80 @@
                 from sympy.stats import Normal, density
             \end{pythoncode}
         \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Defining symbols}
+            \label{lst:defsymb}
+            \begin{pythoncode}
+                sigma_w = Symbol('\\sigma_w')
+                w_1 = Symbol('w_1')
+                w_2 = Symbol('w_2')
+                w_bar = Symbol('\\overline{w}')
+                sigma_w_3 = Symbol('\\sigma_{w3}')
+                w_prime_2_bar = Symbol('\\overline{w\'^2}')
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Defining the marginals}
+            \label{lst:defmarginals}
+            \begin{pythoncode}
+                G_1_w = Normal(name='G_1_w', mean=w_1, std=sigma_w)
+                G_1_w_density = density(G_1_w)(sp.abc.w)
+                G_2_w = Normal(name='G_2_w', mean=w_2, std=sigma_w)
+                G_2_w_density = density(G_2_w)(sp.abc.w)
+                G_3_w = Normal(name='G_3_w', mean=w_bar, std=sigma_w_3)
+                G_3_w_density = density(G_3_w)(sp.abc.w)
+                G_w = ((1 - sp.abc.delta) * sp.abc.alpha * G_1_w_density +
+                    (1 - sp.abc.delta) * (1 - sp.abc.alpha) * G_2_w_density +
+                    sp.abc.delta * G_3_w_density)
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Defining and displaying the needed integral}
+            \label{lst:intwp2bar}
+            \begin{pythoncode}
+                w_prime_2_bar_int = sp.Integral((sp.abc.w - w_bar) ** 2 * G_w, [sp.abc.w, -oo, oo])
+                display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int))
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Calculating and printing the integral}
+            \label{lst:intwp2barcalc}
+            \begin{pythoncode}
+                w_prime_2_bar_int_val = w_prime_2_bar_int.doit(conds='none').simplify()
+                display(sp.Eq(w_prime_2_bar, w_prime_2_bar_int_val))
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Python function for the second order moment}
+            \label{lst:intwp2barsym}
+            \begin{pythoncode}
+                def w_prime_2_bar_check(delta=sp.abc.delta, alpha=sp.abc.alpha, w_1=w_1, w_2=w_2, w_bar=w_bar, sigma_w=sigma_w, sigma_w_3=sigma_w_3):
+                return (((1 - delta) * alpha * ((w_1 - w_bar) ** 2 + sigma_w ** 2))
+                    + ((1 - delta) * (1 - alpha) * ((w_2 - w_bar) ** 2 + sigma_w ** 2))
+                    + (delta * sigma_w_3 ** 2))
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Printing the symbolic equation}
+            \label{lst:intwp2barsymprint}
+            \begin{pythoncode}
+                display(sp.Eq(w_prime_2_bar, w_prime_2_bar_check()))
+            \end{pythoncode}
+        \end{listing}
+
+        \begin{listing}[!ht]
+            \caption{Check if the integral and the given formula are the same}
+            \label{lst:intwp2barfinalcheck}
+            \begin{pythoncode}
+                display(sp.factor(sp.Eq(w_prime_2_bar_int_val, w_prime_2_bar_check()), sp.abc.alpha, sp.abc.delta))
+            \end{pythoncode}
+        \end{listing}
     \end{frame}
 
 
@@ -507,7 +642,7 @@
 
     \end{frame}
 
-    \begin{frame}[allowframebreaks]{References}
+    \begin{frame}{References}
         \printbibliography
     \end{frame}
 
