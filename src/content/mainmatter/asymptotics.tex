@@ -99,23 +99,22 @@ To ensure \cref{eq:delta_propto}, we can use a linear \enquote{fit}, which looks
 \begin{align}
     \label{eq:lambda_fit}
     \lambda_w = \lambda_\theta = \lambda_q
-    = (1 - c_1) \delta + c_1 + \epsilon (1 - c_1),
+    = (1 - c_1) \delta + c_1,
 \end{align}
-where $c_1$ is some constant and $\epsilon$ is a very small number to avoid a division by zero in any of the equations.
+where $c_1$ is some constant.
 The fit for the other $\lambda$'s is
 \begin{align}
     \label{eq:lambda_xy_fit}
     \lambda_{w\theta} = \lambda_{q\theta} = \lambda_{wq}
-    = (1 - c_2) \delta + c_2 - \epsilon (1 - c_2),
+    = (1 - c_2) \delta + c_2,
 \end{align}
-where again $c_2$ is some constant and $\epsilon$ is the same as above.
+where again $c_2$ is some constant.
 Note, that we already have a definition for the $\lambda$'s (\cref{eq:lambda}).
 This definition is just for the backward run though,
 because we actually have to choose $\lambda$ in the forward direction.
 
 If we now look at the limit with the proposed fit (\cref{eq:lambda_fit}),
-where we treat $\epsilon$ as zero,
-and $x$ is one of the three variates, we get:
+where $x$ is one of the three variates, we get:
 \begin{align}
     \lim_{\delta \to 1} \left(\frac{1 - \delta\lambda_x}{1 - \delta}\right)
     &= \lim_{\delta \to 1} \left(\frac{1 - \delta((1 - c_1) \delta + c_1)}{1 - \delta}\right)
@@ -195,60 +194,9 @@ and
     &= \left(\frac{1}{2 - c_1}\right)^2 \cdot \left(\frac{\sigma_w^2}{\wptwo}\right)^2.
 \end{align}
 
-%That being said, we can have a look at \cref{eq:sk_hat_w_nondim} and take the limit.
-%\begin{align}
-%    \lim_{\delta \to 1}\left(\widehat{Sk}_w\right)
-%    &=\lim_{\delta \to 1}
-%    \left(
-%    \frac{1}{\tswfact^{3/2}}
-%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-%    \frac{1}{\left(\frac{1-\delta \lambda_w}{1-\delta}\right)^{3/2}}
-%    \frac{1}{1-\delta}
-%    \right)
-%    \nonumber \\
-%    &=
-%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-%    \lim_{\delta \to 1}
-%    \left(
-%    \frac{1}{(1-\frac{\sigma_w^2 (1-\delta)}{\wptwo (1-\delta\lambda_w)})^{3/2}}
-%    \frac{(1-\delta)^{3/2}}{(1-\delta \lambda_w)^{3/2}}
-%    \frac{1}{1-\delta}
-%    \right)
-%    \nonumber \\
-%    &=
-%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-%    \left(\frac{1}{2-c_1}\right)^{3/2}
-%    \lim_{\delta \to 1}
-%    \left(
-%    \frac{\left(\sigma_w^2 (1-\delta)\right)^{3/2}}{\left(\wptwo (1-\delta\lambda_w) - \sigma_w^2 (1-\delta)\right)^{3/2}}
-%    \frac{1}{1-\delta}
-%    \right)
-%    \nonumber \\
-%    &=
-%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-%    \left(\frac{1}{2-c_1}\right)^{3/2}
-%    \lim_{\delta \to 1}
-%    \left(
-%    \frac{\sigma_w^3 (1-\delta)^{1/2}}{\left(\wptwo (1 - \delta^2 + c_1\delta^2 - c_1\delta) - \sigma_w^2 (1-\delta)\right)^{3/2}}
-%    \right)
-%    \nonumber \\
-%    &=
-%    \frac{\wpthree}{\left(\wptwo \right)^{3/2}}
-%    \left(\frac{1}{2-c_1}\right)^{3/2}
-%    \lim_{\delta \to 1}
-%    \left(
-%    \frac{\sigma_w^3 (1-\delta)^{1/2}}{\left(\wptwo - \wptwo\delta^2 + \wptwo c_1\delta^2 - \wptwo c_1\delta - \sigma_w^2 + \sigma_w^2\delta)\right)^{3/2}}
-%    \right)
-%    \nonumber \\
-%    =& \quad 0
-%\end{align}
-%Hence, if $\delta \to 1$ we get $Sk_w \to 0$.
-%Of course, one needs to pay attention when computing those equations in the code,
-%since we could run into a division by zero error,
-%depending on which values are computed first.
-
 We want to see how the \enquote{main} equations behave in the limit of $\delta \to 1$.
 For those limits, we assume all lower-order moments as constants because they are just given to us in the code.
+
 
 \section{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprime4bar-as-delta-goes-to-1}
@@ -276,6 +224,7 @@ this limit converges to $3 \left(\wptwo\right)^2$.
 This is exactly as expected,
 because in the limit as $\delta \to 1$ we want to revert to a single normal distribution.
 
+
 \section{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprime2thetalbar-as-delta-goes-to-1}
 
@@ -290,6 +239,7 @@ Also, again with taking the additional assumption from above,
 the third-order-moment goes to zero as $\delta \to 1$.
 This results in this limit also converging to 0,
 which also makes sense.
+
 
 \section{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprimethetal2bar-as-delta-goes-to-1}
@@ -318,26 +268,4 @@ we see that this limit is also going to zero, exactly as wanted.
     \tswfact
     \frac{\wptwo \; \thlpthree}{\wpthlp}
     \right)
-\end{align}
-
-\section{Limit for \texorpdfstring{$\wprtpthlp$}{wprimertprimethetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
-\label{sec:limit-for-wprimertprimethetalbar-as-delta-goes-to-1}
-
-\begin{align}
-    \label{eq:limit_wprimertprimethetalbar_delta_to_1}
-    \lim_{\delta \to 1}\left(\wprtpthlp\right)
-    &= \lim_{\delta \to 1}
-    \left(
-    (1 - \delta) \alpha (w_1 - \overline{w}) \left[
-        \left(r_{t1} - \overline{r_t}\right)
-        \left(\theta_{l1} - \overline{\theta_l}\right) +
-        r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
-        \right] \right.\nonumber\\
-    &\quad\quad\quad+ \left.(1 - \delta) (1 - \alpha) (w_2 - \overline{w}) \left[
-        \left(r_{t2} - \overline{r_t}\right)
-        \left(\theta_{l2} - \overline{\theta_l}\right) +
-        r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}
-        \right]
-    \right) \nonumber\\
-    &=\quad 0
 \end{align}
