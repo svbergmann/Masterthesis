@@ -39,6 +39,7 @@
 \addbibresource{include/bibliography.bib}
 
 \usepackage[newfloat, outputdir=../auxil]{minted}
+\usepackage{csquotes}
 \newminted{python}{
     autogobble,
     frame=single,
@@ -80,17 +81,14 @@
 
 
     \section{Introduction}\label{sec:introduction}
-    \begin{frame}{}
-
-    \end{frame}
-
-
-    \section{Problem}\label{sec:problem}
 
     \subsection{Motivation to add a third normal component}
     \label{subsec:motivation-to-add-a-third-normal-component}
 
     \begin{frame}
+        \begin{large}
+            Nature does not look like this, this is too binormal.
+        \end{large}
         \begin{figure}[!htb]
             \centering
             \includegraphics[width=.5\textwidth]{include/figures/plot1}
@@ -102,6 +100,9 @@
     \end{frame}
 
     \begin{frame}
+        \begin{large}
+            To reduce the bimodality we can increase the widths.
+        \end{large}
         \begin{figure}[!htb]
             \centering
             \includegraphics[width=.5\textwidth]{include/figures/plot2}
@@ -113,6 +114,9 @@
     \end{frame}
 
     \begin{frame}
+        \begin{large}
+            Adding a third normal is more realistic.
+        \end{large}
         \begin{figure}[!htb]
             \centering
             \begin{tabular}{cc}
@@ -130,6 +134,9 @@
     \end{frame}
 
     \begin{frame}
+        \begin{large}
+            A third normal even allows \enquote{weird} shapes.
+        \end{large}
         \begin{figure}[!htb]
             \centering
             \includegraphics[width=.5\textwidth]{include/figures/plot4}
@@ -155,13 +162,14 @@
             - \wpthlp \frac{\partial \overline{w}}{\partial z}
             + \ldots
         \end{align*}
+        We need to close the third order moment ($\wptwothlp$) by integration over the pdf.
     \end{frame}
 
     \subsection{Derivation of trinormal closures by transformation of binormal closures}
     \label{subsec:derivation-of-trinormal-closures-by-transformation-of-binormal-closures}
 
     \begin{frame}
-        Binormal closures are already existing~\autocite{larson2005using}, e.g.
+        There already exist closures that assume a binormal pdf~\autocite{larson2005using}, e.g.
         \begin{align}
             \label{eq:wp2_bar_dGn}
             \wptwo
@@ -171,6 +179,7 @@
     \end{frame}
 
     \begin{frame}
+        We can transform to a trinormal pdf using the following formulas:
         \begin{align}
             \label{eq:w_prime_2_transform}
             \wptwo \frac{1 - \delta\lambda_w}{1 - \delta}
@@ -225,7 +234,7 @@
             [<+->]
             \item Given: $\overline{w}$, $\wptwo$, $\wpthree$, $\overline{\theta_l}$, $\wpthlp$,
             $\overline{r_t}$, $\wprtp$, $\thlptwo$, $\rtptwo$, $\rtpthlp$.
-            \item Searched for: Parameters, which describe the shape of the underlying pdf,
+            \item Find: Parameters, which describe the shape of the underlying pdf,
             for ultimately describing higher-order moments,
             e.g. $\wptwothlp$ in terms of lower-order moments.
         \end{itemize}
@@ -235,7 +244,7 @@
         \begin{itemize}
             [<+->]
             \item Given: pdf parameters, e.g.\ mean, standard deviation
-            \item Searched for: lower- and higher-order moments
+            \item Find: lower- and higher-order moments
         \end{itemize}
     \end{frame}
 
@@ -244,18 +253,7 @@
 
     \subsection{Normal Distribution}\label{subsec:normal-distribution}
 
-    \begin{frame}{Univaritate}
-        We say that a random variable $X$ is distributed
-        according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following pdf:
 
-        \begin{definition}[pdf of a normal distribution]
-            \begin{align}
-                \label{eq:pdf_normal_dist}
-                f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}
-                \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)}
-            \end{align}
-        \end{definition}
-    \end{frame}
 
     \begin{frame}{Multivariate}
         We say that a random vector $\bm{X}$ $(r \times r)$
@@ -316,8 +314,9 @@
         \end{itemize}
         \vspace{2cm}
 
-        The variables mostly appear in standardized form,
+        The variables mostly appear in centered form,
         e.g. $w' = w - \overline{w}$.
+        For example $\wptwo$ is the centered variance.
     \end{frame}
 
 
@@ -379,6 +378,7 @@
     \end{frame}
 
     \begin{frame}{Placing of the third component}
+        We place the third normal component at the mean in order to simplify the math.
         \begin{align}
             \mu_3 =
             \begin{pmatrix}
@@ -402,7 +402,7 @@
         \end{align}
     \end{frame}
 
-    \begin{frame}{Additonal definitions}
+    \begin{frame}{Additional definitions}
         \begin{align}
             \label{eq:lambda}
             \lambda_w \equiv \frac{\sigma_{w 3}^2}{\wptwo}, \quad
@@ -453,27 +453,11 @@
         \end{align}
     \end{frame}
 
-    \begin{frame}
-        \begin{align}
-            \label{eq:w_prime_r_t_prime_t_l_prime_bar}
-            \wprtpthlp
-            &= (1 - \delta) \alpha (w_1 - \overline{w}) \left[
-                \left(r_{t1} - \overline{r_t}\right)
-                \left(\theta_{l1} - \overline{\theta_l}\right) +
-                r_{r_t \theta_l} \sigma_{r_{t1}} \sigma_{\theta_{l1}}
-                \right] \nonumber\\
-            &+ (1 - \delta) (1 - \alpha) (w_2 - \overline{w}) \left[
-                \left(r_{t2} - \overline{r_t}\right)
-                \left(\theta_{l2} - \overline{\theta_l}\right) +
-                r_{r_t \theta_l} \sigma_{r_{t2}} \sigma_{\theta_{l2}}
-                \right]
-        \end{align}
-    \end{frame}
-
 
     \section{Asymptotics}\label{sec:asymptotics}
 
     \begin{frame}{Limit for \texorpdfstring{$\wpfour$}{wprime4bar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        As skewness goes to zero we want the pdf to revert to a single normal ($\delta \to 1$).
         \begin{align}
             \label{eq:limit_wprime4_delta_to_1}
             \lim_{\delta \to 1}\left(\wpfour\right)
@@ -498,6 +482,7 @@
     \end{frame}
 
     \begin{frame}{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        As skewness goes to zero we want the pdf to revert to a single normal ($\delta \to 1$).
         \begin{align}
             \label{eq:limit_wprimethetalprime2bar_delta_to_1}
             \lim_{\delta \to 1}\left(\wptwothlp\right)
@@ -508,6 +493,9 @@
             \frac{1}{\tswfact^2}
             \frac{\wpthree}{\left(\wptwo \right)^2}
             \left(\wpthlp \right)^2
+            \right.
+            \nonumber\\
+            \left.
             +
             \frac{1}{3}
             \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
@@ -522,6 +510,8 @@
 
     \begin{frame}
         \begin{center}
+            We have checked the higher-order moment formulas using SymPy.\\
+            \vspace{3cm}
             \textbf{DEMONSTRATION} \\
             (Analytic integration using SymPy~\autocite{10.7717/peerj-cs.103})
         \end{center}
@@ -623,6 +613,19 @@
 
     \begin{frame}{References}
         \printbibliography
+    \end{frame}
+
+    \begin{frame}{Univaritate}
+        We say that a random variable $X$ is distributed
+        according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following pdf:
+
+        \begin{definition}[pdf of a normal distribution]
+            \begin{align}
+                \label{eq:pdf_normal_dist}
+                f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}
+                \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)}
+            \end{align}
+        \end{definition}
     \end{frame}
 
 \end{document}
