@@ -66,6 +66,7 @@ so that the \gls{rhs} is greater and the bound is less restrictive.
 If we assume $\lambda_\theta = \lambda_r$ and $\lambda_{w\theta} = \lambda_{wr}$,
 then the model gains 5 new \gls{pdf} parameters:
 $\delta$, $\lambda_w$, $\lambda_\theta$, $\lambda_{w \theta}$, $\lambda_{\theta r}$.
+
 Considering that the skewness goes to zero ($Sk_w \to 0$),
 we want the \gls{pdf} to revert to a single normal distribution.
 Therefore, we need
@@ -95,7 +96,7 @@ where $x$ is the same as above and $y$ means any of $w$, $r_t$, or $\theta_l$, $
     0 < \lim_{\delta \to 1} \left(\tsw\right)^2
     = \lim_{\delta \to 1} \left(\frac{\sigma_w^2}{\wptwo} \frac{1-\delta}{1-\delta \lambda_w}\right) < 1.
 \end{align}
-To ensure \cref{eq:delta_propto}, we can use a linear \enquote{fit}, which looks like
+To ensure~\cref{eq:delta_propto}, we can use a linear \enquote{fit}, which looks like
 \begin{align}
     \label{eq:lambda_fit}
     \lambda_w = \lambda_\theta = \lambda_q

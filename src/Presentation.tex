@@ -14,6 +14,9 @@
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \usepackage{diagbox}
 
+\usepackage{appendixnumberbeamer}
+
+
 % set colors
 \definecolor{UWMyellow}{RGB}{255,189,0}
 \setbeamercolor{block title}{bg=UWMyellow,fg=black}
@@ -86,7 +89,7 @@
     \section{What is CLUBB?}\label{sec:what-is-clubb?}
 
     \begin{frame}{\textbf{C}loud \textbf{L}ayers \textbf{U}nified \textbf{B}y \textbf{B}inormals \ldots}
-        \ldots is an atmospheric model that tried to predict the weather
+        \ldots is an atmospheric model that tries to predict the weather
         based on modeling a grid box with a sum of two normal distributions.
     \end{frame}
 
@@ -632,18 +635,13 @@
         \end{listing}
     \end{frame}
 
-
-    \section{Summary}\label{sec:summary}
-
-    \begin{frame}{}
-
-    \end{frame}
-
     \begin{frame}{References}
         \printbibliography
     \end{frame}
 
-    \begin{frame}{Univaritate}
+    \appendix
+
+    \begin{frame}
         We say that a random variable $X$ is distributed
         according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following pdf:
 
@@ -654,6 +652,81 @@
                 \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)}
             \end{align}
         \end{definition}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]
+
+        Considering that the skewness goes to zero ($Sk_w \to 0$),
+        we want the pdf to revert to a single normal distribution.
+        Therefore, we need
+        \begin{align}
+            \delta, \lambda_w, \lambda_r, \lambda_\theta,
+            \lambda_{w r}, \lambda_{w \theta}, \lambda_{\theta r}
+            \to 1.
+        \end{align}
+        In this limit, there are no third-order moments anymore, so they have to go to 0 as well.
+        Also, we want to have that the kurtosis is approaching 3 (value of the kurtosis of a standard normal distribution).
+        To ensure those points, as well as no division by zero in the code, we can define the following properties:
+        \begin{align}
+            \label{eq:delta_propto}
+            \lim_{\delta \to 1} (1-\delta) \propto |Sk_w|,
+        \end{align}
+        which means that in the limit as $\delta \to 1$,
+        $(1-\delta)$ should \enquote{behave as} the absolute value of the skewness of $w$,
+        \begin{align}
+            0 < \lim_{\delta\to 1} \left(\frac{1-\delta\lambda_x}{1-\delta}\right) < \infty,
+        \end{align}
+        where $x$ means any of $w$, $r_t$, or $\theta_l$,
+        \begin{align}
+            0 < \lim_{\delta\to 1} \left(\frac{1-\delta\lambda_x}{1-\delta\lambda_y}\right) < \infty
+        \end{align}
+        where $x$ is the same as above and $y$ means any of $w$, $r_t$, or $\theta_l$, $x \neq y$,
+        \begin{align}
+            0 < \lim_{\delta \to 1} \left(\tsw\right)^2
+            = \lim_{\delta \to 1} \left(\frac{\sigma_w^2}{\wptwo} \frac{1-\delta}{1-\delta \lambda_w}\right) < 1.
+        \end{align}
+        To ensure~\eqref{eq:delta_propto}, we can use a linear \enquote{fit}, which looks like
+        \begin{align}
+            \label{eq:lambda_fit}
+            \lambda_w = \lambda_\theta = \lambda_q
+            = (1 - c_1) \delta + c_1,
+        \end{align}
+        where $c_1$ is some constant.
+        The fit for the other $\lambda$'s is
+        \begin{align}
+            \label{eq:lambda_xy_fit}
+            \lambda_{w\theta} = \lambda_{q\theta} = \lambda_{wq}
+            = (1 - c_2) \delta + c_2,
+        \end{align}
+        where again $c_2$ is some constant.
+        Note, that we already have a definition for the $\lambda$'s (\eqref{eq:lambda}).
+        This definition is just for the backward run though,
+        because we actually have to choose $\lambda$ in the forward direction.
+
+        If we now look at the limit with the proposed fit (\eqref{eq:lambda_fit}),
+        where $x$ is one of the three variates, we get:
+        \begin{align}
+            \lim_{\delta \to 1} \left(\frac{1 - \delta\lambda_x}{1 - \delta}\right)
+            &= \lim_{\delta \to 1} \left(\frac{1 - \delta((1 - c_1) \delta + c_1)}{1 - \delta}\right)
+            = \lim_{\delta \to 1} \left(\frac{1 - ((1 - c_1) \delta^2 + c_1\delta)}{1 - \delta}\right) \\
+            &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta^2 - c_1\delta}{1 - \delta}\right)
+            = \lim_{\delta \to 1} \left(\frac{1 - \delta^2 + c_1\delta(\delta - 1)}{1 - \delta}\right) \\
+            &= \lim_{\delta \to 1} \left(\frac{1 - \delta^2}{1 - \delta}\right)
+            - \lim_{\delta \to 1} \left(\frac{c_1\delta(1 - \delta)}{1 - \delta}\right) \\
+            \text{(L'Hôpital)}
+            &\overset{\left[\frac{0}{0}\right]}{=} \lim_{\delta \to 1} \left(\frac{-2\delta}{-1}\right)
+            - \lim_{\delta \to 1} \left(c_1\delta\right) \\
+            &= 2 - c_1.
+        \end{align}
+        Then, we can also define the range of $c_1$,
+        which should be $(0, 2)$ because we want to have $0 < \delta\lambda_w < 1$.
+        For the reciprocal, we then have
+        \begin{align}
+            \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta\lambda_x}\right)
+            &= \lim_{\delta \to 1} \left(\frac{1 - \delta}{1 - \delta^2 + c_1\delta^2 - c_1\delta}\right)
+            \overset{\left[\frac{0}{0}\right]}{=} \lim_{\delta \to 1} \left(\frac{-1}{- 2\delta + 2c_1\delta - c_1}\right) \\
+            &= \frac{-1}{-2 + c_1} = \frac{1}{2 - c_1}.
+        \end{align}
     \end{frame}
 
 \end{document}
