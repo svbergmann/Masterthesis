@@ -10,6 +10,9 @@
 %\usepackage{amsmath}
 %\usepackage{amsfonts}
 \usepackage{bm}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{diagbox}
 
 % set colors
 \definecolor{UWMyellow}{RGB}{255,189,0}
@@ -77,6 +80,14 @@
 
     \begin{frame}{Contents}
         \tableofcontents[hideallsubsections]
+    \end{frame}
+
+
+    \section{What is CLUBB?}\label{sec:what-is-clubb?}
+
+    \begin{frame}{\textbf{C}loud \textbf{L}ayers \textbf{U}nified \textbf{B}y \textbf{B}inormals \ldots}
+        \ldots is an atmospheric model that tried to predict the weather
+        based on modeling a grid box with a sum of two normal distributions.
     \end{frame}
 
 
@@ -215,6 +226,32 @@
             \iff \wptwo
             &= \wptwo_{dGn} - \delta\left(\wptwo_{dGn} - \sigma_{w 3}^2\right)
         \end{align}
+    \end{frame}
+
+    \begin{frame}
+        \begin{table}[!htb]
+            \centering
+            \begin{tabularx}{\textwidth}{c|@{}Y@{}@{}Y@{}@{}Y@{}}
+                \diagbox{$\sigma_{w 3}$}{$\delta$} & 0.1 & 0.5 & 0.9 \\
+                \hline
+                4
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta1}
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta5}
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw40_delta9} \\
+                \hline
+                8
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta1}
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta5}
+                & \includegraphics[width = .29\textwidth]{include/figures/1dplotslw80_delta9}
+            \end{tabularx}
+            \caption{1D Plots for different $\delta$ and $\sigma_{w3}$}
+            $w_1 = 5$, $w_2 = -5$, $\alpha = 0.2$, $\sigma_w = 2$.
+            The blue plot represents the third normal,
+            the orange/red one represents the binormal,
+            and the green one represents the mixture.
+            The $x$ and $y$ labels and ticks are omitted for clarity.
+            \label{tab:1dplotbitri}
+        \end{table}
     \end{frame}
 
     \subsection{Goal}\label{subsec:goal}
