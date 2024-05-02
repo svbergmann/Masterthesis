@@ -19,7 +19,7 @@ according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it
 
 \subsection{Multivariate normal distribution}\label{subsec:multivariate-normal-distribution}
 
-We say that a random vector $\bm{X}$ $(r \times r)$
+We say that a random vector $\bm{X}$
 is distributed according to a multivariate normal distribution
 when it has the following joint density function~\autocite[p. 59]{izenman_modern_2008}:
 
@@ -28,7 +28,7 @@ when it has the following joint density function~\autocite[p. 59]{izenman_modern
         f(\bm{x}| \bm{\mu}, \bm{\Sigma})
         = (2\pi)^{-\frac{r}{2}}
         \left|\bm{\Sigma}\right|^{-\frac{1}{2}}
-        \exp\left(-\frac{1}{2}(x-\bm{\mu})^\top \bm{\Sigma}^{-1} (x-\bm{\mu})\right),
+        \exp\left(-\frac{1}{2}(\bm{x}-\bm{\mu})^\top \bm{\Sigma}^{-1} (\bm{x}-\bm{\mu})\right),
         \bm{x} \in \mathbb{R}^r,
     \end{align}
     where
@@ -71,8 +71,8 @@ We denote this by the following:
 \begin{align}
     \mathbb{E}[X^3]
     &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
-    = \frac{\mu_3}{\sigma^3}
-    = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}, \\
+    = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}
+    = \frac{\mu_3}{\sigma^3}, \\
     \mathbb{E}[X^4]
     &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
     = \frac{\mathbb{E}[(X-\mu)^4]}{(\mathbb{E}[(X-\mu)^2])^2}

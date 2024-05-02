@@ -14,7 +14,7 @@
 % set colors
 \definecolor{UWMyellow}{RGB}{255,189,0}
 \setbeamercolor{block title}{bg=UWMyellow,fg=black}
-\setbeamercolor{block body}{bg=UWMyellow,fg=black}
+\setbeamercolor{block body}{bg=UWMyellow!20,fg=black}
 \setbeamercolor{block title alerted}{bg=black, fg=UWMyellow}
 \setbeamercolor{block body alerted}{bg=black!20, fg=black}
 
@@ -76,7 +76,7 @@
     \frame{\titlepage}
 
     \begin{frame}{Contents}
-        \tableofcontents
+        \tableofcontents[hideallsubsections]
     \end{frame}
 
 
@@ -211,20 +211,16 @@
         If we substitute in a formula for $\lambda_w$~\eqref{eq:lambda}, which will be explained later on, we get
         \begin{align}
             \wptwo \left(1 - \delta\frac{\sigma_{w 3}^2}{\wptwo}\right)
-            &= (1 - \delta)\wptwo_{dGn} \nonumber\\
-            \wptwo - \delta\sigma_{w 3}^2
-            &= (1 - \delta)\wptwo_{dGn} \nonumber\\
-            \wptwo
-            &= \wptwo_{dGn} - \delta\wptwo_{dGn} + \delta\sigma_{w 3}^2 \nonumber\\
-            \wptwo
-            &= \wptwo_{dGn} - \delta\left(\wptwo_{dGn} - \sigma_{w 3}^2\right).
+            &= (1 - \delta)\wptwo_{dGn} \\
+            \iff \wptwo
+            &= \wptwo_{dGn} - \delta\left(\wptwo_{dGn} - \sigma_{w 3}^2\right)
         \end{align}
     \end{frame}
 
     \subsection{Goal}\label{subsec:goal}
 
     \begin{frame}
-        The goal of this thesis is to verify that all the transformations worked out well.
+        The goal of this thesis is to verify that all the transformations work out well.
     \end{frame}
 
     \subsection{Inputs and Outputs}\label{subsec:inputs-and-outputs}
@@ -256,7 +252,7 @@
 
 
     \begin{frame}{Multivariate}
-        We say that a random vector $\bm{X}$ $(r \times r)$
+        We say that a random vector $\bm{X}$
         is distributed according to a multivariate normal distribution
         when it has the following joint density function~\autocite[p. 59]{izenman_modern_2008}:
 
@@ -265,7 +261,7 @@
                 f(\bm{x}| \bm{\mu}, \bm{\Sigma})
                 = (2\pi)^{-\frac{r}{2}}
                 \left|\bm{\Sigma}\right|^{-\frac{1}{2}}
-                \exp\left(-\frac{1}{2}(x-\bm{\mu})^\top \bm{\Sigma}^{-1} (x-\bm{\mu})\right),
+                \exp\left(-\frac{1}{2}(\bm{x}-\bm{\mu})^\top \bm{\Sigma}^{-1} (\bm{x}-\bm{\mu})\right),
                 \bm{x} \in \mathbb{R}^r,
             \end{align}
             where
@@ -295,12 +291,12 @@
         \begin{align}
             \mathbb{E}[X^3]
             &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
-            = \frac{\mu_3}{\sigma^3}
-            = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}, \\
+            = \frac{\mathbb{E}[(X-\mu)^3]}{(\mathbb{E}[(X-\mu)^2])^{3/2}}
+            = \frac{\mu_3}{\sigma^3} \\
             \mathbb{E}[X^4]
             &= \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
             = \frac{\mathbb{E}[(X-\mu)^4]}{(\mathbb{E}[(X-\mu)^2])^2}
-            = \frac{\mu_4}{\sigma^4}.
+            = \frac{\mu_4}{\sigma^4}
         \end{align}
     \end{frame}
 
@@ -308,23 +304,20 @@
 
     \begin{frame}
         \begin{itemize}
-            \item $w$ - upward wind (or up-/downdraft),
-            \item $r_t$ - total water mixing ratio,
-            \item $\theta_l$ - liquid water potential temperature.
+            \item $w$ - upward wind (or up-/downdraft)
+            \item $r_t$ - total water mixing ratio
+            \item $\theta_l$ - liquid water potential temperature
         \end{itemize}
         \vspace{2cm}
 
         The variables mostly appear in centered form,
-        e.g. $w' = w - \overline{w}$.
+        e.g. $w' = w - \overline{w}$. \\
         For example $\wptwo$ is the centered variance.
     \end{frame}
 
 
-    \section{Formulas that define the shape of the pdf and moments in terms of pdf parameters}
-    \label{sec:formulas-that-define-the-shape-of-the-pdf-and-moments-in-terms-of-pdf-parameters}
-
-    \subsection{Definition of the trinormal distribution, \texorpdfstring{$P_{tmg}$}{P tmg}}
-    \label{subsec:definition-of-the-trinormal-distribution-p_tmg}
+    \section{Definition of the trinormal distribution, \texorpdfstring{$P_{tmg}$}{P tmg}}
+    \label{sec:definition-of-the-trinormal-distribution-p_tmg}
 
     \begin{frame}{Normal Mixture}
         \begin{align}
@@ -347,7 +340,6 @@
                 \theta_{l1} \\
                 r_{t1}
             \end{pmatrix},
-            \text{ and }
             \mu_2 =
             \begin{pmatrix}
                 w_2         \\
@@ -364,16 +356,15 @@
                 \sigma_w^2 & 0                                                      & 0                                                      \\
                 0          & \sigma_{\theta_{l1}}^2                                 & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} \\
                 0          & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} & \sigma_{r_{t1}}^2
-            \end{pmatrix},
+            \end{pmatrix}
         \end{align}
-        and
         \begin{align}
             \Sigma_2 =
             \begin{pmatrix}
                 \sigma_w^2 & 0                                                      & 0                                                      \\
                 0          & \sigma_{\theta_{l2}}^2                                 & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} \\
                 0          & \rho_{\theta_l r_t} \sigma_{\theta_l 3} \sigma_{r_t 3} & \sigma_{r_{t2}}^2
-            \end{pmatrix}.
+            \end{pmatrix}
         \end{align}
     \end{frame}
 
@@ -398,7 +389,7 @@
                 \rho_{w r_t 3} \sigma_{w 3} \sigma_{r_t 3} &
                 \rho_{\theta_l r_t 3} \sigma_{\theta_l 3} \sigma_{r_t 3} &
                 \sigma_{r_t 3}^2
-            \end{pmatrix}.
+            \end{pmatrix}
         \end{align}
     \end{frame}
 
@@ -416,7 +407,7 @@
             \lambda_{w \theta} \equiv
             \frac{\rho_{w \theta_l} \sigma_{w 3} \sigma_{\theta_l 3}}{\wpthlp}, \quad
             \lambda_{w r} \equiv
-            \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}.
+            \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}
         \end{align}
     \end{frame}
 
