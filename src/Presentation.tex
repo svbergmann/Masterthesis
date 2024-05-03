@@ -6,9 +6,6 @@
 \usepackage{graphicx}
 \usetheme{CambridgeUS}
 \usecolortheme{dolphin}
-%\usepackage[standard, hyperref]{ntheorem}
-%\usepackage{amsmath}
-%\usepackage{amsfonts}
 \usepackage{bm}
 \usepackage{tabularx}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
@@ -389,7 +386,7 @@
         \end{align}
     \end{frame}
 
-    \begin{frame}{Covariance between first and second component}
+    \begin{frame}{Covariance matrices of first and second component}
         \begin{align}
             \Sigma_1 =
             \begin{pmatrix}
@@ -505,6 +502,7 @@
     \end{frame}
 
     \begin{frame}{Limit for \texorpdfstring{$\wptwothlp$}{wprime2thetalbar} as \texorpdfstring{$\delta$}{delta} goes to 1}
+        As skewness goes to zero we want the pdf to revert to a single normal ($\delta \to 1$).
         \begin{align}
             \label{eq:limit_wprime2thetalbar_delta_to_1}
             \lim_{\delta \to 1}\left(\wptwothlp\right)
