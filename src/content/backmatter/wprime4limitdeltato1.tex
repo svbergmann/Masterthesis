@@ -3,8 +3,8 @@
 
 \begin{align}
     \label{eq:limit_wprime4_delta_to_1_calc}
-    \lim_{\delta \to 1}\left(\wpfour\right)
-    &= \lim_{\delta \to 1}
+    \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}\left(\wpfour\right)
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(\left(\wptwo\right)^2\right.
     \cancelto{0}{\frac{(1-\delta \lambda_w)^2}{(1-\delta)}}
     \left(3 \tsw^4 + 6 \tswfact \tsw^2 + \tswfact^2\right) \nonumber\\
@@ -12,7 +12,7 @@
     \frac{\left(\wpthree\right)^2}{\wptwo}
     + \left. \delta 3 \lambda_w^2 \left(\wptwo\right)^2\right)
     \\
-    &= \lim_{\delta \to 1}
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(
     \frac{
         \left(\wpthree\right)^2
@@ -25,7 +25,7 @@
     + 3 \delta \lambda_w^2 \left(\wptwo\right)^2
     \right)
     \\
-    &= \lim_{\delta \to 1}
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(
     \frac{
         \left(\wpthree\right)^2
@@ -35,7 +35,7 @@
     + 3 \delta \lambda_w^2 \left(\wptwo\right)^2
     \right)
     \\
-    &= \lim_{\delta \to 1}
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(
     \frac{
         \left(\wpthree\right)^2
@@ -46,7 +46,7 @@
     + 3 \delta \lambda_w^2 \left(\wptwo\right)^2
     \right)
     \\
-    &= \lim_{\delta \to 1}
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(
     \frac{
         \left(\wpthree\right)^2
@@ -60,7 +60,7 @@
     \left.3 \delta \left(c_1^2\delta^2 - 2c_1^2\delta + c_1^2 - 2c_1\delta^2 + 2c_1\delta + \delta^2\right) \left(\wptwo\right)^2
     \right)
     \\
-    &= \lim_{\delta \to 1}
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
     \left(
     \frac{
         \left(\wpthree\right)^2
@@ -70,6 +70,50 @@
     }
     \right)
     + 3 \left(\wptwo\right)^2
+\end{align}
+Now, we use \cref{eq:delta_propto}, saying that $1-\delta$ \enquote{goes as} skeweness.
+This also implies that $1-\delta\lambda_w$ \enquote{goes as} skeweness.
+\begin{align}
+    \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
+    \left(\wpfour\right)
+    &= \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
+    \left(
+    \frac{
+        \left(\wpthree\right)^2
+    }{
+        \left(\frac{\wpthree}{\wptwo^{3/2}}\right)
+        \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
+    }
+    \right)
+    + 3 \left(\wptwo\right)^2
+    \\
+    &=
+    \left(
+    \frac{
+        \left(\wpthree\right)^2
+        \wptwo^{3/2}
+    }{
+        \wpthree
+        \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
+    }
+    \right)
+    + 3 \left(\wptwo\right)^2
+    \\
+    &=
+    \cancelto{0}{
+        \left(
+        \frac{
+            \wpthree
+            \;
+            \wptwo^{3/2}
+        }{
+            \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
+        }
+        \right)
+    }
+    + 3 \left(\wptwo\right)^2
+    \\
+    &= 3 \left(\wptwo\right)^2.
 \end{align}
 
 

@@ -204,24 +204,13 @@ For those limits, we assume all lower-order moments as constants because they ar
 
 \begin{align}
     \label{eq:limit_wprime4_delta_to_1}
-    \lim_{\delta \to 1}\left(\wpfour\right)
-    = \left(
-    \frac{
-        \left(\wpthree\right)^2
-    }{
-        (1 - \delta\lambda_w)
-        \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
-    }
-    \right)
-    + 3 \left(\wptwo\right)^2
+    \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
+    \left(\wpfour\right)
+    = 3 \left(\wptwo\right)^2.
 \end{align}
 Looking at this limit (for the calculation refer to \cref{sec:calculation-for-the-limit-for-wprime4bar-as-delta-goes-to-1}),
 where we held the lower-order moments fixed and not depending on $\delta$,
-unfortunately, we see that the fourth-order moment of $w$ diverges.
-Using the additional assumption from above though,
-where we assumed,
-that the skewness goes as $1-\delta$,
-this limit converges to $3 \left(\wptwo\right)^2$.
+we see that it converges to $3 \left(\wptwo\right)^2$.
 This is exactly as expected,
 because in the limit as $\delta \to 1$ we want to revert to a single normal distribution.
 
@@ -245,28 +234,28 @@ which also makes sense.
 \section{Limit for \texorpdfstring{$\wptwothlp$}{wprimethetaltwobar} as \texorpdfstring{$\delta$}{delta} goes to 1}
 \label{sec:limit-for-wprimethetal2bar-as-delta-goes-to-1}
 
+\begin{align}
+    \label{eq:limit_wprimethetalprime2bar_delta_to_1}
+    \lim_{\delta \to 1}\left(\wptwothlp\right)
+    = \frac{1}{3}
+    \left(
+    \frac{
+        2 \wpthree \left(\wpthlp \right)^2
+    }
+    {
+        \left(\wptwo^2 - 2 \wptwo \frac{\sigma_w^2}{2 - c_1} + \left(\frac{\sigma_w^2}{2 - c_1}\right)^2 \right)
+    }
+    +
+    \frac{\thlpthree \; \wptwo(2 - c_2)}{\wpthlp(2 - c_1)}
+    -
+    \frac{\sigma_w^2 \thlpthree}{\wpthlp (2 - c_2)}
+    \right)
+\end{align}
 Here, looking at the calculation of the limit
 (\cref{sec:calculation-for-the-limit-for-wprimethetalprime2bar-as-delta-goes-to-1}),
-where no additional assumption were used at first,
-we can see that the solution does not give too much insights for this limit.
+where no additional assumption was used at first,
+we can see that the solution does not give too many insights for this limit.
 If we instead again use the same assumption as above,
 specifically, that the third-order-moments go to zero as $\delta$ approaches 1,
 we see that this limit is also going to zero, exactly as wanted.
 
-\begin{align}
-    \label{eq:limit_wprimethetalprime2bar_delta_to_1}
-    \lim_{\delta \to 1}\left(\wptwothlp\right)
-    = \lim_{\delta \to 1}
-    \left(
-    \frac{2}{3}
-    \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2}
-    \frac{1}{\tswfact^2}
-    \frac{\wpthree}{\left(\wptwo \right)^2}
-    \left(\wpthlp \right)^2
-    +
-    \frac{1}{3}
-    \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
-    \tswfact
-    \frac{\wptwo \; \thlpthree}{\wpthlp}
-    \right)
-\end{align}

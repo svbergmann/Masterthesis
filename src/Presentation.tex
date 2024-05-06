@@ -488,16 +488,9 @@
         As skewness goes to zero we want the pdf to revert to a single normal ($\delta \to 1$).
         \begin{align}
             \label{eq:limit_wprime4_delta_to_1}
-            \lim_{\delta \to 1}\left(\wpfour\right)
-            = \left(
-            \frac{
-                \left(\wpthree\right)^2
-            }{
-                (1 - \delta\lambda_w)
-                \left(\wptwo - \frac{\sigma_w^2}{2 - c_1}\right)
-            }
-            \right)
-            + 3 \left(\wptwo\right)^2
+            \lim_{\substack{\delta \to 1, \\ \wpthree \to 0}}
+            \left(\wpfour\right)
+            = 3 \left(\wptwo\right)^2
         \end{align}
     \end{frame}
 
@@ -515,21 +508,22 @@
         \begin{align}
             \label{eq:limit_wprimethetalprime2bar_delta_to_1}
             \lim_{\delta \to 1}\left(\wptwothlp\right)
-            = \lim_{\delta \to 1}
+            =
+            \frac{1}{3}
             \left(
-            \frac{2}{3}
-            \frac{(1-\delta \lambda_{w \theta})^2}{(1-\delta \lambda_w)^2}
-            \frac{1}{\tswfact^2}
-            \frac{\wpthree}{\left(\wptwo \right)^2}
-            \left(\wpthlp \right)^2
+            \frac{
+                2 \wpthree \left(\wpthlp \right)^2
+            }
+            {
+                \left(\wptwo^2 - 2 \wptwo \frac{\sigma_w^2}{2 - c_1} + \left(\frac{\sigma_w^2}{2 - c_1}\right)^2 \right)
+            }
             \right.
             \nonumber\\
-            \left.
             +
-            \frac{1}{3}
-            \frac{(1-\delta \lambda_w)}{(1-\delta \lambda_{w \theta})}
-            \tswfact
-            \frac{\wptwo \; \thlpthree}{\wpthlp}
+            \left.
+            \frac{\thlpthree \; \wptwo(2 - c_2)}{\wpthlp(2 - c_1)}
+            -
+            \frac{\sigma_w^2 \thlpthree}{\wpthlp (2 - c_2)}
             \right)
         \end{align}
     \end{frame}
