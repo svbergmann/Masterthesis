@@ -1,5 +1,29 @@
-\documentclass[12pt, listof=totoc, bibliography=totoc, parskip=full, numbers=noenddot]{scrreprt}
+\documentclass[
+    appendixprefix=true,
+    12pt,
+    listof=totoc,
+    bibliography=totoc,
+    parskip=full,
+    numbers=noenddot]{scrreprt}
+
 \setcounter{secnumdepth}{\subsubsectionnumdepth}
+
+\newcommand\entrywithprefix[2]{#1~#2}
+\DeclareTOCStyleEntry[
+    level:=chapter,
+    indent:=chapter,
+    numwidth:=chapter,
+    dynnumwidth,
+    entrynumberformat=\entrywithprefix{\appendixname}
+]{chapter}{appendixchapter}
+
+\usepackage{xpatch}
+\xapptocmd{\appendix}{%
+    \xpatchcmd{\addchaptertocentry}
+    {\addtocentrydefault{chapter}{#1}{#2}}
+    {\addtocentrydefault{appendixchapter}{#1}{#2}}
+    {}{\PatchFailedII}%
+}{}{\PatchFailedI}
 
 \newcommand{\mytitle}{ANALYTIC APPROXIMATIONS OF HIGHER ORDER MOMENTS IN TERMS OF LOWER ORDER MOMENTS}
 \newcommand{\myauthor}{Sven Bergmann}
