@@ -49,20 +49,7 @@ This is for instance:
     \frac{(1-\delta \lambda_w)(1-\delta \lambda_r)}{(1-\delta \lambda_{w r})^2}
     \right).
 \end{align}
-So it might be safer to set
-\begin{align}
-    \label{eq:lambda_corr_ineq}
-    \lambda_w , \lambda_r < \lambda_{w r}
-    &\iff
-    \left(\frac{\sigma_{w 3}^2}{\wptwo} < \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}\right)
-    \land
-    \left(\frac{\sigma_{r_t 3}^2}{\rtptwo} < \frac{\rho_{w r_t} \sigma_{w 3} \sigma_{r_t 3}}{\wprtp}\right) \nonumber\\
-    &\iff
-    \left(\sigma_{w 3} \wprtp < \rho_{w r_t} \sigma_{r_t 3} \wptwo\right)
-    \land
-    \left(\sigma_{r_t 3} \wprtp < \rho_{w r_t} \sigma_{w 3} \rtptwo\right) \nonumber\\
-\end{align}
-so that the \gls{rhs} is greater and the bound is less restrictive.
+
 If we assume $\lambda_\theta = \lambda_r$ and $\lambda_{w\theta} = \lambda_{wr}$,
 then the model gains 5 new \gls{pdf} parameters:
 $\delta$, $\lambda_w$, $\lambda_\theta$, $\lambda_{w \theta}$, $\lambda_{\theta r}$.

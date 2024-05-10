@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[17]:
 
 
 from itertools import product
@@ -23,31 +23,31 @@ import symbols as sym
 
 # ## Define the marginal distributions.
 
-# In[2]:
+# In[18]:
 
 
 display(sp.Eq(sym.G_1_w_theta, c_f.G_1_w_theta_density))
 
 
-# In[3]:
+# In[19]:
 
 
 display(sp.Eq(sym.G_2_w_theta, c_f.G_2_w_theta_density))
 
 
-# In[4]:
+# In[20]:
 
 
 display(sp.Eq(sym.G_3_w_theta, c_f.G_3_w_theta_density))
 
 
-# In[5]:
+# In[21]:
 
 
 display(sp.Eq(sym.G_w_theta, c_f.G_w_theta, evaluate=False))
 
 
-# In[6]:
+# In[22]:
 
 
 w_prime_2_theta_l_prime_bar = sp.Integral(
@@ -57,7 +57,7 @@ w_prime_2_theta_l_prime_bar = sp.Integral(
 display(sp.Eq(sym.w_prime_2_theta_prime_l_bar, w_prime_2_theta_l_prime_bar))
 
 
-# In[7]:
+# In[23]:
 
 
 w_prime_2_theta_l_prime_bar = (
@@ -72,7 +72,7 @@ display(sp.Eq(sym.w_prime_2_theta_prime_l_bar,
 
 # The equation in the document is:
 
-# In[8]:
+# In[24]:
 
 
 display(sp.Eq(sym.w_prime_2_theta_prime_l_bar, c_f.w_prime_2_theta_l_prime_bar()))
@@ -80,7 +80,7 @@ display(sp.Eq(sym.w_prime_2_theta_prime_l_bar, c_f.w_prime_2_theta_l_prime_bar()
 
 # For this we still need $\tilde{\sigma_w}$:
 
-# In[9]:
+# In[25]:
 
 
 display(sp.Eq(sym.sigma_tilde_w, c_f.sigma_tilde_w()))
@@ -88,7 +88,7 @@ display(sp.Eq(sym.sigma_tilde_w, c_f.sigma_tilde_w()))
 
 # And $\overline{w'^{2}}$:
 
-# In[10]:
+# In[26]:
 
 
 display(sp.Eq(sym.w_prime_2_bar, c_f.w_prime_2_bar()))
@@ -96,7 +96,7 @@ display(sp.Eq(sym.w_prime_2_bar, c_f.w_prime_2_bar()))
 
 # And $\overline{w'^{3}}$:
 
-# In[11]:
+# In[27]:
 
 
 display(sp.Eq(sym.w_prime_3_bar, c_f.w_prime_3_bar()))
@@ -104,7 +104,7 @@ display(sp.Eq(sym.w_prime_3_bar, c_f.w_prime_3_bar()))
 
 # And $\lambda_w$:
 
-# In[12]:
+# In[28]:
 
 
 display(sp.Eq(sym.lambda_w, c_f.lambda_w()))
@@ -112,7 +112,7 @@ display(sp.Eq(sym.lambda_w, c_f.lambda_w()))
 
 # And $\lambda_{w\theta}$:
 
-# In[13]:
+# In[29]:
 
 
 display(sp.Eq(sym.lambda_w_theta, c_f.lambda_w_theta()))
@@ -120,7 +120,7 @@ display(sp.Eq(sym.lambda_w_theta, c_f.lambda_w_theta()))
 
 # And $\overline{w'\theta_l'}$:
 
-# In[14]:
+# In[30]:
 
 
 display(sp.Eq(sym.w_prime_theta_l_prime_bar, c_f.w_prime_theta_l_prime_bar()))
@@ -128,7 +128,7 @@ display(sp.Eq(sym.w_prime_theta_l_prime_bar, c_f.w_prime_theta_l_prime_bar()))
 
 # Putting those all together yields:
 
-# In[15]:
+# In[31]:
 
 
 w_prime_2_theta_l_prime_bar_check_val = (
@@ -156,7 +156,7 @@ display(sp.Eq(sym.w_prime_2_theta_prime_l_bar,
 
 # We create a dataframe to get all possible permutations and therefore also all possible evaluations of the integrals.
 
-# In[16]:
+# In[32]:
 
 
 df = pd.DataFrame(
@@ -178,15 +178,15 @@ df = pd.DataFrame(
              sym.theta_l_2,
              sym.sigma_theta_l_1,
              sym.sigma_theta_l_2,
-             sym.sigma_lambda_theta_l,
+             sym.sigma_theta_l_3,
              sym.sigma_w,
-             sym.sigma_lambda_w,
+             sym.sigma_w_3,
              sp.abc.alpha,
              sp.abc.delta,
              sym.rho_w_theta_l])
 
 
-# In[17]:
+# In[33]:
 
 
 df['check_val'] = (
@@ -198,9 +198,9 @@ df['check_val'] = (
                  sym.theta_l_2: x[sym.theta_l_2],
                  sym.sigma_theta_l_1: x[sym.sigma_theta_l_1],
                  sym.sigma_theta_l_2: x[sym.sigma_theta_l_2],
-                 sym.sigma_lambda_theta_l: x[sym.sigma_lambda_theta_l],
+                 sym.sigma_theta_l_3: x[sym.sigma_theta_l_3],
                  sym.sigma_w: x[sym.sigma_w],
-                 sym.sigma_lambda_w: x[sym.sigma_lambda_w],
+                 sym.sigma_w_3: x[sym.sigma_w_3],
                  sp.abc.alpha: x[sp.abc.alpha],
                  sp.abc.delta: x[sp.abc.delta],
                  sym.rho_w_theta_l: x[sym.rho_w_theta_l]
@@ -209,7 +209,7 @@ df['check_val'] = (
 
 # Calculate the moment analytically:
 
-# In[18]:
+# In[34]:
 
 
 df['num_int'] = (
@@ -220,34 +220,34 @@ df['num_int'] = (
         sym.theta_l_2: x[sym.theta_l_2],
         sym.sigma_theta_l_1: x[sym.sigma_theta_l_1],
         sym.sigma_theta_l_2: x[sym.sigma_theta_l_2],
-        sym.sigma_lambda_theta_l: x[sym.sigma_lambda_theta_l],
+        sym.sigma_theta_l_3: x[sym.sigma_theta_l_3],
         sym.sigma_w: x[sym.sigma_w],
-        sym.sigma_lambda_w: x[sym.sigma_lambda_w],
+        sym.sigma_w_3: x[sym.sigma_w_3],
         sp.abc.alpha: x[sp.abc.alpha],
         sp.abc.delta: x[sp.abc.delta],
         sym.rho_w_theta_l: x[sym.rho_w_theta_l]
     }).doit(conds='none', method='quad').evalf()), axis=1))
 
 
-# In[19]:
+# In[35]:
 
 
 df['diff'] = abs(df['check_val'] - df['num_int'])
 
 
-# In[20]:
+# In[36]:
 
 
 df['diff_num'] = abs(df['check_val'].astype(float) - df['num_int'].astype(float))
 
 
-# In[21]:
+# In[37]:
 
 
 display(df)
 
 
-# In[22]:
+# In[38]:
 
 
 import numpy as np

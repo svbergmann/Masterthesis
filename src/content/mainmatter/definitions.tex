@@ -7,15 +7,18 @@ it follows a brief introduction of all formulas and terms used.
 \section{Normal distribution}\label{sec:normal-distribution}
 
 We say that a random variable $X$ is distributed
-according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following \gls{pdf}:
+according to a normal distribution ($X \sim \mathcal{N}(\mu, \sigma^2)$) when it has the following
+\gls{pdf}~\autocite[p.59]{izenman_modern_2008}:
 
 \begin{definition}[\gls{pdf} of a normal distribution]
     \begin{align}
         \label{eq:pdf_normal_dist}
         f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}
-        \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)}.
+        \exp{\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)},
     \end{align}
 \end{definition}
+
+where $\mu \in (-\infty, \infty)$ is the mean and $\sigma > 0$ is the standard deviation.
 
 \subsection{Multivariate normal distribution}\label{subsec:multivariate-normal-distribution}
 
@@ -53,7 +56,8 @@ when it has the following joint density function~\autocite[p. 59]{izenman_modern
         \end{pmatrix}
         \in \mathbb{R}^{r\times r}
     \end{align}
-    is the (symmetric, positive definite) covariance matrix.
+    is the (symmetric, positive definite) covariance matrix,
+    and $\rho$ is the correlation between the indexed components.
     This is also often expressed as $\bm{X} \sim \mathcal{N}(\bm{\mu}, \bm{\Sigma})$,
     meaning that $\bm{X}$ (r $\times$ r random vector) is distributed
     according to a multivariate normal distribution with the given parameters.

@@ -20,7 +20,16 @@ Therefore the mean of $w$ stays the same as in the bivariate case.
 The relationship for the \emph{non-dimensional} form is:
 \begin{align}
     \label{eq:w_bar_nondim}
-    0 &= \alpha \widehat{w}_1 + (1 - \alpha) \widehat{w}_2
+    0 &= \alpha \widehat{w}_1 + (1 - \alpha) \widehat{w}_2,
+\end{align}
+where $\widehat{w}$ is a so-called \enquote{hat} variable
+that already contains normalizations and is defined as
+\begin{align}
+    \label{eq:w_hp}
+    \widehat{w}' \equiv
+    \frac{w - \overline{w}}{\sqrt{\wptwo}}
+    \frac{1}{\tswfact^{1/2}}
+    \frac{1}{\sqrt{\frac{1-\delta \lambda_w}{1-\delta}}}.
 \end{align}
 For all other moments -- except for the mean --
 we are using the standardized versions of the variables, written as \gls{w_prime}.
@@ -51,8 +60,16 @@ The \emph{non-dimensional} relationship would then be:
     \label{eq:wp2_bar_non_dim}
     \frac{1}{\tswfact}
     &= \alpha \left(\widehat{w}_1^2 + \frac{\tsw^2}{(1 - \tsw)^2} \right)
-    + (1-\alpha) \left( \widehat{w}_2^2 + \frac{\tsw^2}{\tswfact} \right).
+    + (1-\alpha) \left( \widehat{w}_2^2 + \frac{\tsw^2}{\tswfact} \right),
 \end{align}
+where
+\begin{align}
+    \label{eq:sigma_tilde}
+    \tsw = \frac{\sigma_w}{\sqrt{\wptwo}}
+    \frac{1}{\sqrt{\frac{1-\delta \lambda_w}{1-\delta}}}.
+\end{align}
+Note that \gls{CLUBB} uses those \enquote{tilde} and \enquote{hat} variables
+to make the notation easier.
 
 The third order moment is given as:
 \begin{align}
@@ -63,7 +80,7 @@ The third order moment is given as:
 \end{align}
 Since we want to make use of the specific shape of the \gls{pdf},
 we also have a relationship for $\wpthree$,
-which is called $\widehat{Sk}_w$, meaning the skewness of the variable $w$:
+which is called $\widehat{Sk}_w$, meaning the \enquote{hat}-skewness of the variable $w$:
 \begin{align}
     \widehat{Sk}_w
     &\equiv \frac{1}{\tswfact^{3/2}}
@@ -104,7 +121,7 @@ The third order moment is given as:
 \end{align}
 Similarly to \cref{eq:sk_hat_w_nondim}, we also list a moment which is more diagnosed than prognosed:
 \begin{align}
-    \widehat{Sk_{\theta_l}}
+    \widehat{Sk}_{\theta_l}
     &\equiv \frac{\thlpthree}{\left(\thlptwo\right)^{3/2}}
     \left(\frac{1}{\frac{1-\delta \lambda_\theta}{1-\delta}}\right)^{3/2}
     \frac{1}{1-\delta} \nonumber\\
